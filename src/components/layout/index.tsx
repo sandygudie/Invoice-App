@@ -79,7 +79,7 @@ function NavigationLinks() {
           LE
         </p>
         <p className="font-semibold mb-1">Laura Edson</p>
-        <p className="text-gray-100 text-sm mb-4 ">lauraedson@work.com</p>
+        <p className="text-gray-100 text-xs mb-4 ">lauraedson@work.com</p>
         <img src={LogoutIcon} alt="logout " className="w-10" />
       </div>
     </div>
