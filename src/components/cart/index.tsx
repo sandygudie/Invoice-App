@@ -7,9 +7,7 @@ interface Props {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 function Cart({ open, setOpen }: Props) {
-  const total_amount = CART_ITEM.reduce((accumulator, object) => {
-    return accumulator + object.amount;
-  }, 0);
+  const total_amount = CART_ITEM.reduce((a, b) => a + b.amount, 0);
 
   return (
     open && (
