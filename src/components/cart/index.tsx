@@ -25,7 +25,7 @@ function Cart({ open, setOpen }: Props) {
 
   return (
     open && (
-      <div className=" fixed flex flex-col h-full w-2/6 right-0 justify-between border-l z-20 top-0 bg-white pt-6 pb-5 overflow-auto border-gray-300">
+      <div className="fixed flex flex-col h-full w-2/6 right-0 justify-between border-l z-20 top-0 bg-white pt-6 pb-5 overflow-auto border-gray-300">
         <div className="px-6 ">
           <div className="flex justify-between items-center">
             <div className="flex items-center">
@@ -33,7 +33,7 @@ function Cart({ open, setOpen }: Props) {
                 onClick={() => setOpen(false)}
                 className="text-xl text-gray-200"
               />
-              <p className="ml-5 font-semibold text-lg ">My Cart</p>
+              <p className="ml-5 font-semibold text-lg">My Cart</p>
             </div>
             <div className="shadow-lg rounded-full">
               <CartBasket />
@@ -91,7 +91,10 @@ function Cart({ open, setOpen }: Props) {
             <p className="text-sm text-gray-100">Total</p>
             <p className="font-semibold">${total_amount}</p>
           </div>
-          <button className="p-2 bg-primary text-sm w-40 rounded-sm text-white">
+          <button
+            onClick={() => setOpen(false)}
+            className="p-2 bg-primary text-sm w-40 rounded-sm text-white"
+          >
             DONE SHOPPING
           </button>
         </div>

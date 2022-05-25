@@ -2,7 +2,7 @@ const data = [
   {
     first_name: "Laura",
     last_name: "Edson",
-    email:'lauraedson@work.com'
+    email: "lauraedson@work.com",
   },
   {
     cart_item: [
