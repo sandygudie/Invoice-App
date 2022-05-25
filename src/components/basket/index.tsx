@@ -70,7 +70,7 @@ function Basket() {
       <div className="mt-10">
         <div className="flex justify-between">
           <h2 className="text-xl font-semibold mb-5">Baskets</h2>
-          <button className="p-2 text-white text-sm text-center rounded-md w-40 bg-primary">
+          <button className="p-2 text-white text-sm text-center rounded-md w-40 bg-primary hover:bg-primary/20 hover:text-primary">
             Create Basket
           </button>
         </div>
