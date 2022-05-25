@@ -23,9 +23,9 @@ function Basket() {
           />
         </div>
       </div>
-      <div className="flex justify-start flex-wrap items-center gap-8">
+      <div className="flex justify-start flex-wrap items-center gap-x-8 gap-y-4">
         {open && (
-          <div className="bg-white flex justify-start gap-x-4 items-center w-[14rem] p-4 shadow-sm rounded-lg">
+          <div className="bg-white flex justify-start gap-x-4 items-center w-[14rem] px-4 py-2 shadow-sm rounded-lg">
             <span className="p-2 text-lg rounded-full bg-orange/[0.25] text-orange">
               {" "}
               <BiStoreAlt />
@@ -36,7 +36,7 @@ function Basket() {
             </div>
           </div>
         )}
-        <div className="bg-white flex justify-start gap-x-4 items-center w-[14rem] p-4 shadow-sm rounded-lg">
+        <div className="bg-white flex justify-start gap-x-4 items-center w-[14rem] px-4 py-2 shadow-sm rounded-lg">
           <span className="p-2 text-lg rounded-full bg-violet/[0.25] text-violet">
             {" "}
             <FiTruck />
@@ -46,7 +46,7 @@ function Basket() {
             <p className="font-bold text-lg">0</p>
           </div>
         </div>
-        <div className="bg-white flex justify-start gap-x-4 items-center w-[14rem] p-4 shadow-sm rounded-lg">
+        <div className="bg-white flex justify-start gap-x-4 items-center w-[14rem]  px-4 py-2 shadow-sm rounded-lg">
           <span className="p-2 text-lg rounded-full bg-primary/[0.25] text-primary">
             {" "}
             <FiCreditCard />
@@ -56,7 +56,7 @@ function Basket() {
             <p className="font-bold text-lg ">$0.00</p>
           </div>
         </div>
-        <div className="bg-white flex justify-start gap-x-4 items-center w-[14rem] p-4 shadow-sm rounded-lg">
+        <div className="bg-white flex justify-start gap-x-4 items-center w-[14rem] px-4 py-2 shadow-sm rounded-lg">
           <span className="p-2 text-lg rounded-full bg-purple/[0.25] text-purple">
             {" "}
             <BiCube />

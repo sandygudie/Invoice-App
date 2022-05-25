@@ -11,7 +11,7 @@ function Cart({ open, setOpen }: Props) {
 
   return (
     open && (
-      <div className="fixed flex flex-col h-full w-2/6 right-0 justify-between border-l z-20 top-0 bg-white pt-6 pb-5 overflow-auto border-gray-300">
+      <div className="fixed flex flex-col h-full w-[27rem] right-0 justify-between border-l z-20 top-0 bg-white pt-6 pb-5 overflow-auto border-gray-300">
         <div className="px-6 ">
           <div className="flex justify-between items-center">
             <div className="flex items-center">
@@ -57,7 +57,7 @@ function Cart({ open, setOpen }: Props) {
                   </select>
                 </div>
 
-                <div className="flex justify-end w-1/12">
+                <div className="flex justify-end w-3/12">
                   {item.seller.map((person, i) => (
                     <p
                       key={i}
