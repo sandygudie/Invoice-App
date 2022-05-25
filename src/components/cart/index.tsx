@@ -1,24 +1,12 @@
 import { FiArrowLeft } from "react-icons/fi";
 import CoconutIcon from "../../assets/coconut-icon.svg";
 import CartBasket from "../CartBasket";
-
+import { CART_ITEM } from "../data";
 interface Props {
   open: Boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 function Cart({ open, setOpen }: Props) {
-  const CART_ITEM = [
-    { name: "okazi Leaves", amount: 30, weight: 1, seller: ["M"] },
-    { name: "okazi Leaves", amount: 120, weight: 4, seller: ["M"] },
-    {
-      name: "Rice bean Legumes",
-      amount: 50,
-      weight: 1,
-      seller: ["M", "P"],
-    },
-    { name: "Efo stew ingredients", amount: 45, weight: 1, seller: ["M"] },
-  ];
-
   const total_amount = CART_ITEM.reduce((accumulator, object) => {
     return accumulator + object.amount;
   }, 0);

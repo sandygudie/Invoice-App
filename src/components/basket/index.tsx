@@ -5,7 +5,7 @@ import Tabs from "../tab";
 import CartBasket from "../CartBasket";
 import Cart from "../cart";
 import { BiStoreAlt } from "react-icons/bi";
-
+import { CART_ITEM } from "../data";
 
 function Basket() {
   const [open, setOpen] = useState(false);
@@ -24,17 +24,18 @@ function Basket() {
         </div>
       </div>
       <div className="flex justify-start flex-wrap items-center gap-8">
-        
-       {open && ( <div className="bg-white flex justify-start gap-x-4 items-center w-[14rem] p-4 shadow-sm rounded-lg">
-          <span className="p-2 text-lg rounded-full bg-orange/[0.25] text-orange">
-            {" "}
-            <BiStoreAlt />
-          </span>
-          <div>
-            <p className="text-gray-200 text-sm">Total Basket</p>
-            <p className="font-bold text-lg">0</p>
+        {open && (
+          <div className="bg-white flex justify-start gap-x-4 items-center w-[14rem] p-4 shadow-sm rounded-lg">
+            <span className="p-2 text-lg rounded-full bg-orange/[0.25] text-orange">
+              {" "}
+              <BiStoreAlt />
+            </span>
+            <div>
+              <p className="text-gray-200 text-sm">Total Basket</p>
+              <p className="font-bold text-lg">{CART_ITEM.length}</p>
+            </div>
           </div>
-        </div>)}
+        )}
         <div className="bg-white flex justify-start gap-x-4 items-center w-[14rem] p-4 shadow-sm rounded-lg">
           <span className="p-2 text-lg rounded-full bg-violet/[0.25] text-violet">
             {" "}
