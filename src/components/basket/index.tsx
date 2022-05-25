@@ -81,7 +81,7 @@ function Basket() {
       </div>
       <button
         onClick={() => setOpen(true)}
-        className="absolute bottom-10 shadow-lg right-[21rem] rounded-full"
+        className="absolute bottom-10 shadow-lg right-[17rem] rounded-full"
       >
         <CartBasket />
       </button>
