@@ -6,14 +6,14 @@
 }
 
 .pageContent {
-  flex-basis: 60%;
+  flex-basis: 75%;
 }
 .pageActivity {
   flex-basis: 20%;
   @apply border-l border-l-gray-300;
 }
 .navLinksWrapper {
-  flex-basis: 17%;
+  flex-basis: 18%;
   @apply text-sm  border-r border-r-gray-300 h-full  py-8 px-4;
 }
 
