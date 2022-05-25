@@ -77,7 +77,7 @@ function Cart({ open, setOpen }: Props) {
         <div className="flex items-center px-6 py-3 justify-between border-t border-t-gray-300">
           <div>
             <p className="text-sm text-gray-100">Total</p>
-            <p className="font-semibold">${total_amount}</p>
+            <p className="font-bold">${total_amount}</p>
           </div>
           <button
             onClick={() => setOpen(false)}
