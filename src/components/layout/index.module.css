@@ -1,0 +1,55 @@
+.appLayoutContainer {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
+
+.pageContent {
+  flex-basis: 60%;
+}
+.pageActivity {
+  flex-basis: 20%;
+  @apply border-l border-l-gray-300;
+}
+.navLinksWrapper {
+  flex-basis: 17%;
+  @apply text-sm  border-r border-r-gray-300 h-full  py-8 px-4;
+}
+
+.navLink {
+  padding: 1rem;
+  justify-items: start;
+  display: flex;
+  align-items: center;
+  @apply text-sm my-3 text-gray-100;
+}
+.navLink:focus {
+  @apply ring-offset-0 ring-inset !important;
+}
+.activeNavLink {
+  composes: navLink;
+  @apply font-semibold;
+}
+.activeNavLinkLabel {
+  @apply sr-only;
+}
+.logo {
+  @apply  pl-4 mb-8 ;
+}
+.searchIcon {
+  @apply block md:hidden;
+}
+
+.activeNavLink {
+  color: #ffffff;
+  @apply bg-primary rounded-lg ml-5;
+}
+.activeNavLinkLabel {
+  @apply not-sr-only;
+}
+.navLinkIcon {
+  @apply mr-3;
+}
+.logo {
+  @apply inline-block;
+}
