@@ -1,0 +1,11 @@
+.table {
+  @apply w-full text-left;
+}
+table th {
+  padding: 1rem;
+  font-weight: lighter;
+}
+
+table td {
+  padding: 1rem;
+}

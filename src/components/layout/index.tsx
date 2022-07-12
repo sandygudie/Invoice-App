@@ -1,88 +1,50 @@
-import AkanniLogo from "../../assets/akaani-logo.svg";
-import LogoutIcon from "../../assets/logoutIcon.svg";
-import classes from "./index.module.css";
-import { NavLink, Outlet } from "react-router-dom";
-import { FaUserCircle, FaShoppingBasket, FaHistory } from "react-icons/fa";
-import Activities from "../Activities";
+import logo from "../../assets/logo.svg";
+import Profile from "../Profile";
+import ThemeToggle from "../ThemeToggle";
+import { Outlet } from "react-router-dom";
 
-const AppLayout = () => {
+function AppLayout() {
   return (
-    <div className={`${classes.appLayoutContainer}`}>
-      <NavigationLinks />
-      <main className={classes.pageContent}>
+    <div id="app_container" className="w-full h-full">
+      <Navigation />
+      <main className="w-full mx-auto lg:py-16 py-24 text-base">
         <Outlet />
       </main>
-      <div className={classes.pageActivity}>
-        <Activities />
+    </div>
+  );
+}
+
+const LogoComponent = () => {
+  return (
+    <div className="bg-primary w-16 h-[3.8rem] rounded-tr-2xl rounded-br-2xl text-center py-4">
+      <img src={logo} alt="invoice-logo" className="px-4 inline h-[30px]" />
+      <div className="absolute w-16 bg-white/20 rounded-tl-3xl rounded-br-2xl h-8 top-[1.8rem]">
+        {" "}
       </div>
     </div>
   );
 };
-
-function NavigationLinks() {
+function Navigation() {
   return (
-    <div className={`${classes.navLinksWrapper} flex flex-col justify-between`}>
-      <div>
-        <img src={AkanniLogo} alt="logo" className={classes.logo} />
-        <div className="mt-8">
-          <NavLink
-            to="/profile"
-            className={({ isActive }) =>
-              isActive ? classes.activeNavLink : classes.navLink
-            }
-          >
-            {({ isActive }) => (
-              <>
-                <FaUserCircle className={`text-xl ${classes.navLinkIcon}`} />
-                <span className={isActive ? classes.activeNavLinkLabel : ""}>
-                  Profile
-                </span>
-              </>
-            )}
-          </NavLink>
-          <NavLink
-            to="/"
-            className={({ isActive }) =>
-              isActive ? classes.activeNavLink : classes.navLink
-            }
-          >
-            {({ isActive }) => (
-              <>
-                <FaShoppingBasket
-                  className={`text-lg ${classes.navLinkIcon}`}
-                />
-                <span className={isActive ? classes.activeNavLinkLabel : ""}>
-                  Basket
-                </span>
-              </>
-            )}
-          </NavLink>
-          <NavLink
-            to="/order-history"
-            className={({ isActive }) =>
-              isActive ? classes.activeNavLink : classes.navLink
-            }
-          >
-            {({ isActive }) => (
-              <>
-                <FaHistory className={`text-lg ${classes.navLinkIcon}`} />
-                <span className={isActive ? classes.activeNavLinkLabel : ""}>
-                  Order History
-                </span>
-              </>
-            )}
-          </NavLink>
+    <>
+      {/* desktop */}
+      <div className="hidden md:flex justify-between items-center fixed h-full bg-secondary flex-col rounded-tr-2xl rounded-br-2xl z-30">
+        <LogoComponent />
+        <div className="text-center">
+          <ThemeToggle />
+          <Profile />
         </div>
       </div>
-      <div className="text-center flex flex-col items-center">
-        <p className="px-3 py-2 text-white bg-primary rounded-full text-2xl mb-1 font-semibold ">
-          LE
-        </p>
-        <p className="font-semibold mb-1">Laura Edson</p>
-        <p className="text-gray-100 text-xs mb-4 ">lauraedson@work.com</p>
-        <img src={LogoutIcon} alt="logout " className="w-10" />
+
+      {/* Tablet */}
+      <div className="md:hidden flex fixed w-full bg-secondary justify-between items-center rounded-tr-2xl rounded-br-2xl z-30">
+        <LogoComponent />
+        <div className="text-center flex items-center ">
+          <ThemeToggle />
+          <Profile />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
