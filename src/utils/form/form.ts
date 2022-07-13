@@ -1,7 +1,7 @@
 
 import * as Yup from "yup";
 
-export const InvoiceSchema = Yup.object().shape({
+export const validationSchema = Yup.object().shape({
     senderAddress: Yup.object().shape({
       street: Yup.string().required('All fields is required.'),
       city: Yup.string().required('All fields is required.'),
@@ -45,7 +45,7 @@ export const InvoiceSchema = Yup.object().shape({
     clientName: "",
     clientEmail: "",
     createdAt: new Date(),
-    paymentTerms: "",
+    paymentTerms: 1,
     description: "",
     items:[]
   };

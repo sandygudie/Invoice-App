@@ -37,7 +37,7 @@ export const ScrollToFieldError = ({
     if (!element) return;
     // Scroll to first known error into view
     element.scrollIntoView(scrollBehavior);
-  }, [submitCount]);
+  }, [submitCount,errors,isValid, scrollBehavior]);
 
   return null;
 };

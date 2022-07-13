@@ -101,22 +101,22 @@ function ViewInvoice() {
 
                 <div className="flex md:flex-row flex-col gap-y-4 md:items-start justify-between text-xs my-14 text-left items-start">
                   <div className="flex justify-between w-full">
-                    <div className="pb-3 w-full">
-                      <p>Invoice Date</p>
-                      <p className="font-bold text-[15px]">
+                    <div className="pb-3 w-72">
+                      <p className="pb-1">Invoice Date</p>
+                      <p className="font-bold text-[15px] my-2">
                         {formatDate(item.createdAt)}
                       </p>
                       <div className="mt-4">
-                        <p>Payment Due</p>
-                        <p className="font-bold text-[15px]">
+                        <p className="pb-1">Payment Due</p>
+                        <p className="font-bold text-[15px] my-2">
                           {formatDate(item.paymentDue)}
                         </p>
                       </div>
                     </div>
 
                     <div className="w-full">
-                      <p className="pb-2">Bill To</p>
-                      <p className="font-bold text-[15px] my-2">
+                      <p className="pb-1">Bill To</p>
+                      <p className="font-bold text-[15px] mt-2 mb-4">
                         {item.clientName}
                       </p>
                       <p>{item.clientAddress.street}</p>
@@ -125,9 +125,9 @@ function ViewInvoice() {
                       <p>{item.clientAddress.country}</p>
                     </div>
                   </div>
-                  <div>
-                    <p>Sent to</p>
-                    <p className="font-bold text-[15px]">{item.clientEmail}</p>
+                  <div className="w-full md:text-right">
+                    <p className="pb-1">Sent to</p>
+                    <p className="font-bold text-[15px] my-2">{item.clientEmail}</p>
                   </div>
                 </div>
                 <div className="px-4 rounded-tr-md rounded-tl-md bg-gray-300 dark:bg-[#2f324c]">
@@ -143,7 +143,7 @@ function ViewInvoice() {
 
                     <tbody>
                       {item.items.map((itemlist: any, i: number) => (
-                        <tr key={itemlist.i}>
+                        <tr key={i}>
                           <td className="font-semibold"> {itemlist.name}</td>
                           <td> {itemlist.quantity}</td>
                           <td> {itemlist.price}</td>
@@ -169,7 +169,7 @@ function ViewInvoice() {
                   ))}
                 </div>
 
-                <div className="flex justify-between items-center rounded-br-md rounded-bl-md p-4 md:p-8 text-white bg-secondary dark:bg-skin-fill">
+                <div className="flex justify-between items-center rounded-br-md rounded-bl-md p-4 md:p-8 md:pr-14 text-white bg-secondary dark:bg-skin-fill">
                   <p>Total Amount</p>
                   <p className="md:text-2xl text-lg font-semibold">
                     £{item.total}

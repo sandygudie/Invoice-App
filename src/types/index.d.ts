@@ -27,7 +27,7 @@ export interface AppContextState {
   invoices: Invoice[];
   deleteInvoice: (id: string) => void;
   addPaidInvoice: (id: string) => void;
-  createInvoice: (invoices: Invoice, status:string) => void;
+  createInvoice: (invoices: Invoice) => void;
   paidFilter: ( status:string) => void;
 
 }

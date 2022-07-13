@@ -28,7 +28,7 @@ function Navigation() {
   return (
     <>
       {/* desktop */}
-      <div className="hidden md:flex justify-between items-center fixed h-full bg-secondary flex-col rounded-tr-2xl rounded-br-2xl z-30">
+      <div className="hidden lg:flex justify-between items-center fixed h-full bg-secondary flex-col rounded-tr-2xl rounded-br-2xl z-30">
         <LogoComponent />
         <div className="text-center">
           <ThemeToggle />
@@ -37,7 +37,7 @@ function Navigation() {
       </div>
 
       {/* Tablet */}
-      <div className="md:hidden flex fixed w-full bg-secondary justify-between items-center rounded-tr-2xl rounded-br-2xl z-30">
+      <div className="lg:hidden flex fixed w-full bg-secondary justify-between items-center rounded-tr-2xl rounded-br-2xl z-30">
         <LogoComponent />
         <div className="text-center flex items-center ">
           <ThemeToggle />

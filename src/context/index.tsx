@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
-
+import { randomId } from "../utils";
 import { data } from "../data";
 import { Invoice, AppContextState } from "../types";
 
@@ -11,7 +11,6 @@ export const AppProvider = ({
   children: ReactNode;
 }): JSX.Element => {
   const [invoices, setInvoices] = useState<Invoice[] | any>(data);
-
   useEffect(() => {
     if (localStorage.getItem("invoices") === null) {
       localStorage.setItem("invoices", JSON.stringify(data));
@@ -37,40 +36,21 @@ export const AppProvider = ({
     setInvoices(newInvoice);
   };
 
-  const createInvoice = (invoice: Invoice | any, status: string) => {
-  console.log(invoice)
-
+  const createInvoice = (invoice: Invoice | any) => {
     const { items } = invoice;
     const total_invoice = items.reduce((accumulator: number, object: any) => {
       return accumulator + object.total;
     }, 0);
 
-    // const newInvoice: Invoice = {
-    //   id: String(Math.random()), // not really unique - but fine for this example
-    //   createdAt: invoice.createdAt,
-    //   paymentDue: invoice.paymentDue,
-    //   description: invoice.description,
-    //   clientName: invoice.clientName,
-    //   clientEmail: invoice.clientEmail,
-    //   paymentTerms: invoice.paymentTerms,
-    //   status: status,
-    //   senderAddress: {
-    //     street: invoice.senderAddress,
-    //     city: invoice.senderCity,
-    //     postcode: invoice.senderPostCode,
-    //     country: invoice.senderCountry,
-    //   },
-    //   clientAddress: {
-    //     street: invoice.clientAddress,
-    //     city: invoice.clientCity,
-    //     postcode: invoice.clientPostCode,
-    //     country: invoice.clientCountry,
-    //   },
-    //   items: invoice.items,
-    //   total: total_invoice,
-    // };
-    // console.log(newInvoice);
-    // setInvoices([...invoice, newInvoice]);
+    const newInvoice: Invoice = {
+      id: randomId(),
+      ...invoice,
+      total: total_invoice,
+    };
+
+    setInvoices((prevState: any) =>  [...prevState, newInvoice]);
+  
+ 
   };
 
   // const updateTodo = (id: number) => {

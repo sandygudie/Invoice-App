@@ -1,40 +1,43 @@
 import { Form, Formik } from "formik";
-import { initialValues, InvoiceSchema } from "../../../utils/form/form";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { useContext } from "react";
+import { AppContextState } from "../../../types";
+import { initialValues, validationSchema } from "../../../utils/form/form";
+import { Dispatch, SetStateAction } from "react";
 import { ScrollToFieldError } from "../../../utils/form/fieldError";
 import AddInvoice from "./AddInvoice";
 import AddItem from "./additems";
 import classes from "./index.module.css";
-
+import dayjs from "dayjs";
+import { AppContext } from "../../../context";
 interface Props {
   setOpen: Dispatch<SetStateAction<boolean>>;
   isOpen: boolean;
 }
 
 function CreateInvoice({ setOpen, isOpen }: Props) {
-  useEffect(() => {
-    let temp: HTMLElement | null | any =
-      document.getElementById("app_container");
-    if (isOpen) {
-      temp.style.position = "fixed";
-    } else {
-      temp.style.position = "initial";
+  const { createInvoice } = useContext(AppContext) as AppContextState;
+
+  // useEffect(() => {
+  //   let temp: HTMLElement | null | any =
+  //     document.getElementById("app_container");
+  //   if (isOpen) {
+  //     temp.style.position = "fixed";
+  //   } else {
+  //     temp.style.position = "initial";
+  //   }
+  // }, []);
+
+  const onSubmit = (values: any) => {
+    const invoice = {
+      ...values,
+      status:"paid",
+      createdAt: dayjs(values.createdAt).format("YYYY-MM-DD"),
+          paymentDue: dayjs(values.createdAt)
+            .add(Number(values.paymentTerms), "day")
+            .format("YYYY-MM-DD")
     }
-  }, []);
-  const onSubmit = (values: any, e: any) => {
-    e.preventDefault();
-    console.log(values);
-    //   createInvoice(
-    //     {
-    //       ...inputItem,
-    //       items: inputList,
-    //       createdAt: dayjs(inputItem.createdAt).format("YYYY-MM-DD"),
-    //       paymentDue: dayjs(inputItem.createdAt)
-    //         .add(Number(inputItem.paymentTerms), "day")
-    //         .format("YYYY-MM-DD"),
-    //     },
-    //     "paid"
-    //   );
+      createInvoice(invoice)
+      setOpen(false)
   };
 
   return (
@@ -46,19 +49,18 @@ function CreateInvoice({ setOpen, isOpen }: Props) {
         <div className="pt-[6rem] pb-6 md:pb-6 lg:pt-10">
           <h5 className={classes.heading}>New Invoice</h5>
         </div>
-
         <Formik
           initialValues={initialValues}
-          validationSchema={InvoiceSchema}
+          validationSchema={validationSchema}
           onSubmit={onSubmit}
         >
-          {({ handleSubmit, values, errors }) => (
-            <Form>
+          {({ handleSubmit, errors, values }) => (
+            <Form onSubmit={handleSubmit}>
               <ScrollToFieldError />
               <div
-                className={`${classes.drawerBody} h-2/5 md:h-[45%] lg:h-[48%]`}
+                className={`${classes.drawerBody} h-[68vh] md:h-[75vh]`}
               >
-                <AddInvoice />
+                <AddInvoice/>
                 <AddItem name="items" />
                 {typeof errors.items === "string" ? (
                   <div className="text-error font-bold">{errors.items}</div>

@@ -1,6 +1,3 @@
-import React, { useContext } from "react";
-import { AppContextState } from "../../../types";
-import { AppContext } from "../../../context";
 import { VscCircleFilled } from "react-icons/vsc";
 import { useNavigate } from "react-router-dom";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
@@ -28,7 +25,7 @@ const InvoiceList = ({ item }: Props) => {
             <span className="text-primary">#</span>
             {item.id}
           </p>
-          <p className="text-xs text-gray-200"> {item.clientName}</p>
+          <p className="w-48 text-right text-xs text-gray-200"> {item.clientName}</p>
         </div>
         <div className="flex justify-between items-center">
           <div>
@@ -56,20 +53,20 @@ const InvoiceList = ({ item }: Props) => {
 
       {/* desktop view */}
       <div
-        className="hidden md:flex text-xs justify-start items-center w-full  rounded-md bg-white dark:bg-secondary text-base p-4 my-4 border border-transparent hover:border-primary"
+        className="hidden md:flex justify-start items-center w-full rounded-md bg-white dark:bg-secondary text-base p-4 my-4 border border-transparent hover:border-primary"
         onClick={() => {
           navigate(`invoice/${item.id}`);
         }}
       >
-        <p className="font-bold">
+        <p className="font-bold text-xs">
           {" "}
           <span className="text-primary">#</span>
           {item.id}
         </p>
-        <p className="px-6 w-72 text-gray-200">
+        <p className="px-6 w-72 text-xs text-gray-200">
           Due {formatDate(item.paymentDue)}
         </p>
-        <p className="w-64 text-gray-200"> {item.clientName}</p>
+        <p className="w-64 text-xs text-gray-200"> {item.clientName}</p>
 
         <p className="font-bold w-64 text-right text-sm">£{item.total}</p>
         <div className="flex items-center ml-6">
@@ -81,7 +78,7 @@ const InvoiceList = ({ item }: Props) => {
                 : item.status === "paid"
                 ? "bg-success/20 text-success"
                 : "bg-gray-300"
-            } py-3 px-4 text-center flex justify-center items-center lg:text-md font-bold rounded-md w-[110px]`}
+            } py-3 px-4 text-center flex justify-center items-center lg:text-xs font-bold rounded-md w-[110px]`}
           >
             <span className="mr-1 lg:text-md text-xs">
               <VscCircleFilled />

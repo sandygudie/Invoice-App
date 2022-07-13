@@ -3,6 +3,7 @@ import Item from "./Item";
 
 const AddItem = ({ name }: string | any) => {
   const { values }: any = useFormikContext();
+  // console.log(values)
 
   return (
     <div className="my-8">

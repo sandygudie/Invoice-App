@@ -5,12 +5,11 @@ import { InputField } from "../InputField";
 
 function Item({ index, arrayHelpers }: any) {
   const { values, setFieldValue }: any = useFormikContext();
-
   useEffect(() => {
     const total = values.items[index].quantity * values.items[index].price;
     const rounded = Math.round((total + Number.EPSILON) * 100) / 100;
     setFieldValue(`items[${index}].total`, rounded || "0");
-  }, [values.items[index].quantity, values.items[index].price]);
+  }, [index,setFieldValue,values.items]);
 
   return (
     <div className="lg:grid justify-between items-center grid-flow-col gap-x-2 block">

@@ -52,7 +52,7 @@ export const InputField: FC<IInputFieldProps> = ({
 
 export const DatePicker = ({ label, name }: any) => {
   const { setFieldValue } = useFormikContext();
-  const [field, meta] = useField(name);
+  const [field] = useField(name);
 
   const CustomInput = forwardRef(({ value, onClick }: any, ref: any) => (
     <button
