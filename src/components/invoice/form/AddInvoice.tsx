@@ -16,17 +16,21 @@ const AddInvoice = () => {
           label="Street Address"
         />
 
-        <div className="flex items-center gap-x-4">
-          <InputField name="senderAddress.city" type={"text"} label="City" />
-          <InputField
-            name="senderAddress.postCode"
-            type={"text"}
-            label="Zip Code"
-          />
+        <div className="block md:flex items-center gap-x-4">
+          <div className="flex justify-between gap-x-4 w-full">
+            <InputField name="senderAddress.city" type={"text"} label="City" />
+            <InputField
+              name="senderAddress.postCode"
+              type={"text"}
+              label="Post Code"
+            />
+          </div>
+
           <InputField
             name="senderAddress.country"
             type={"text"}
             label="Country"
+            styles="basis-1/2"
           />
         </div>
       </div>
@@ -41,18 +45,22 @@ const AddInvoice = () => {
           label="Client's Address"
         />
 
-        <div className="flex items-center gap-x-4">
-          <InputField name="clientAddress.city" type={"text"} label="City" />
+        <div className="block md:flex items-center gap-x-4 ">
+          <div className="flex justify-between gap-x-4 ">
+            <InputField name="clientAddress.city" type={"text"} label="City" />
 
-          <InputField
-            name="clientAddress.postCode"
-            type={"text"}
-            label="Zip Code"
-          />
+            <InputField
+              name="clientAddress.postCode"
+              type={"text"}
+              label="Post Code"
+            />
+          </div>
+
           <InputField
             name="clientAddress.country"
             label="Country"
             type={"text"}
+            styles="basis-1/2"
           />
         </div>
       </div>
