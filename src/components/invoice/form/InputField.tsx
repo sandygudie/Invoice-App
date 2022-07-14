@@ -42,7 +42,7 @@ export const InputField: FC<IInputFieldProps> = ({
               : `w-full rounded-md border outline-0  dark:bg-secondary ${
                   error && touched ? "border-error" : "border-gray-300"
                 }`
-          }  p-2 font-semibold`}
+          }  p-2 font-semibold text-sm`}
         
         />
       </div>

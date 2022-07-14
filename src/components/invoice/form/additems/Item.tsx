@@ -17,7 +17,7 @@ function Item({ index, arrayHelpers }: any) {
         type="text"
         name={`items[${index}].name`}
         label="Item Name"
-        styles="lg:w-[200px] w-full "
+        styles="lg:w-[12em] w-full "
         hideLabel={index > 0}
       />
       <div className="flex justify-between items-center gap-x-4 ">
@@ -25,7 +25,7 @@ function Item({ index, arrayHelpers }: any) {
           type="number"
           name={`items[${index}].quantity`}
           label="Qty"
-          styles="lg:w-[50px]"
+          styles="lg:w-[3em] w-[9em]"
           hideLabel={index > 0}
         />
 
@@ -33,7 +33,7 @@ function Item({ index, arrayHelpers }: any) {
           type="number"
           name={`items[${index}].price`}
           label="Price"
-          styles="lg:w-[80px] "
+          styles="w-[9em]"
           hideLabel={index > 0}
         />
 
@@ -43,13 +43,13 @@ function Item({ index, arrayHelpers }: any) {
           label="Total"
           disabled
           opaque
-          styles="lg:w-[80px] w-[50px]"
+          styles="w-[7em]"
           hideLabel={index > 0}
         />
         <button className="flex justify-center items-center h-[5.5em] self-end">
           <MdDelete
             onClick={() => arrayHelpers.remove(index)}
-            className="w-[1.5em] h-[2em]"
+            className="w-[1em] h-[2em]"
           />
         </button>
       </div>

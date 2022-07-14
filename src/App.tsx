@@ -39,3 +39,4 @@ export default App;
 //  write documentation
 // check typescript type usages
 // work on the fix fot the blur part when the modal is open
+// print out invoices
