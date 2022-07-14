@@ -11,6 +11,7 @@ export const AppProvider = ({
   children: ReactNode;
 }): JSX.Element => {
   const [invoices, setInvoices] = useState<Invoice[] | any>(data);
+
   useEffect(() => {
     if (localStorage.getItem("invoices") === null) {
       localStorage.setItem("invoices", JSON.stringify(data));
@@ -36,7 +37,7 @@ export const AppProvider = ({
     setInvoices(newInvoice);
   };
 
-  const createInvoice = (invoice: Invoice | any) => {
+  const createPaidInvoice = (invoice: Invoice | any) => {
     const { items } = invoice;
     const total_invoice = items.reduce((accumulator: number, object: any) => {
       return accumulator + object.total;
@@ -48,44 +49,46 @@ export const AppProvider = ({
       total: total_invoice,
     };
 
-    setInvoices((prevState: any) =>  [...prevState, newInvoice]);
-  
- 
+    setInvoices((prevState: any) => [...prevState, newInvoice]);
+    localStorage.setItem("invoices", JSON.stringify(newInvoice));
+  };
+  const createDraftInvoice = (invoice: Invoice | any) => {
+    const { items } = invoice;
+    const total_invoice = items?.reduce((accumulator: number, object: any) => {
+      return accumulator + object.total;
+    }, 0);
+
+    const newInvoice: Invoice = {
+      id: randomId(),
+      ...invoice,
+      total: total_invoice,
+    };
+
+    setInvoices((prevState: any) => [...prevState, newInvoice]);
+    localStorage.setItem("invoices", JSON.stringify(newInvoice));
   };
 
-  // const updateTodo = (id: number) => {
-  //   todos.filter((todo: ITodo) => {
-  //     if (todo.id === id) {
-  //       todo.status = true;
-  //       setTodos([...todos]);
-  //     }
-  //   });
-  // };
-  // const editInvoice = (id: string) => {
-  //   invoice.filter((invoice: Invoice) => {
-  //     if ( invoice.id === id) {
-  //       // todo.status = true;
-  //       setInvoice([...invoice]);
-  //     }
-  //   });
-  // };
-  // const deleteInvoice = (id: string) => {
-  // const newInvoices:[] =  invoice.filter((invoice: Invoice) => {
-  //     return id !== invoice.id
-  //     })
-  //     setInvoices([newInvoices])
-  //   localStorage.setItem('invoices', newInvoices)
-  //   }
-
-  // const viewInvoice = (id: string) => {
-  //   invoices.filter((invoices: Invoice) => {
-  //     if (invoices.id === id) {
-  //       setDetails(invoices);
-  //     }
-  //     return invoices;
-  //   });
-  // };
-
+  const editInvoice = (updatedInvoice: Invoice | any, id: string) => {
+    const newInvoice = invoices.map((invoice: Invoice) => {
+      if (id === invoice.id) {
+        return {
+          ...invoice,
+          status: "pending",
+          senderAddress: updatedInvoice.senderAddress,
+          clientName: updatedInvoice.clientName,
+          clientEmail: updatedInvoice.clientEmail,
+          clientAddress: updatedInvoice.clientAddress,
+          createdAt: new Date(updatedInvoice.createdAt),
+          paymentTerms: updatedInvoice.paymentTerms,
+          description: updatedInvoice.description,
+          items: updatedInvoice.items,
+        };
+      }
+      return invoice;
+    });
+    setInvoices(newInvoice);
+    localStorage.setItem("invoices", JSON.stringify(newInvoice));
+  };
   const paidFilter = (status: string) => {
     const filterData: Invoice | any = JSON.parse(
       localStorage.getItem("invoices") || "{}"
@@ -115,10 +118,12 @@ export const AppProvider = ({
     <AppContext.Provider
       value={{
         invoices,
-        createInvoice,
+        createPaidInvoice,
+        createDraftInvoice,
         paidFilter,
         addPaidInvoice,
         deleteInvoice,
+        editInvoice,
       }}
     >
       {children}

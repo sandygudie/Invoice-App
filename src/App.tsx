@@ -16,7 +16,7 @@ function App() {
       document.documentElement.classList.remove("dark");
     }
   }, []);
-  
+
   return (
     <Routes>
       <Route element={<AppLayout />}>
@@ -28,15 +28,14 @@ function App() {
 }
 
 export default App;
-// Add new invoice and it persits
-// can view each imvoice, can edit in each view
-//  can filter invoice
-
-// Run throught the code again, naming pattern for fuction an structure of projects,
-
-//  try context with theme
-// add animation
+//  can filter invoice and on body click show reload all items
+// Run throught the code again, naming pattern for fuction an structure of projects
+// add animation on drawer, on invoice loading
 // add testing cypress
 //  rearrange into components
-
 // review your code quality top to bottom
+//try mowa method of formik, edit
+// set up eslint
+//  write documentation
+// check typescript type usages
+// work on the fix fot the blur part when the modal is open

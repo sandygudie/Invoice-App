@@ -2,8 +2,7 @@ import { FieldArray, useFormikContext } from "formik";
 import Item from "./Item";
 
 const AddItem = ({ name }: string | any) => {
-  const { values }: any = useFormikContext();
-  // console.log(values)
+  const { values, errors }: any = useFormikContext();
 
   return (
     <div className="my-8">
@@ -31,6 +30,14 @@ const AddItem = ({ name }: string | any) => {
             >
               Add New Item
             </button>
+
+            {values.items >= 0 ? (
+              typeof errors.items === "string" ? (
+                <div className="text-error font-bold">{errors.items}</div>
+              ) : null
+            ) : (
+              ""
+            )}
           </div>
         )}
       />

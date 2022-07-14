@@ -1,7 +1,7 @@
 export interface Invoice {
   id: string;
-  createdAt: string|date;
-  paymentDue: string|date;
+  createdAt: string | date;
+  paymentDue: string | date;
   description: string;
   paymentTerms: number;
   clientName: string;
@@ -27,7 +27,8 @@ export interface AppContextState {
   invoices: Invoice[];
   deleteInvoice: (id: string) => void;
   addPaidInvoice: (id: string) => void;
-  createInvoice: (invoices: Invoice) => void;
-  paidFilter: ( status:string) => void;
-
+  createPaidInvoice: (invoices: Invoice) => void;
+  createDraftInvoice: (invoices: Invoice) => void;
+  paidFilter: (status: string) => void;
+  editInvoice: (invoices: Invoice, id: string) => void;
 }

@@ -4,8 +4,8 @@ import { AppContextState } from "../../../types";
 import { initialValues, validationSchema } from "../../../utils/form/form";
 import { Dispatch, SetStateAction } from "react";
 import { ScrollToFieldError } from "../../../utils/form/fieldError";
-import AddInvoice from "./AddInvoice";
-import AddItem from "./additems";
+import AddInvoice from "../form/AddInvoice";
+import AddItem from "../form/additems";
 import classes from "./index.module.css";
 import dayjs from "dayjs";
 import { AppContext } from "../../../context";
@@ -15,7 +15,9 @@ interface Props {
 }
 
 function CreateInvoice({ setOpen, isOpen }: Props) {
-  const { createInvoice } = useContext(AppContext) as AppContextState;
+  const { createPaidInvoice, createDraftInvoice } = useContext(
+    AppContext
+  ) as AppContextState;
 
   // useEffect(() => {
   //   let temp: HTMLElement | null | any =
@@ -30,14 +32,27 @@ function CreateInvoice({ setOpen, isOpen }: Props) {
   const onSubmit = (values: any) => {
     const invoice = {
       ...values,
-      status:"paid",
+      status: "paid",
       createdAt: dayjs(values.createdAt).format("YYYY-MM-DD"),
-          paymentDue: dayjs(values.createdAt)
-            .add(Number(values.paymentTerms), "day")
-            .format("YYYY-MM-DD")
-    }
-      createInvoice(invoice)
-      setOpen(false)
+      paymentDue: dayjs(values.createdAt)
+        .add(Number(values.paymentTerms), "day")
+        .format("YYYY-MM-DD"),
+    };
+    createPaidInvoice(invoice);
+    setOpen(false);
+  };
+
+  const addDraftInvoice = (values: any) => {
+    const invoice = {
+      ...values,
+      status: "draft",
+      createdAt: dayjs(values.createdAt).format("YYYY-MM-DD"),
+      paymentDue: dayjs(values.createdAt)
+        .add(Number(values.paymentTerms), "day")
+        .format("YYYY-MM-DD"),
+    };
+    createDraftInvoice(invoice);
+    setOpen(false);
   };
 
   return (
@@ -53,18 +68,15 @@ function CreateInvoice({ setOpen, isOpen }: Props) {
           initialValues={initialValues}
           validationSchema={validationSchema}
           onSubmit={onSubmit}
+          validateOnChange={false}
+          validateOnBlur={false}
         >
           {({ handleSubmit, errors, values }) => (
             <Form onSubmit={handleSubmit}>
               <ScrollToFieldError />
-              <div
-                className={`${classes.drawerBody} h-[68vh] md:h-[75vh]`}
-              >
-                <AddInvoice/>
+              <div className={`${classes.drawerBody} h-[68vh] md:h-[75vh]`}>
+                <AddInvoice />
                 <AddItem name="items" />
-                {typeof errors.items === "string" ? (
-                  <div className="text-error font-bold">{errors.items}</div>
-                ) : null}
               </div>
 
               <div
@@ -77,7 +89,10 @@ function CreateInvoice({ setOpen, isOpen }: Props) {
                   Discard
                 </button>
                 <div className="flex justify-between">
-                  <button className="p-3 text-xs md:text-sm rounded-3xl md:py-3 md:px-4 bg-gray-200 my-4">
+                  <button
+                    onClick={() => addDraftInvoice(values)}
+                    className="p-3 text-xs md:text-sm rounded-3xl md:py-3 md:px-4 bg-gray-200 my-4"
+                  >
                     Save as Draft
                   </button>
                   <button

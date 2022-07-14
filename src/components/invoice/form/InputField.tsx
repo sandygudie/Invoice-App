@@ -43,7 +43,7 @@ export const InputField: FC<IInputFieldProps> = ({
                   error && touched ? "border-error" : "border-gray-300"
                 }`
           }  p-2 font-semibold`}
-          disabled={disabled}
+        
         />
       </div>
     </>
