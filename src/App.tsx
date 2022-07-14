@@ -28,15 +28,11 @@ function App() {
 }
 
 export default App;
-//  can filter invoice and on body click show reload all items
-// Run throught the code again, naming pattern for fuction an structure of projects
-// add animation on drawer, on invoice loading
-// add testing cypress
-//  rearrange into components
-// review your code quality top to bottom
-//try mowa method of formik, edit
-// set up eslint
-//  write documentation
-// check typescript type usages
-// work on the fix fot the blur part when the modal is open
-// print out invoices
+
+// todos features
+//* reload all invoices and body click
+//* add animation on drawer, on invoice loading
+//* set up eslint
+//* write documentation
+//* work on fixing the blur part when the modal is open
+//* print out invoices

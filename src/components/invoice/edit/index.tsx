@@ -6,7 +6,7 @@ import { Dispatch, SetStateAction } from "react";
 import { ScrollToFieldError } from "../../../utils/form/fieldError";
 import AddInvoice from "../form/AddInvoice";
 import AddItem from "../form/additems";
-import classes from "../create/index.module.css";
+import classes from "../../../styles/index.module.css";
 import { AppContext } from "../../../context";
 interface Props {
   setIsEdit: Dispatch<SetStateAction<boolean>>;

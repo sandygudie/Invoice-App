@@ -13,7 +13,7 @@ interface Props {
 }
 
 function Header({ setOpen, invoices }: Props) {
-  const { paidFilter } = useContext(AppContext) as AppContextState;
+  const {  filterInvoice } = useContext(AppContext) as AppContextState;
   const [isOpenFilter, setOpenFilter] = useState(false);
   const [status, setStatus] = useState(
     "all" || " paid" || "draft" || "pending"
@@ -21,7 +21,7 @@ function Header({ setOpen, invoices }: Props) {
 
   const radioChangeHandler = (e: any, status: string) => {
     setStatus(e.target.value);
-    paidFilter(status);
+    filterInvoice(status);
   };
 
   return (

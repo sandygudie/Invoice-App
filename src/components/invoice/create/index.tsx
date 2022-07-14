@@ -6,7 +6,7 @@ import { Dispatch, SetStateAction } from "react";
 import { ScrollToFieldError } from "../../../utils/form/fieldError";
 import AddInvoice from "../form/AddInvoice";
 import AddItem from "../form/additems";
-import classes from "./index.module.css";
+import classes from "../../../styles/index.module.css";
 import dayjs from "dayjs";
 import { AppContext } from "../../../context";
 interface Props {
@@ -71,7 +71,7 @@ function CreateInvoice({ setOpen, isOpen }: Props) {
           validateOnChange={false}
           validateOnBlur={false}
         >
-          {({ handleSubmit, errors, values }) => (
+          {({ handleSubmit, values }) => (
             <Form onSubmit={handleSubmit}>
               <ScrollToFieldError />
               <div className={`${classes.drawerBody} h-[68vh] md:h-[75vh]`}>
