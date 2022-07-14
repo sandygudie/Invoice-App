@@ -30,9 +30,7 @@ function App() {
 export default App;
 
 // todos features
-//* reload all invoices and body click
+//* reload all invoices on body click
 //* add animation on drawer, on invoice loading
-//* set up eslint
-//* write documentation
 //* work on fixing the blur part when the modal is open
 //* print out invoices
