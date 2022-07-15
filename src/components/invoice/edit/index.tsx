@@ -8,6 +8,7 @@ import AddInvoice from "../form/AddInvoice";
 import AddItem from "../form/additems";
 import classes from "../../../styles/index.module.css";
 import { AppContext } from "../../../context";
+import { motion } from "framer-motion";
 interface Props {
   setIsEdit: Dispatch<SetStateAction<boolean>>;
   invoice: Invoice;
@@ -39,7 +40,10 @@ function EditInvoice({ setIsEdit, id, invoice }: Props) {
     <>
       <div className={classes.drawer} onClick={() => setIsEdit(false)} />
 
-      <div
+      <motion.div
+        initial={{ x: "-300px", opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.5 }}
         className={`${classes.drawerContent} bg-white text-base dark:bg-skin-fill`}
       >
         <div className="pt-[6rem] pb-6 md:pb-6 lg:pt-10">
@@ -88,7 +92,7 @@ function EditInvoice({ setIsEdit, id, invoice }: Props) {
             </Form>
           )}
         </Formik>
-      </div>
+        </motion.div>
     </>
   );
 }

@@ -7,13 +7,14 @@ import {
 import { TiPlus } from "react-icons/ti";
 import CheckBox from "../header/Checkbox";
 import { AppContext } from "../../../../context";
+
 interface Props {
   setOpen: Dispatch<SetStateAction<boolean>>;
   invoices: Invoice[];
 }
 
 function Header({ setOpen, invoices }: Props) {
-  const {  filterInvoice } = useContext(AppContext) as AppContextState;
+  const { filterInvoice } = useContext(AppContext) as AppContextState;
   const [isOpenFilter, setOpenFilter] = useState(false);
   const [status, setStatus] = useState(
     "all" || " paid" || "draft" || "pending"
@@ -28,7 +29,9 @@ function Header({ setOpen, invoices }: Props) {
     <div className="flex justify-between items-center mb-8 lg:mb-20">
       {" "}
       <div>
-        <h1 className="text-xl md:text-2xl lg:text-3xl font-bold">Invoices</h1>
+        <a href="/" className="text-xl md:text-2xl lg:text-3xl font-bold block">
+          Invoices
+        </a>
         <span className="text-xs text-sm text-gray-200 font-semibold">
           <span className="hidden md:inline"> There are total </span>
           {invoices.length} invoices

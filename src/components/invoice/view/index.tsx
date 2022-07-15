@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AppContextState, Invoice } from "../../../types";
 import { AppContext } from "../../../context";
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
@@ -6,6 +6,7 @@ import { VscCircleFilled } from "react-icons/vsc";
 import { useMatch, useNavigate, useParams } from "react-router-dom";
 import { capitalize, formatDate } from "../../../utils";
 import classes from "./index.module.css";
+import { motion } from "framer-motion";
 import EditInvoice from "../edit";
 
 function ViewInvoice() {
@@ -22,8 +23,22 @@ function ViewInvoice() {
     (invoices: Invoice) => invoices.id === params.id
   );
 
+  useEffect(() => {
+    let temp: HTMLElement | null | any =
+      document.getElementById("app_container");
+    if (isEdit) {
+      temp.style.position = "fixed";
+    } else {
+      temp.style.position = "initial";
+    }
+  }, [isEdit]);
+
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ scale: 1, opacity: 1 }}
+      transition={{ duration: 0.6 }}
+    >
       {isViewInvoicePage &&
         invoiceDetails.map((item: Invoice) => (
           <React.Fragment key={item.id}>
@@ -194,7 +209,7 @@ function ViewInvoice() {
             )}
           </React.Fragment>
         ))}
-    </>
+    </motion.div>
   );
 }
 

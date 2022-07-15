@@ -9,25 +9,18 @@ import AddItem from "../form/additems";
 import classes from "../../../styles/index.module.css";
 import dayjs from "dayjs";
 import { AppContext } from "../../../context";
+import { motion } from "framer-motion";
+
 interface Props {
   setOpen: Dispatch<SetStateAction<boolean>>;
-  isOpen: boolean;
 }
 
-function CreateInvoice({ setOpen, isOpen }: Props) {
+function CreateInvoice({ setOpen}: Props) {
   const { createPaidInvoice, createDraftInvoice } = useContext(
     AppContext
   ) as AppContextState;
 
-  // useEffect(() => {
-  //   let temp: HTMLElement | null | any =
-  //     document.getElementById("app_container");
-  //   if (isOpen) {
-  //     temp.style.position = "fixed";
-  //   } else {
-  //     temp.style.position = "initial";
-  //   }
-  // }, []);
+
 
   const onSubmit = (values: any) => {
     const invoice = {
@@ -58,7 +51,10 @@ function CreateInvoice({ setOpen, isOpen }: Props) {
   return (
     <>
       <div className={classes.drawer} onClick={() => setOpen(false)} />
-      <div
+      <motion.div
+        initial={{ x: "-300px", opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.5 }}
         className={`${classes.drawerContent} bg-white text-base dark:bg-skin-fill`}
       >
         <div className="pt-[6rem] pb-6 md:pb-6 lg:pt-10">
@@ -106,7 +102,7 @@ function CreateInvoice({ setOpen, isOpen }: Props) {
             </Form>
           )}
         </Formik>
-      </div>
+      </motion.div>
     </>
   );
 }

@@ -30,7 +30,4 @@ function App() {
 export default App;
 
 // todos features
-//* reload all invoices on body click
-//* add animation on drawer, on invoice loading
-//* work on fixing the blur part when the modal is open
 //* print out invoices
