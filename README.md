@@ -22,3 +22,4 @@ yarn start
 * TypeScript
 * TailwindCSS
 * Formik
+* Framer-motion
