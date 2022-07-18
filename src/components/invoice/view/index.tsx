@@ -12,7 +12,7 @@ import EditInvoice from "../edit";
 function ViewInvoice() {
   const params = useParams();
   const navigate = useNavigate();
-  const { deleteInvoice, addPaidInvoice, invoices, viewInvoice } = useContext(
+  const { deleteInvoice, addPaidInvoice, viewInvoice } = useContext(
     AppContext
   ) as AppContextState;
 
