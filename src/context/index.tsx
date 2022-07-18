@@ -29,7 +29,7 @@ export const AppProvider = ({
       ...invoice,
       total: total_invoice,
     };
-    setInvoices((prevState: Invoice[]) => [...prevState, newInvoice]);
+    setInvoices((prevState: Invoice[]) => [newInvoice, ...prevState ]);
     localStorage.setItem("invoices", JSON.stringify(newInvoice));
   };
 
@@ -44,7 +44,7 @@ export const AppProvider = ({
       total: total_invoice,
     };
 
-    setInvoices((prevState: Invoice[]) => [...prevState, newInvoice]);
+    setInvoices((prevState: Invoice[]) => [newInvoice, ...prevState]);
     localStorage.setItem("invoices", JSON.stringify(newInvoice));
   };
 

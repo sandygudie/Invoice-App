@@ -29,7 +29,7 @@ const AddInvoice = () => {
             name="senderAddress.country"
             type={"text"}
             label="Country"
-            styles="basis-1/2  mt-0"
+            styles="basis-1/2"
           />
         </div>
       </div>
@@ -57,7 +57,7 @@ const AddInvoice = () => {
             name="clientAddress.country"
             label="Country"
             type={"text"}
-            styles="basis-1/2 mt-0"
+            styles="basis-1/2"
           />
         </div>
       </div>
