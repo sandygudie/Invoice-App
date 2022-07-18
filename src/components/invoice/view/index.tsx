@@ -17,13 +17,8 @@ function ViewInvoice() {
   ) as AppContextState;
 
   const [isEdit, setIsEdit] = useState(false);
-
-  const invoiceDetails = invoices.filter(
-    (invoices: Invoice) => invoices.id === params.id
-  );
-
+  
   useEffect(() => {
-    window.scrollTo(0, 0);
     let temp: HTMLElement | null | any =
       document.getElementById("app_container");
     if (isEdit) {
@@ -33,6 +28,10 @@ function ViewInvoice() {
     }
   }, [isEdit]);
 
+  const invoiceDetails = invoices.filter(
+    (invoices: Invoice |any) => invoices.id === params.id
+  );
+  console.log(invoiceDetails)
   return (
     <>
       {invoiceDetails.map((item: Invoice) => (
