@@ -15,7 +15,6 @@ function ViewInvoice() {
   const { deleteInvoice, addPaidInvoice, invoices } = useContext(
     AppContext
   ) as AppContextState;
-  const isViewInvoicePage = !!useMatch("/invoice/:id");
 
   const [isEdit, setIsEdit] = useState(false);
 
