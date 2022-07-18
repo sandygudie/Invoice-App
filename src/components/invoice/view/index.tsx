@@ -3,7 +3,7 @@ import { AppContextState, Invoice } from "../../../types";
 import { AppContext } from "../../../context";
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 import { VscCircleFilled } from "react-icons/vsc";
-import { useMatch, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { capitalize, formatDate } from "../../../utils";
 import classes from "./index.module.css";
 import { motion } from "framer-motion";
@@ -23,6 +23,7 @@ function ViewInvoice() {
   );
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     let temp: HTMLElement | null | any =
       document.getElementById("app_container");
     if (isEdit) {
@@ -33,14 +34,16 @@ function ViewInvoice() {
   }, [isEdit]);
 
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.5 }}
-      animate={{ scale: 1, opacity: 1 }}
-      transition={{ duration: 0.6 }}
-    >
+    <>
       {invoiceDetails.map((item: Invoice) => (
-        <React.Fragment key={item.id}>
-          <div className="m-auto px-4 md:px-10 lg:px-0 lg:w-[45em] flex flex-col h-full">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.9 }}
+          key={item.id}
+          className="m-auto px-4 md:px-10 lg:px-0 lg:w-[45em] flex flex-col max-h-full"
+        >
+          <div>
             <p
               onClick={() => navigate("/")}
               className="flex items-center font-semibold cursor-pointer"
@@ -205,9 +208,9 @@ function ViewInvoice() {
           {isEdit && (
             <EditInvoice setIsEdit={setIsEdit} id={item.id} invoice={item} />
           )}
-        </React.Fragment>
+        </motion.div>
       ))}
-    </motion.div>
+    </>
   );
 }
 

@@ -7,7 +7,7 @@ function AppLayout() {
   return (
     <div id="app_container" className="w-full h-full">
       <Navigation />
-      <main className="w-full mx-auto lg:py-16 py-24 text-base">
+      <main className="w-full mx-auto lg:py-16 py-24 text-base bg-skin-fill">
         <Outlet />
       </main>
     </div>
@@ -28,22 +28,22 @@ function Navigation() {
   return (
     <>
       {/* desktop */}
-      <div className="hidden lg:flex justify-between  fixed h-full bg-secondary flex-col rounded-tr-2xl rounded-br-2xl z-30">
+      <aside className="hidden lg:flex justify-between  fixed h-full bg-secondary flex-col rounded-tr-2xl rounded-br-2xl z-30">
         <LogoComponent />
         <div className="text-center">
           <ThemeToggle />
           <Profile />
         </div>
-      </div>
+      </aside>
 
       {/* Tablet */}
-      <div className="lg:hidden flex fixed w-full bg-secondary justify-between items-center rounded-tr-2xl rounded-br-2xl z-30">
+      <aside className="lg:hidden flex fixed w-full bg-secondary justify-between items-center rounded-tr-2xl rounded-br-2xl z-30">
         <LogoComponent />
         <div className="text-center flex items-center ">
           <ThemeToggle />
           <Profile />
         </div>
-      </div>
+      </aside>
     </>
   );
 }

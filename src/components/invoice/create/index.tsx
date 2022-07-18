@@ -15,12 +15,10 @@ interface Props {
   setOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-function CreateInvoice({ setOpen}: Props) {
+function CreateInvoice({ setOpen }: Props) {
   const { createPaidInvoice, createDraftInvoice } = useContext(
     AppContext
   ) as AppContextState;
-
-
 
   const onSubmit = (values: any) => {
     const invoice = {

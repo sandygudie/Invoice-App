@@ -10,7 +10,7 @@ function Invoice() {
   const { invoices } = useContext(AppContext) as AppContextState;
   const [isOpen, setIsOpen] = useState(false);
 
-    useEffect(() => {
+  useEffect(() => {
     let temp: HTMLElement | null | any =
       document.getElementById("app_container");
     if (isOpen) {
@@ -20,17 +20,18 @@ function Invoice() {
     }
   }, [isOpen]);
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      transition={{ duration: 0.6 }}
-    >
-      <div className="mx-auto px-4 lg:pl-4 lg:w-[45rem] w-full">
+    <>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 0.7 }}
+        className="mx-auto px-4 lg:pl-4 lg:w-[45rem] w-full"
+      >
         <Header setOpen={setIsOpen} invoices={invoices} />
         <InvoiceList invoices={invoices} />
-      </div>
+      </motion.div>
       {isOpen && <CreateInvoice setOpen={setIsOpen} />}
-    </motion.div>
+    </>
   );
 }
 

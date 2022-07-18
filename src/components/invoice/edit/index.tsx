@@ -18,16 +18,6 @@ interface Props {
 function EditInvoice({ setIsEdit, id, invoice }: Props) {
   const { editInvoice } = useContext(AppContext) as AppContextState;
 
-  // useEffect(() => {
-  //   let temp: HTMLElement | null | any =
-  //     document.getElementById("app_container");
-  //   if (isOpen) {
-  //     temp.style.position = "fixed";
-  //   } else {
-  //     temp.style.position = "initial";
-  //   }
-  // }, []);
-
   const onSubmit = (values: any) => {
     const invoice = {
       ...values,
@@ -92,7 +82,7 @@ function EditInvoice({ setIsEdit, id, invoice }: Props) {
             </Form>
           )}
         </Formik>
-        </motion.div>
+      </motion.div>
     </>
   );
 }
