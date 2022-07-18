@@ -12,13 +12,14 @@ import EditInvoice from "../edit";
 function ViewInvoice() {
   const params = useParams();
   const navigate = useNavigate();
-  const { deleteInvoice, addPaidInvoice, invoices } = useContext(
+  const { deleteInvoice, addPaidInvoice, invoices, viewInvoice } = useContext(
     AppContext
   ) as AppContextState;
 
   const [isEdit, setIsEdit] = useState(false);
   
   useEffect(() => {
+    // window.scrollTo(0, 0)
     let temp: HTMLElement | null | any =
       document.getElementById("app_container");
     if (isEdit) {
@@ -28,10 +29,8 @@ function ViewInvoice() {
     }
   }, [isEdit]);
 
-  const invoiceDetails = invoices.filter(
-    (invoices: Invoice |any) => invoices.id === params.id
-  );
-  console.log(invoiceDetails)
+  const invoiceDetails:[]|any= viewInvoice(params.id)
+ 
   return (
     <>
       {invoiceDetails.map((item: Invoice) => (
@@ -40,7 +39,7 @@ function ViewInvoice() {
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.9 }}
           key={item.id}
-          className="m-auto px-4 md:px-10 lg:px-0 lg:w-[45em] flex flex-col max-h-full"
+          className="m-auto px-4 md:px-10 lg:px-0 lg:w-[45em] flex flex-col"
         >
           <div>
             <p

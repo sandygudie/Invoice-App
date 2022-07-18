@@ -38,9 +38,7 @@ code {
     --color-shadow: transparent;
   }
   html {
-    @apply text-base;
-
-    /* @apply bg-skin-fill; */
+    @apply text-base bg-skin-fill;
   }
   .react-datepicker__input-container {
     padding: 0.5em !important;

@@ -7,7 +7,6 @@ import AppLayout from "./components/layout";
 function App() {
   
   useEffect(() => {
-    window.scrollTo(0, 0)
     if (
       localStorage.theme === "dark" ||
       (!("theme" in localStorage) &&

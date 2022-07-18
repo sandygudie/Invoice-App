@@ -29,7 +29,7 @@ export const AppProvider = ({
       ...invoice,
       total: total_invoice,
     };
-    setInvoices((prevState: Invoice[]) => [newInvoice, ...prevState ]);
+    setInvoices((prevState: Invoice[]) => [newInvoice, ...prevState]);
     localStorage.setItem("invoices", JSON.stringify(newInvoice));
   };
 
@@ -78,6 +78,10 @@ export const AppProvider = ({
     localStorage.setItem("invoices", JSON.stringify(newInvoice));
   };
 
+  const viewInvoice = (id: string) => {
+    return invoices.filter((invoices: Invoice | any) => invoices.id === id);
+  };
+
   const addPaidInvoice = (id: string) => {
     const newInvoice = invoices.map((invoice: Invoice) => {
       if (id === invoice.id) {
@@ -124,6 +128,7 @@ export const AppProvider = ({
         addPaidInvoice,
         deleteInvoice,
         editInvoice,
+        viewInvoice,
       }}
     >
       {children}
