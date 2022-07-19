@@ -31,5 +31,5 @@ export interface AppContextState {
   createDraftInvoice: (invoices: Invoice) => void;
   filterInvoice: (status: string) => void;
   editInvoice: (invoices: Invoice, id: string) => void;
-  viewInvoice: (id: string|any) => void;
+  viewInvoice: (id: string | any) => void;
 }
