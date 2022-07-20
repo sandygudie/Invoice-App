@@ -1,6 +1,6 @@
 ## Invoice App
 
-> [Invoice-App](https://app-invoice.netlify.app/) is a platform to view , add, edit and filter Invoice.
+> [Invoice-App](https://app-invoice.netlify.app/) is a platform to create,view edit,delete and filter Invoices.
 
 ## Getting Started
 
@@ -24,4 +24,4 @@ yarn start
 * Formik
 * Framer-motion
 
-#### Design from Frontend mentor
+#### This app is a challenge on [Frontendmentor.io](https://www.frontendmentor.io/challenges/invoice-app-i7KaLTQjl).
