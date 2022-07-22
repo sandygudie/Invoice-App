@@ -17,9 +17,8 @@ function ViewInvoice() {
   ) as AppContextState;
 
   const [isEdit, setIsEdit] = useState(false);
-  
+
   useEffect(() => {
-    window.scrollTo(0, 0)
     let temp: HTMLElement | null | any =
       document.getElementById("app_container");
     if (isEdit) {
@@ -29,19 +28,19 @@ function ViewInvoice() {
     }
   }, [isEdit]);
 
-  const invoiceDetails:[]|any= viewInvoice(params.id)
- 
+  const invoiceDetails: [] | any = viewInvoice(params.id);
+
   return (
     <>
       {invoiceDetails.map((item: Invoice) => (
-        <
-        >
+        <>
           <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.9 }}
-          key={item.id}
-          className="m-auto px-4 md:px-10 lg:px-0 lg:w-[45em] flex flex-col ">
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.9 }}
+            key={item.id}
+            className="m-auto px-4 md:px-10 lg:px-0 lg:w-[45em] flex flex-col "
+          >
             <p
               onClick={() => navigate("/")}
               className="flex items-center font-semibold cursor-pointer"
