@@ -24,7 +24,7 @@ export const InputField: FC<IInputFieldProps> = ({
   hideLabel,
   ...props
 }) => {
-  const [field, { error, touched }] = useField(props);
+  const [field, { error}] = useField(props);
 
   return (
     <>
@@ -40,7 +40,7 @@ export const InputField: FC<IInputFieldProps> = ({
             opaque
               ? "bg-transparent border-0"
               : `w-full rounded-md border outline-0  dark:bg-secondary ${
-                  error && touched ? "border-error" : "border-gray-300"
+                  error? "border-error" : "border-gray-300"
                 }`
           }  p-2 font-semibold text-sm`}
         

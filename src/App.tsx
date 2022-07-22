@@ -43,5 +43,3 @@ export default App;
 
 // todos features
 //* print out invoices
-//* work on the scrolling issues, // loading spinner
-//* inlude editing as draft

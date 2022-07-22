@@ -25,7 +25,7 @@ const getFieldErrorNames = (formikErrors: any) => {
 export const ScrollToFieldError = ({
   scrollBehavior = { behavior: "smooth", block: "center" },
 }: ScrollIntoViewOptions | any) => {
-  const { submitCount, isValid, errors } = useFormikContext();
+  const { isValid, errors} = useFormikContext();
 
   useEffect(() => {
     if (isValid) return;
@@ -35,9 +35,8 @@ export const ScrollToFieldError = ({
       `input[name='${fieldErrorNames[0]}']`
     );
     if (!element) return;
-    // Scroll to first known error into view
     element.scrollIntoView(scrollBehavior);
-  }, [submitCount,errors,isValid, scrollBehavior]);
+  }, [errors,isValid, scrollBehavior]);
 
   return null;
 };
