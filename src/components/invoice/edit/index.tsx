@@ -52,6 +52,8 @@ function EditInvoice({ setIsEdit, id, invoice }: Props) {
           }}
           validationSchema={validationSchema}
           onSubmit={onSubmit}
+          validateOnChange={false}
+          validateOnBlur={false}
         >
           {({ handleSubmit, errors, values }) => (
             <Form onSubmit={handleSubmit}>
