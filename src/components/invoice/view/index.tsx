@@ -33,7 +33,7 @@ function ViewInvoice() {
   return (
     <>
       {invoiceDetails.map((item: Invoice) => (
-        <>
+        <div key={item.id}>
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ scale: 1, opacity: 1 }}
@@ -205,7 +205,7 @@ function ViewInvoice() {
           {isEdit && (
             <EditInvoice setIsEdit={setIsEdit} id={item.id} invoice={item} />
           )}
-        </>
+        </div>
       ))}
     </>
   );
