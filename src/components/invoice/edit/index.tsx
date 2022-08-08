@@ -1,6 +1,6 @@
 import { Form, Formik } from "formik";
 import { useContext } from "react";
-import { AppContextState, Invoice } from "../../../types";
+import { AppContextState, InitialValues, Invoice } from "../../../types";
 import { validationSchema } from "../../../utils/form/form";
 import { Dispatch, SetStateAction } from "react";
 import { ScrollToFieldError } from "../../../utils/form/fieldError";
@@ -16,13 +16,20 @@ interface Props {
 }
 
 function EditInvoice({ setIsEdit, id, invoice }: Props) {
-  const { editInvoice } = useContext(AppContext) as AppContextState;
+  const { editInvoice, invoices } = useContext(AppContext) as AppContextState;
 
-  const onSubmit = (values: any) => {
-    const invoice = {
-      ...values,
-    };
-    editInvoice(invoice, id);
+  const onSubmit = (values: InitialValues) => {
+    const item = invoices.map((invoice: Invoice) => {
+      if (id === invoice.id) {
+        return {
+          ...invoice,
+          status: "pending",
+          ...values,
+        };
+      }
+      return invoice;
+    });
+    editInvoice(item);
     setIsEdit(false);
   };
 
@@ -55,15 +62,12 @@ function EditInvoice({ setIsEdit, id, invoice }: Props) {
           validateOnChange={false}
           validateOnBlur={false}
         >
-          {({ handleSubmit, errors, values }) => (
+          {({ handleSubmit }) => (
             <Form onSubmit={handleSubmit}>
               <ScrollToFieldError />
               <div className={`${classes.drawerBody} h-[68vh] md:h-[75vh]`}>
                 <AddInvoice />
                 <AddItem name="items" />
-                {typeof errors.items === "string" ? (
-                  <div className="text-error font-bold">{errors.items}</div>
-                ) : null}
               </div>
               <div
                 className={`bg-white text-base dark:bg-skin-fill flex justify-between items-center`}

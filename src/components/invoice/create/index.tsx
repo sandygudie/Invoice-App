@@ -1,6 +1,6 @@
 import { Form, Formik } from "formik";
 import { useContext } from "react";
-import { AppContextState } from "../../../types";
+import { AppContextState, InitialValues, Invoice } from "../../../types";
 import { initialValues, validationSchema } from "../../../utils/form/form";
 import { Dispatch, SetStateAction } from "react";
 import { ScrollToFieldError } from "../../../utils/form/fieldError";
@@ -10,6 +10,7 @@ import classes from "../../../styles/index.module.css";
 import dayjs from "dayjs";
 import { AppContext } from "../../../context";
 import { motion } from "framer-motion";
+import { randomId } from "../../../utils";
 
 interface Props {
   setOpen: Dispatch<SetStateAction<boolean>>;
@@ -20,29 +21,45 @@ function CreateInvoice({ setOpen }: Props) {
     AppContext
   ) as AppContextState;
 
-  const onSubmit = (values: any) => {
-    const invoice = {
+  const onSubmit = (values: InitialValues) => {
+    const total_invoice = values.items.reduce(
+      (accumulator: number, object: any) => {
+        return accumulator + object.total;
+      },
+      0
+    );
+    const invoiceItem: Invoice = {
       ...values,
+      id: randomId(),
+      total: total_invoice,
       status: "paid",
       createdAt: dayjs(values.createdAt).format("YYYY-MM-DD"),
       paymentDue: dayjs(values.createdAt)
         .add(Number(values.paymentTerms), "day")
         .format("YYYY-MM-DD"),
     };
-    createPaidInvoice(invoice);
+    createPaidInvoice(invoiceItem);
     setOpen(false);
   };
 
-  const addDraftInvoice = (values: any) => {
-    const invoice = {
+  const addDraftInvoice = (values: InitialValues) => {
+    const total_invoice = values.items.reduce(
+      (accumulator: number, object: any) => {
+        return accumulator + object.total;
+      },
+      0
+    );
+    const invoiceItem: Invoice = {
       ...values,
+      id: randomId(),
+      total: total_invoice,
       status: "draft",
       createdAt: dayjs(values.createdAt).format("YYYY-MM-DD"),
       paymentDue: dayjs(values.createdAt)
         .add(Number(values.paymentTerms), "day")
         .format("YYYY-MM-DD"),
     };
-    createDraftInvoice(invoice);
+    createDraftInvoice(invoiceItem);
     setOpen(false);
   };
 

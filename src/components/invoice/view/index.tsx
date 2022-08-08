@@ -3,14 +3,14 @@ import { AppContextState, Invoice } from "../../../types";
 import { AppContext } from "../../../context";
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 import { VscCircleFilled } from "react-icons/vsc";
-import { useNavigate, useParams } from "react-router-dom";
+import { Params, useNavigate, useParams } from "react-router-dom";
 import { capitalize, formatDate } from "../../../utils";
 import classes from "./index.module.css";
 import { motion } from "framer-motion";
 import EditInvoice from "../edit";
 
 function ViewInvoice() {
-  const params = useParams();
+  const params: Readonly<Params<string>> | any = useParams();
   const navigate = useNavigate();
   const { deleteInvoice, addPaidInvoice, viewInvoice } = useContext(
     AppContext
@@ -28,8 +28,7 @@ function ViewInvoice() {
     }
   }, [isEdit]);
 
-  const invoiceDetails: [] | any = viewInvoice(params.id);
-
+  const invoiceDetails: Invoice[] | any = viewInvoice(params.id);
   return (
     <>
       {invoiceDetails.map((item: Invoice) => (

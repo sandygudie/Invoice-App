@@ -1,7 +1,6 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
-import { randomId } from "../utils";
 import { data } from "../data";
-import { Invoice, AppContextState } from "../types";
+import { Invoice, AppContextState, InitialValues } from "../types";
 
 export const AppContext = createContext<AppContextState | null>(null);
 
@@ -19,58 +18,25 @@ export const AppProvider = ({
     setInvoices(JSON.parse(localStorage.getItem("invoices") || ""));
   }, [setInvoices]);
 
-  const createPaidInvoice = (invoice: Invoice | any) => {
-    const { items } = invoice;
-    const total_invoice = items.reduce((accumulator: number, object: any) => {
-      return accumulator + object.total;
-    }, 0);
+  const createPaidInvoice = (invoiceItem: Invoice) => {
     const newInvoice: Invoice = {
-      id: randomId(),
-      ...invoice,
-      total: total_invoice,
+      ...invoiceItem,
     };
-
     setInvoices((prevState: Invoice[]) => [newInvoice, ...prevState]);
-
     localStorage.setItem("invoices", JSON.stringify([newInvoice, ...invoices]));
   };
 
-  const createDraftInvoice = (invoice: Invoice | any) => {
-    const { items } = invoice;
-    const total_invoice = items?.reduce((accumulator: number, object: any) => {
-      return accumulator + object.total;
-    }, 0);
+  const createDraftInvoice = (invoiceItem: Invoice) => {
     const newInvoice: Invoice = {
-      id: randomId(),
-      ...invoice,
-      total: total_invoice,
+      ...invoiceItem,
     };
-
     setInvoices((prevState: Invoice[]) => [newInvoice, ...prevState]);
-
     localStorage.setItem("invoices", JSON.stringify([newInvoice, ...invoices]));
   };
 
-  const editInvoice = (updatedInvoice: Invoice | any, id: string) => {
-    const newInvoice = invoices.map((invoice: Invoice) => {
-      if (id === invoice.id) {
-        return {
-          ...invoice,
-          status: "pending",
-          senderAddress: updatedInvoice.senderAddress,
-          clientName: updatedInvoice.clientName,
-          clientEmail: updatedInvoice.clientEmail,
-          clientAddress: updatedInvoice.clientAddress,
-          createdAt: new Date(updatedInvoice.createdAt),
-          paymentTerms: updatedInvoice.paymentTerms,
-          description: updatedInvoice.description,
-          items: updatedInvoice.items,
-        };
-      }
-      return invoice;
-    });
-    setInvoices(newInvoice);
-    localStorage.setItem("invoices", JSON.stringify(newInvoice));
+  const editInvoice = (invoiceItem: Invoice[]) => {
+    setInvoices(invoiceItem);
+    localStorage.setItem("invoices", JSON.stringify(invoiceItem));
   };
 
   const deleteInvoice = (id: string) => {
@@ -82,7 +48,7 @@ export const AppProvider = ({
   };
 
   const viewInvoice = (id: string) => {
-    return invoices.filter((invoices: Invoice | any) => invoices.id === id);
+    return invoices.filter((invoices: Invoice) => invoices.id === id);
   };
 
   const addPaidInvoice = (id: string) => {

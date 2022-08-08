@@ -23,6 +23,27 @@ export interface Invoice {
   total: number;
 }
 
+export interface InitialValues {
+  createdAt: string | date;
+  description: string;
+  paymentTerms: number;
+  clientName: string;
+  clientEmail: string;
+  senderAddress: {
+    street: string;
+    city: string;
+    postCode: string;
+    country: string;
+  };
+  clientAddress: {
+    street: string;
+    city: string;
+    postCode: string;
+    country: string;
+  };
+  items: Array[];
+}
+
 export interface AppContextState {
   invoices: Invoice[];
   deleteInvoice: (id: string) => void;
@@ -30,6 +51,6 @@ export interface AppContextState {
   createPaidInvoice: (invoices: Invoice) => void;
   createDraftInvoice: (invoices: Invoice) => void;
   filterInvoice: (status: string) => void;
-  editInvoice: (invoices: Invoice, id: string) => void;
-  viewInvoice: (id: string | any) => void;
+  editInvoice: (invoices: Invoice[]) => void;
+  viewInvoice: (id: string) => void;
 }
