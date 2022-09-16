@@ -14,7 +14,7 @@ const InvoiceList = ({ item }: Props) => {
   return (
     <>
       <div
-        className="md:hidden rounded-md bg-white dark:bg-secondary text-base p-4 my-4 border border-transparent hover:border-primary"
+        className="md:hidden cursor-pointer rounded-md bg-white dark:bg-secondary text-base p-4 my-4 border border-transparent hover:border-primary"
         onClick={() => {
           navigate(`invoice/${item.id}`);
         }}
@@ -53,7 +53,7 @@ const InvoiceList = ({ item }: Props) => {
 
       {/* desktop view */}
       <div
-        className="hidden md:flex justify-start items-center w-full rounded-md bg-white dark:bg-secondary text-base p-4 my-4 border border-transparent hover:border-primary"
+        className="hidden md:flex justify-start cursor-pointer items-center w-full rounded-md bg-white dark:bg-secondary text-base p-4 my-4 border border-transparent hover:border-primary"
         onClick={() => {
           navigate(`invoice/${item.id}`);
         }}

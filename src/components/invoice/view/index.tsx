@@ -75,7 +75,7 @@ function ViewInvoice() {
                     onClick={() => {
                       setIsEdit(true);
                     }}
-                    className="rounded-3xl bg-gray-300 font-semibold mr-2 py-3 px-5"
+                    className="rounded-3xl text-base bg-gray-300 font-semibold mr-2 py-3 px-5"
                   >
                     Edit
                   </button>
