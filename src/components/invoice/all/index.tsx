@@ -1,14 +1,16 @@
 import { useContext, useEffect, useState } from "react";
-import { AppContextState } from "../../../types";
+import { AppContextState, Invoice } from "../../../types";
 import { AppContext } from "../../../context";
 import InvoiceList from "./InvoiceList";
 import CreateInvoice from "../create";
 import Header from "./header";
 import { motion } from "framer-motion";
 
-function Invoice() {
+function InvoiceBoard() {
+
   const { invoices } = useContext(AppContext) as AppContextState;
   const [isOpen, setIsOpen] = useState(false);
+  const [filtered, setFiltered] = useState<Invoice[]>([]);
 
   useEffect(() => {
     let temp: HTMLElement | null | any =
@@ -19,6 +21,29 @@ function Invoice() {
       temp.style.position = "initial";
     }
   }, [isOpen]);
+
+  const filterInvoice = (status: string) => {
+    if (status === "paid") {
+      const newInvoice = invoices.filter(
+        (invoice: Invoice) => invoice.status === "paid"
+      );
+      setFiltered(newInvoice);
+    } else if (status === "draft") {
+      const newInvoice = invoices.filter(
+        (invoice: Invoice) => invoice.status === "draft"
+      );
+      setFiltered(newInvoice);
+    } else if (status === "pending") {
+      const newInvoice = invoices.filter(
+        (invoice: Invoice) => invoice.status === "pending"
+      );
+      setFiltered(newInvoice);
+    } else {
+      setFiltered(invoices);
+    }
+    return invoices;
+  };
+
   return (
     <>
       <motion.div
@@ -27,12 +52,17 @@ function Invoice() {
         transition={{ duration: 0.7 }}
         className="mx-auto px-4 lg:pl-4 lg:w-[45rem] w-full"
       >
-        <Header setOpen={setIsOpen} invoices={invoices} />
-        <InvoiceList invoices={invoices} />
+        <Header
+          setOpen={setIsOpen}
+          invoices={invoices}
+          filterInvoice={filterInvoice}
+        />
+        {/* <InvoiceList invoices={invoices} filtered={filtered} /> */}
+        <InvoiceList invoices={filtered.length ? filtered : invoices} />
       </motion.div>
       {isOpen && <CreateInvoice setOpen={setIsOpen} />}
     </>
   );
 }
 
-export default Invoice;
+export default  InvoiceBoard;

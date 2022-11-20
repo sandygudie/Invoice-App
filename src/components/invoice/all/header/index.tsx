@@ -11,10 +11,12 @@ import { AppContext } from "../../../../context";
 interface Props {
   setOpen: Dispatch<SetStateAction<boolean>>;
   invoices: Invoice[];
+  filterInvoice: (status: string) => void;
+
 }
 
-function Header({ setOpen, invoices }: Props) {
-  const { filterInvoice } = useContext(AppContext) as AppContextState;
+function Header({ setOpen, invoices,filterInvoice }: Props) {
+
   const [isOpenFilter, setOpenFilter] = useState(false);
   const [status, setStatus] = useState(
     "all" || " paid" || "draft" || "pending"

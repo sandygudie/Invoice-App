@@ -14,7 +14,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
   overflow-x: hidden !important;
-  overflow-y: scroll !important;
+  /* overflow-y: scroll !important; */
   min-height: 100%;
   scroll-behavior: smooth;
 }

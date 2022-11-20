@@ -50,7 +50,7 @@ export interface AppContextState {
   addPaidInvoice: (id: string) => void;
   createPaidInvoice: (invoices: Invoice) => void;
   createDraftInvoice: (invoices: Invoice) => void;
-  filterInvoice: (status: string) => void;
+ 
   editInvoice: (invoices: Invoice[]) => void;
   viewInvoice: (id: string) => void;
 }

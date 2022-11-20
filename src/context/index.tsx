@@ -62,38 +62,13 @@ export const AppProvider = ({
     setInvoices(newInvoice);
   };
 
-  const filterInvoice = (status: string) => {
-    const filterData: Invoice | any = JSON.parse(
-      localStorage.getItem("invoices") || "{}"
-    );
-    if (status === "paid") {
-      const newInvoice = filterData.filter(
-        (invoices: Invoice) => invoices.status === "paid"
-      );
-      setInvoices(newInvoice);
-    } else if (status === "draft") {
-      const newInvoice = filterData.filter(
-        (invoices: Invoice) => invoices.status === "draft"
-      );
-      setInvoices(newInvoice);
-    } else if (status === "pending") {
-      const newInvoice = filterData.filter(
-        (invoices: Invoice) => invoices.status === "pending"
-      );
-      setInvoices(newInvoice);
-    } else {
-      setInvoices(invoices);
-    }
-    return invoices;
-  };
-
+  
   return (
     <AppContext.Provider
       value={{
         invoices,
         createPaidInvoice,
         createDraftInvoice,
-        filterInvoice,
         addPaidInvoice,
         deleteInvoice,
         editInvoice,
