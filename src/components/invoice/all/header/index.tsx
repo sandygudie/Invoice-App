@@ -1,22 +1,19 @@
-import { Dispatch, SetStateAction, useContext, useState } from "react";
-import { AppContextState, Invoice } from "../../../../types";
+import { Dispatch, SetStateAction, useState } from "react";
+import { Invoice } from "../../../../types";
 import {
   MdOutlineKeyboardArrowDown,
   MdOutlineKeyboardArrowUp,
 } from "react-icons/md";
 import { TiPlus } from "react-icons/ti";
 import CheckBox from "../header/Checkbox";
-import { AppContext } from "../../../../context";
 
 interface Props {
   setOpen: Dispatch<SetStateAction<boolean>>;
   invoices: Invoice[];
   filterInvoice: (status: string) => void;
-
 }
 
-function Header({ setOpen, invoices,filterInvoice }: Props) {
-
+function Header({ setOpen, invoices, filterInvoice }: Props) {
   const [isOpenFilter, setOpenFilter] = useState(false);
   const [status, setStatus] = useState(
     "all" || " paid" || "draft" || "pending"

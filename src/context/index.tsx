@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
 import { data } from "../data";
-import { Invoice, AppContextState, InitialValues } from "../types";
+import { Invoice, AppContextState } from "../types";
 
 export const AppContext = createContext<AppContextState | null>(null);
 
