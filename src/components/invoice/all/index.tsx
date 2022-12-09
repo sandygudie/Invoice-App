@@ -7,9 +7,9 @@ import Header from "./header";
 import { motion } from "framer-motion";
 
 function InvoiceBoard() {
-
   const { invoices } = useContext(AppContext) as AppContextState;
   const [isOpen, setIsOpen] = useState(false);
+  const [status, setStatus] = useState("");
   const [filtered, setFiltered] = useState<Invoice[]>([]);
 
   useEffect(() => {
@@ -20,25 +20,30 @@ function InvoiceBoard() {
     } else {
       temp.style.position = "initial";
     }
+    filterInvoice("");
   }, [isOpen]);
 
   const filterInvoice = (status: string) => {
     if (status === "paid") {
+      setStatus(status);
       const newInvoice = invoices.filter(
         (invoice: Invoice) => invoice.status === "paid"
       );
       setFiltered(newInvoice);
     } else if (status === "draft") {
+      setStatus(status);
       const newInvoice = invoices.filter(
         (invoice: Invoice) => invoice.status === "draft"
       );
       setFiltered(newInvoice);
     } else if (status === "pending") {
+      setStatus(status);
       const newInvoice = invoices.filter(
         (invoice: Invoice) => invoice.status === "pending"
       );
       setFiltered(newInvoice);
     } else {
+      setStatus("invoice");
       setFiltered(invoices);
     }
     return invoices;
@@ -57,12 +62,15 @@ function InvoiceBoard() {
           invoices={invoices}
           filterInvoice={filterInvoice}
         />
-        {/* <InvoiceList invoices={invoices} filtered={filtered} /> */}
-        <InvoiceList invoices={filtered.length ? filtered : invoices} />
+        {filtered.length > 0 ? (
+          <InvoiceList invoices={filtered} />
+        ) : (
+          <p className="font-bold text-base"> No {status} Item</p>
+        )}
       </motion.div>
       {isOpen && <CreateInvoice setOpen={setIsOpen} />}
     </>
   );
 }
 
-export default  InvoiceBoard;
+export default InvoiceBoard;

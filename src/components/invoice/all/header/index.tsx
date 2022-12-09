@@ -1,10 +1,9 @@
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState, useRef } from "react";
 import { Invoice } from "../../../../types";
 import {
   MdOutlineKeyboardArrowDown,
   MdOutlineKeyboardArrowUp,
 } from "react-icons/md";
-import { TiPlus } from "react-icons/ti";
 import CheckBox from "../header/Checkbox";
 
 interface Props {
@@ -19,18 +18,34 @@ function Header({ setOpen, invoices, filterInvoice }: Props) {
     "all" || " paid" || "draft" || "pending"
   );
 
+  const popupRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClick = (e: any) => {
+      if (popupRef.current && !popupRef.current.contains(e.target)) {
+        setOpenFilter(false);
+      }
+    };
+    document.addEventListener("click", handleClick, true);
+    return () => document.removeEventListener("click", handleClick, true);
+  }, []);
+
   const radioChangeHandler = (e: any, status: string) => {
     setStatus(e.target.value);
     filterInvoice(status);
+    setOpenFilter(false);
   };
 
   return (
     <div className="flex justify-between items-center mb-8 lg:mb-20">
       {" "}
       <div>
-        <a href="/" className="text-xl md:text-2xl lg:text-3xl font-bold block">
+        <div
+          onClick={() => filterInvoice("")}
+          className=" cursor-pointer text-xl md:text-2xl lg:text-3xl font-bold block"
+        >
           Invoices
-        </a>
+        </div>
         <span className="text-xs text-sm text-gray-200 font-semibold">
           <span className="hidden md:inline"> There are total </span>
           {invoices.length} invoices
@@ -58,7 +73,10 @@ function Header({ setOpen, invoices, filterInvoice }: Props) {
           </div>
 
           {isOpenFilter && (
-            <div className="absolute bg-skin-fill shadow-lg top-10 px-4 py-2 items-start w-[200px] rounded-lg flex flex-col -left-15 ">
+            <div
+              ref={popupRef}
+              className="absolute bg-skin-fill shadow-lg top-10 px-4 py-2 items-start w-[200px] rounded-lg flex flex-col -left-15 "
+            >
               <CheckBox
                 changed={(e: any) => radioChangeHandler(e, "paid")}
                 id="1"
@@ -80,6 +98,13 @@ function Header({ setOpen, invoices, filterInvoice }: Props) {
                 label="pending"
                 value="pending"
               />
+              <CheckBox
+                changed={(e: any) => radioChangeHandler(e, "all")}
+                id="4"
+                isSelected={status === "all"}
+                label="All"
+                value="all"
+              />
             </div>
           )}
         </div>
@@ -90,8 +115,8 @@ function Header({ setOpen, invoices, filterInvoice }: Props) {
           className="rounded-3xl font-semibold p-2 text-white flex items-center bg-primary"
         >
           {" "}
-          <span className="p-1 lg:p-2 bg-white rounded-full text-center">
-            <TiPlus className="text-primary" />
+          <span className="px-2  bg-white rounded-full text-center text-primary">
+            {/* <TiPlus className="text-primary" /> */} +
           </span>
           <span className="md:text-md text-xs pt-1 px-2 lg:px-3">
             {" "}
