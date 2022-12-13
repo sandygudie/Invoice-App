@@ -21,7 +21,9 @@ function InvoiceBoard() {
       temp.style.position = "initial";
     }
     filterInvoice("");
-  }, [isOpen]);
+   
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const filterInvoice = (status: string) => {
     if (status === "paid") {
