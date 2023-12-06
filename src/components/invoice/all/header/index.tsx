@@ -44,7 +44,7 @@ function Header({ setOpen, invoices, filterInvoice }: Props) {
           <div>
             <div
               onClick={() => filterInvoice("")}
-              className=" cursor-pointer text-xl md:text-2xl lg:text-3xl font-bold block"
+              className=" cursor-pointer text-base md:text-2xl lg:text-3xl font-bold block"
             >
               Invoices
             </div>
