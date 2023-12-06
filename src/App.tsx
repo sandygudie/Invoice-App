@@ -3,8 +3,9 @@ import { Route, Routes } from "react-router-dom";
 import LoadingSpinner from "./components/LoadingSpinner";
 import AppLayout from "./components/layout";
 import NotFoundPage from "./components/NotFoundPage";
-const ViewInvoice = React.lazy(() => import("./components/invoice/view"));
-const Allinvoices = React.lazy(() => import("./components/invoice/all"));
+
+import Allinvoices from "./components/invoice/all";
+import ViewInvoice from "./components/invoice/view";
 
 function App() {
   useEffect(() => {
@@ -40,4 +41,3 @@ function App() {
 }
 
 export default App;
-

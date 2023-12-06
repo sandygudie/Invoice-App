@@ -32,7 +32,7 @@ function CreateInvoice({ setOpen }: Props) {
       ...values,
       id: randomId(),
       total: total_invoice,
-      status: "paid",
+      status: "pending",
       createdAt: dayjs(values.createdAt).format("YYYY-MM-DD"),
       paymentDue: dayjs(values.createdAt)
         .add(Number(values.paymentTerms), "day")
@@ -101,6 +101,7 @@ function CreateInvoice({ setOpen }: Props) {
                 </button>
                 <div className="flex justify-between">
                   <button
+                    type="button"
                     onClick={() => addDraftInvoice(values)}
                     className="p-3 text-xs md:text-sm rounded-3xl md:py-3 md:px-4 bg-gray-200 my-4"
                   >

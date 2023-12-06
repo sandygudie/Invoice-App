@@ -5,8 +5,8 @@ const AddItem = ({ name }: string | any) => {
   const { values, errors }: any = useFormikContext();
 
   return (
-    <div className="my-8">
-      <h1 className=" text-lg font-bold text-gray-200/50 my-4"> Item List</h1>
+    <div className="my-12">
+      <h1 className="text-md font-bold text-primary"> Item List</h1>
       <FieldArray
         name={name}
         render={(arrayHelpers) => (
@@ -22,8 +22,8 @@ const AddItem = ({ name }: string | any) => {
               onClick={() => {
                 arrayHelpers.push({
                   name: "",
-                  quantity: "",
-                  price: "",
+                  quantity: 0,
+                  price: 0,
                   total: "",
                 });
               }}

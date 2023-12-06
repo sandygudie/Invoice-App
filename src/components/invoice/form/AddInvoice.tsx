@@ -37,7 +37,7 @@ const AddInvoice = () => {
         <p className="mb-2 text-primary font-semibold">Bill To</p>
 
         <InputField type={"text"} name="clientName" label="Client's Name" />
-        <InputField type={"text"} name="clientEmail" label="Client's Email" />
+        <InputField type={"email"} name="clientEmail" label="Client's Email" />
         <InputField
           type={"text"}
           name="clientAddress.street"

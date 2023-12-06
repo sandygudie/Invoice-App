@@ -48,6 +48,7 @@ function ViewInvoice() {
               <MdOutlineKeyboardArrowLeft className="mr-4 text-primary text-sm" />
               Go back
             </p>
+
             {/* Desktop*/}
             <>
               <div className="mt-4 flex justify-between px-6 py-2 rounded-md bg-white dark:bg-secondary">
@@ -70,12 +71,12 @@ function ViewInvoice() {
                   </div>
                 </div>
 
-                <div className="md:inline flex justify-center fixed bottom-0 right-0 bg-white w-full dark:bg-secondary py-4 md:relative md:w-auto text-white text-sm">
+                <div className="md:inline flex md:justify-center fixed bottom-0 right-0 bg-white w-full dark:bg-secondary py-4 md:relative md:w-auto text-white text-sm">
                   <button
                     onClick={() => {
                       setIsEdit(true);
                     }}
-                    className="rounded-3xl text-base bg-gray-300 font-semibold mr-2 py-3 px-5"
+                    className="rounded-3xl text-sm md:text-base bg-gray-300 font-semibold  p-2 mr-2 md:py-3 md:px-5"
                   >
                     Edit
                   </button>
@@ -84,14 +85,14 @@ function ViewInvoice() {
                       deleteInvoice(item.id);
                       navigate("/");
                     }}
-                    className="rounded-3xl font-semibold bg-pink mr-6 py-3 px-5"
+                    className="rounded-3xl text-sm md:text-base font-semibold bg-pink  p-2 mr-6 md:py-3 md:px-5"
                   >
                     Delete
                   </button>
                   {item.status !== "paid" && (
                     <button
                       onClick={() => addPaidInvoice(item.id)}
-                      className="rounded-3xl bg-primary font-semibold py-3 px-4"
+                      className="rounded-3xl text-sm md:text-base bg-primary font-semibold  p-2 md:py-3 md:px-4"
                     >
                       Mark As Paid
                     </button>
@@ -107,19 +108,30 @@ function ViewInvoice() {
                       <span className="text-primary">#</span>
                       {item.id}
                     </p>
-                    <p>{item.description}</p>
+                    <p>Description:{item.description}</p>
                   </div>
-                  <div className="md:text-right md:mt-0 mt-4 text-left ">
-                    <p>{item.senderAddress.street}</p>
-                    <p>{item.senderAddress.city}</p>
-                    <p>{item.senderAddress.postCode}</p>
-                    <p>{item.senderAddress.country}</p>
+                  <div className=" md:mt-0 mt-4 md:text-right">
+                    <p>Address</p>
+                    <div className="font-bold mt-3 text-[14px] ">
+                    <p className="font-bold text-[16px]">
+                        {item.senderAddress.street} {" "}  {item.senderAddress.city}
+                      </p>
+                      <p className="my-1 font-bold text-[16px]">
+                        {" "}
+                        {item.senderAddress.postCode}
+                      </p>
+                      <p className="font-bold text-[16px]">
+                        {" "}
+                        {item.senderAddress.country}
+                      </p>
+                    </div>
+                    
                   </div>
                 </div>
 
-                <div className="flex md:flex-row flex-col gap-y-4 md:items-start justify-between text-xs my-14 text-left items-start">
-                  <div className="flex justify-between w-full">
-                    <div className="pb-3 w-72">
+                <div className="block md:flex md:flex-row  gap-y-4 md:items-start justify-between text-xs my-14 text-left items-start">
+                  <div className="block md:flex justify-between items-start">
+                    <div className="pb-3 md:w-48">
                       <p className="pb-1">Invoice Date</p>
                       <p className="font-bold text-[15px] my-2">
                         {formatDate(item.createdAt)}
@@ -132,15 +144,23 @@ function ViewInvoice() {
                       </div>
                     </div>
 
-                    <div className="w-full">
-                      <p className="pb-1">Bill To</p>
-                      <p className="font-bold text-[15px] mt-2 mb-4">
+                    <div className="md:w-64">
+                      <p className="pb-2">Bill To</p>
+                      <p className="font-bold text-[15px] mb-4">
                         {item.clientName}
                       </p>
-                      <p>{item.clientAddress.street}</p>
-                      <p>{item.clientAddress.city}</p>
-                      <p>{item.clientAddress.postCode}</p>
-                      <p>{item.clientAddress.country}</p>
+                      <div className="my-4 md:my-0">
+                        <p className="mb-3">Address</p>
+                        <div className="font-bold text-[14px] md:w-72">
+                          <p>
+                            {item.clientAddress.street}{" "}
+                            {item.clientAddress.city}
+                          </p>
+
+                          <p className="my-1">{item.clientAddress.postCode} </p>
+                          <p> {item.clientAddress.country}</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div className="w-full md:text-right">

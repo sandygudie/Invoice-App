@@ -19,12 +19,16 @@ function EditInvoice({ setIsEdit, id, invoice }: Props) {
   const { editInvoice, invoices } = useContext(AppContext) as AppContextState;
 
   const onSubmit = (values: InitialValues) => {
+   const updatedTotal= values.items.reduce((accumulator, object) => {
+      return accumulator + object.total;
+    }, 0)
     const item = invoices.map((invoice: Invoice) => {
       if (id === invoice.id) {
         return {
           ...invoice,
           status: "pending",
           ...values,
+          total:  updatedTotal
         };
       }
       return invoice;

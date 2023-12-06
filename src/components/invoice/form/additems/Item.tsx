@@ -8,9 +8,8 @@ function Item({ index, arrayHelpers }: any) {
   useEffect(() => {
     const total = values.items[index].quantity * values.items[index].price;
     const rounded = Math.round((total + Number.EPSILON) * 100) / 100;
-    setFieldValue(`items[${index}].total`, rounded || "0");
+    setFieldValue(`items[${index}].total`, rounded);
   }, [index,setFieldValue,values.items]);
-
   return (
     <div className="lg:grid justify-between items-center grid-flow-col gap-x-2 block">
       <InputField
@@ -25,12 +24,14 @@ function Item({ index, arrayHelpers }: any) {
           type="number"
           name={`items[${index}].quantity`}
           label="Qty"
-          styles="lg:w-[3em] w-[9em]"
+          min="0"
+          styles="w-[9em]"
           hideLabel={index > 0}
         />
 
         <InputField
           type="number"
+          min="0"
           name={`items[${index}].price`}
           label="Price"
           styles="w-[9em]"

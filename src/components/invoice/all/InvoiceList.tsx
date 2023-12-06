@@ -4,6 +4,7 @@ interface Props {
   invoices: Invoice[];
 }
 export default function InvoiceList({ invoices }: Props) {
+
   return (
     <>
       {invoices.map((item: Invoice) => (

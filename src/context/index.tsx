@@ -1,22 +1,25 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
-import { data } from "../data";
+// import { data } from "../data";
 import { Invoice, AppContextState } from "../types";
 
 export const AppContext = createContext<AppContextState | null>(null);
-
+let data: never[] = [];
 export const AppProvider = ({
   children,
 }: {
   children: ReactNode;
 }): JSX.Element => {
-  const [invoices, setInvoices] = useState<Invoice[]>(data);
+  const [invoices, setInvoices] = useState<Invoice[]>([]);
 
   useEffect(() => {
     if (localStorage.getItem("invoices") === null) {
       localStorage.setItem("invoices", JSON.stringify(data));
+    }else{
+    let data =  JSON.parse(localStorage.getItem("invoices") || "")
+      setInvoices(data)
     }
-    setInvoices(JSON.parse(localStorage.getItem("invoices") || ""));
   }, [setInvoices]);
+
 
   const createPaidInvoice = (invoiceItem: Invoice) => {
     const newInvoice: Invoice = {
@@ -62,7 +65,6 @@ export const AppProvider = ({
     setInvoices(newInvoice);
   };
 
-  
   return (
     <AppContext.Provider
       value={{

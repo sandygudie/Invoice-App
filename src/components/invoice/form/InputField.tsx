@@ -13,6 +13,7 @@ type IInputFieldProps = InputHTMLAttributes<HTMLInputElement> & {
   disabled?: boolean;
   opaque?: boolean;
   hideLabel?: boolean;
+  min?:string
 };
 
 export const InputField: FC<IInputFieldProps> = ({
@@ -22,6 +23,7 @@ export const InputField: FC<IInputFieldProps> = ({
   type,
   label,
   hideLabel,
+  min,
   ...props
 }) => {
   const [field, { error}] = useField(props);
@@ -35,6 +37,7 @@ export const InputField: FC<IInputFieldProps> = ({
         <input
           {...field}
           name={field.name}
+          min={min? min:""}
           type={type}
           className={`${
             opaque

@@ -21,8 +21,7 @@ function InvoiceBoard() {
       temp.style.position = "initial";
     }
     filterInvoice("");
-   
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const filterInvoice = (status: string) => {
@@ -45,10 +44,9 @@ function InvoiceBoard() {
       );
       setFiltered(newInvoice);
     } else {
-      setStatus("invoice");
-      setFiltered(invoices);
+      setStatus("Invoice");
+      setFiltered([]);
     }
-    return invoices;
   };
 
   return (
@@ -64,10 +62,27 @@ function InvoiceBoard() {
           invoices={invoices}
           filterInvoice={filterInvoice}
         />
-        {filtered.length > 0 ? (
-          <InvoiceList invoices={filtered} />
+        {invoices.length ? (
+          <InvoiceList invoices={filtered.length ? filtered : invoices} />
         ) : (
-          <p className="font-bold text-base"> No {status} Item</p>
+          <div className="h-screen flex flex-col gap-y-4 items-center justify-center">
+            <p className="font-bold text-base"> No {status} Item</p>
+            <button
+              onClick={() => {
+                setIsOpen(true);
+              }}
+              className="rounded-3xl font-semibold p-2 text-white flex items-center bg-primary"
+            >
+              {" "}
+              <span className="px-3 text-lg py-2 bg-white rounded-full text-center text-primary">
+                +
+              </span>
+              <span className="md:text-lg text-xs pt-1 px-2 lg:px-3">
+                {" "}
+                Add New <span className="md:inline hidden"> Invoice</span>
+              </span>
+            </button>
+          </div>
         )}
       </motion.div>
       {isOpen && <CreateInvoice setOpen={setIsOpen} />}
