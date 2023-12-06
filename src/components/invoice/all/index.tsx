@@ -5,6 +5,8 @@ import InvoiceList from "./InvoiceList";
 import CreateInvoice from "../create";
 import Header from "./header";
 import { motion } from "framer-motion";
+import { IoMdAdd } from "react-icons/io";
+
 
 function InvoiceBoard() {
   const { invoices } = useContext(AppContext) as AppContextState;
@@ -74,12 +76,12 @@ function InvoiceBoard() {
               className="rounded-3xl font-semibold p-2 text-white flex items-center bg-primary"
             >
               {" "}
-              <span className="px-3 text-lg py-2 bg-white rounded-full text-center text-primary">
-                +
+              <span className=" text-lg  p-2 bg-white rounded-full text-center text-primary">
+              <IoMdAdd />
               </span>
               <span className="md:text-lg text-xs pt-1 px-2 lg:px-3">
                 {" "}
-                Add New <span className="md:inline hidden"> Invoice</span>
+                Add New <span className=""> Invoice</span>
               </span>
             </button>
           </div>

@@ -5,6 +5,7 @@ import {
   MdOutlineKeyboardArrowUp,
 } from "react-icons/md";
 import CheckBox from "../header/Checkbox";
+import { IoMdAdd } from "react-icons/io";
 
 interface Props {
   setOpen: Dispatch<SetStateAction<boolean>>;
@@ -117,8 +118,8 @@ function Header({ setOpen, invoices, filterInvoice }: Props) {
               className="rounded-3xl font-semibold p-2 text-white flex items-center bg-primary"
             >
               {" "}
-              <span className="px-2  bg-white rounded-full text-center text-primary">
-                +
+              <span className="p-2  bg-white rounded-full text-center text-primary">
+              <IoMdAdd />
               </span>
               <span className="md:text-md text-xs pt-1 px-2 lg:px-3">
                 {" "}
