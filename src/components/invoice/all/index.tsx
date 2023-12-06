@@ -68,7 +68,7 @@ function InvoiceBoard() {
           <InvoiceList invoices={filtered.length ? filtered : invoices} />
         ) : (
           <div className="h-[60vh] md:h-[80vh] flex flex-col gap-y-4 items-center justify-center">
-            <p className="font-bold text-base"> No {status} Item</p>
+            <p className="font-bold text-sm"> No {status} Item</p>
             <button
               onClick={() => {
                 setIsOpen(true);
@@ -81,7 +81,7 @@ function InvoiceBoard() {
               </span>
               <span className="md:text-lg text-xs pt-1 px-2 lg:px-3">
                 {" "}
-                Add New <span className=""> Invoice</span>
+                Add <span className=""> Invoice</span>
               </span>
             </button>
           </div>
