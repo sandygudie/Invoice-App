@@ -67,7 +67,7 @@ function InvoiceBoard() {
         {invoices.length ? (
           <InvoiceList invoices={filtered.length ? filtered : invoices} />
         ) : (
-          <div className="h-screen flex flex-col gap-y-4 items-center justify-center">
+          <div className="h-[60vh] md:h-[80vh] flex flex-col gap-y-4 items-center justify-center">
             <p className="font-bold text-base"> No {status} Item</p>
             <button
               onClick={() => {
@@ -76,7 +76,7 @@ function InvoiceBoard() {
               className="rounded-3xl font-semibold p-2 text-white flex items-center bg-primary"
             >
               {" "}
-              <span className=" text-lg  p-2 bg-white rounded-full text-center text-primary">
+              <span className="text-lg p-2 bg-white rounded-full text-center text-primary">
               <IoMdAdd />
               </span>
               <span className="md:text-lg text-xs pt-1 px-2 lg:px-3">

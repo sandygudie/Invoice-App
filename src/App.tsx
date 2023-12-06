@@ -3,7 +3,6 @@ import { Route, Routes } from "react-router-dom";
 import LoadingSpinner from "./components/LoadingSpinner";
 import AppLayout from "./components/layout";
 import NotFoundPage from "./components/NotFoundPage";
-
 import Allinvoices from "./components/invoice/all";
 import ViewInvoice from "./components/invoice/view";
 
