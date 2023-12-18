@@ -8,6 +8,7 @@ import { capitalize, formatDate } from "../../../utils";
 import classes from "./index.module.css";
 import { motion } from "framer-motion";
 import EditInvoice from "../edit";
+import NotFoundPage from "../../NotFoundPage";
 
 function ViewInvoice() {
   const params: Readonly<Params<string>> | any = useParams();
@@ -29,6 +30,10 @@ function ViewInvoice() {
   }, [isEdit]);
 
   const invoiceDetails: Invoice[] | any = viewInvoice(params.id);
+  
+  if (!invoiceDetails.length){
+    return <NotFoundPage/>
+  }
   return (
     <>
       {invoiceDetails.map((item: Invoice) => (
@@ -113,8 +118,8 @@ function ViewInvoice() {
                   <div className=" md:mt-0 mt-4 md:text-right">
                     <p>Address</p>
                     <div className="font-bold mt-3 text-[14px] ">
-                    <p className="font-bold text-[16px]">
-                        {item.senderAddress.street} {" "}  {item.senderAddress.city}
+                      <p className="font-bold text-[16px]">
+                        {item.senderAddress.street} {item.senderAddress.city}
                       </p>
                       <p className="my-1 font-bold text-[16px]">
                         {" "}
@@ -125,7 +130,6 @@ function ViewInvoice() {
                         {item.senderAddress.country}
                       </p>
                     </div>
-                    
                   </div>
                 </div>
 
