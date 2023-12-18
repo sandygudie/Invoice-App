@@ -4,7 +4,7 @@ import {
   MdOutlineKeyboardArrowDown,
   MdOutlineKeyboardArrowUp,
 } from "react-icons/md";
-import CheckBox from "../header/Checkbox";
+import CheckBox from "./Checkbox";
 import { IoMdAdd } from "react-icons/io";
 
 interface Props {

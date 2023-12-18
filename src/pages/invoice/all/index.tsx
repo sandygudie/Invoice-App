@@ -6,7 +6,7 @@ import CreateInvoice from "../create";
 import Header from "./header";
 import { motion } from "framer-motion";
 import { IoMdAdd } from "react-icons/io";
-
+import emptyState from "../../../assets/empty-state.webp";
 
 function InvoiceBoard() {
   const { invoices } = useContext(AppContext) as AppContextState;
@@ -67,8 +67,13 @@ function InvoiceBoard() {
         {invoices.length ? (
           <InvoiceList invoices={filtered.length ? filtered : invoices} />
         ) : (
-          <div className="h-[60vh] md:h-[80vh] flex flex-col gap-y-4 items-center justify-center">
-            <p className="font-bold text-sm"> No {status} Item</p>
+          <div className="h-[60vh] md:h-[80vh] flex flex-col items-center justify-center">
+            <img src={emptyState} className="w-64 md:w-96" alt="empty-state" />
+            <p className="text-base my-4  text-gray-200">
+              {" "}
+              {/* <span className="font-bold text-xl">No {status} Item</span>{" "} */}
+              Creating your first invoice!
+            </p>
             <button
               onClick={() => {
                 setIsOpen(true);
@@ -77,7 +82,7 @@ function InvoiceBoard() {
             >
               {" "}
               <span className="text-lg p-2 bg-white rounded-full text-center text-primary">
-              <IoMdAdd />
+                <IoMdAdd />
               </span>
               <span className="md:text-lg text-xs pt-1 px-2 lg:px-3">
                 {" "}
