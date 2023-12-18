@@ -1,4 +1,4 @@
-import errorImage from "../assets/empty-state.png";
+import errorImage from "../assets/errorImage.webp";
 
 function NotFoundPage() {
   return (

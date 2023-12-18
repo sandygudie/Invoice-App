@@ -71,7 +71,7 @@ function InvoiceBoard() {
             <img src={emptyState} className="w-64 md:w-96" alt="empty-state" />
             <p className="text-base my-4  text-gray-200">
               {" "}
-              {/* <span className="font-bold text-xl">No {status} Item</span>{" "} */}
+              <span className="hidden font-bold text-xl">No {status} Item</span>{" "}
               Creating your first invoice!
             </p>
             <button
