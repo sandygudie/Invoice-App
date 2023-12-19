@@ -1,6 +1,7 @@
 {
     "name": "invoiceapp",
     "version": "0.1.0",
+    "homepage": "https://app-invoice.netlify.app/",
     "private": true,
     "dependencies": {
         "@gsap/react": "^2.0.2",
