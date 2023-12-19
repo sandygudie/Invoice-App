@@ -30,23 +30,23 @@ function ViewInvoice() {
   }, [isEdit]);
 
   const invoiceDetails: Invoice[] | any = viewInvoice(params.id);
-  
-  if (!invoiceDetails.length){
-    return <NotFoundPage/>
+
+  if (!invoiceDetails.length) {
+    return <NotFoundPage />;
   }
   return (
     <>
       {invoiceDetails.map((item: Invoice) => (
-        <div key={item.id}>
+        <div key={item.id} className="h-full">
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.9 }}
             key={item.id}
-            className="m-auto px-4 md:px-10 lg:px-0 lg:w-[45em] flex flex-col "
+            className="m-auto h-full px-4 md:px-10 lg:px-0 lg:w-[45rem] max-w-[50rem] flex flex-col"
           >
             <p
-              onClick={() => navigate("/")}
+              onClick={() => navigate("/invoices")}
               className="flex items-center font-semibold cursor-pointer"
             >
               {" "}
@@ -106,7 +106,7 @@ function ViewInvoice() {
               </div>
 
               <div className="mt-6 text-xs px-6 py-8 rounded-md bg-white dark:bg-secondary">
-                <div className="flex justify-between flex-col md:flex-row gap-4 items-start">
+                <div className="flex justify-between flex-col sm:flex-row  gap-7 items-start">
                   <div className="text-left">
                     {" "}
                     <p className="font-semibold text-sm md:text-lg">
@@ -115,7 +115,7 @@ function ViewInvoice() {
                     </p>
                     <p>Description:{item.description}</p>
                   </div>
-                  <div className=" md:mt-0 mt-4 md:text-right">
+                  <div className="text-left sm:text-right">
                     <p>Address</p>
                     <div className="font-bold mt-3 text-[14px] ">
                       <p className="font-bold text-[16px]">
@@ -133,8 +133,8 @@ function ViewInvoice() {
                   </div>
                 </div>
 
-                <div className="block md:flex md:flex-row  gap-y-4 md:items-start justify-between text-xs my-14 text-left items-start">
-                  <div className="block md:flex justify-between items-start">
+                <div className="flex-col sm:flex-row flex gap-y-4 md:items-start justify-between text-xs my-8 text-left items-start">
+                  <div className="">
                     <div className="pb-3 md:w-48">
                       <p className="pb-1">Invoice Date</p>
                       <p className="font-bold text-[15px] my-2">
@@ -147,31 +147,31 @@ function ViewInvoice() {
                         </p>
                       </div>
                     </div>
-
-                    <div className="md:w-64">
-                      <p className="pb-2">Bill To</p>
-                      <p className="font-bold text-[15px] mb-4">
-                        {item.clientName}
-                      </p>
-                      <div className="my-4 md:my-0">
-                        <p className="mb-3">Address</p>
-                        <div className="font-bold text-[14px] md:w-72">
-                          <p>
-                            {item.clientAddress.street}{" "}
-                            {item.clientAddress.city}
-                          </p>
-
-                          <p className="my-1">{item.clientAddress.postCode} </p>
-                          <p> {item.clientAddress.country}</p>
-                        </div>
-                      </div>
-                    </div>
                   </div>
-                  <div className="w-full md:text-right">
+                  <div className="text-left sm:text-right">
                     <p className="pb-1">Sent to</p>
                     <p className="font-bold text-[15px] my-2">
                       {item.clientEmail}
                     </p>
+                  </div>
+                </div>
+                <div className="flex justify-between flex-col sm:flex-row mb-6 gap-x-8 items-start">
+                  <div>
+                    <p className="pb-2">Bill To</p>
+                    <p className="font-bold text-[15px] mb-4">
+                      {item.clientName}
+                    </p>
+                  </div>
+                  <div className="my-4 md:my-0 text-left sm:text-right">
+                    <p className="mb-3">Address</p>
+                    <div className="font-bold text-[14px] md:w-72">
+                      <p>
+                        {item.clientAddress.street} {item.clientAddress.city}
+                      </p>
+
+                      <p className="my-1">{item.clientAddress.postCode} </p>
+                      <p> {item.clientAddress.country}</p>
+                    </div>
                   </div>
                 </div>
                 <div className="px-4 rounded-tr-md rounded-tl-md bg-gray-300 dark:bg-[#2f324c]">

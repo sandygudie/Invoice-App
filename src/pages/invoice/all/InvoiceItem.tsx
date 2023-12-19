@@ -55,7 +55,7 @@ const InvoiceList = ({ item }: Props) => {
       <div
         className="hidden md:flex justify-start cursor-pointer items-center w-full rounded-md bg-white dark:bg-secondary text-base p-4 my-4 border border-transparent hover:border-primary"
         onClick={() => {
-          navigate(`invoice/${item.id}`);
+          navigate(`/invoice/${item.id}`);
         }}
       >
         <p className="font-bold text-xs">

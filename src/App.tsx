@@ -33,7 +33,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route element={<AppLayout />}>
           <Route path="/invoices" element={<Allinvoices />} />
-          <Route path="invoice/:id" element={<ViewInvoice />} />
+          <Route path="/invoice/:id" element={<ViewInvoice />} />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
