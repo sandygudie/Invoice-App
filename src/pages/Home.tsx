@@ -138,6 +138,7 @@ export default function Home() {
                       "Toggle theme between dark and light mode.",
                       "Form validations.",
                       "Filter options.",
+                      "Pagination.",
                     ].map((ele, index) => {
                       return (
                         <p
