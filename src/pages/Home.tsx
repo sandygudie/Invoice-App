@@ -10,6 +10,7 @@ import { FaGithub } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
+import { MdCircle } from "react-icons/md";
 
 export default function Home() {
   const hero = useRef(null);
@@ -44,29 +45,52 @@ export default function Home() {
 
     { scope: hero }
   );
- 
+  const navItems = [
+    { title: "Features", link: "features" },
+    // { title: "Technologies", link: "technologies" },
+    { title: "Contact", link: "connect" },
+  ];
   return (
     <div ref={hero} className="h-full w-full relative">
       <header className="header flex items-center justify-between px-4 lg:px-16 py-8">
         <Link to="/">
           <img src={logo} alt="logo" />
         </Link>
+        <div className="hidden md:flex items-center gap-x-6">
+          {navItems.map((ele) => {
+            return (
+              <a
+                key={ele.title}
+                href={`#${ele.link}`}
+                className="hover:text-primary"
+              >
+                {ele.title}
+              </a>
+            );
+          })}
+        </div>
       </header>
       <main>
-        <div className="flex flex-wrap items-center mx-4 sm:mx-8 md:mx-24 justify-between">
+        <div className="flex flex-wrap items-center mx-4 sm:mx-8 md:mx-24 justify-between pt-8 pb-20 md:pb-36">
           <div className="px-3 lg:px-0 lg:my-8 text-left w-full lg:w-3/6">
             <h1 className="title font-bold text-4xl md:text-5xl">
               Quick And Easy Invoice Mangement.
             </h1>
             <div className="description ">
               <p className="text-lg md:text-[25px] my-8 font-normal leading-[2.5rem]">
-                Keep track of your business inflows and mange your invoicing
-                process.
+                <p className="flex items-center gap-x-2">
+                  <MdCircle className="text-xs" /> Keep track of your business
+                  inflows.{" "}
+                </p>
+                <p className="flex items-center gap-x-2">
+                  <MdCircle className="text-xs" /> Manage your invoicing
+                  process.
+                </p>
               </p>
               <div className="hover:scale-110 my-8 transition ease-in-out w-fit  delay-100 duration-300">
                 <Link
                   to="/invoices"
-                  className=" bg-white rounded-lg text-black font-medium text-lg px-10 py-4 font-medium"
+                  className=" bg-white rounded-lg text-black  text-lg px-10 py-4 font-semiBold"
                 >
                   Get Started
                 </Link>
@@ -82,12 +106,12 @@ export default function Home() {
         </div>
         <section
           id="features"
-          className="px-4 md:px-0 text-center rounded-b-[9rem] py-24"
+          className="bg-secondary/50 px-4 md:px-0 pt-10 pb-10 md:pb-20 text-center"
         >
-          <h1 className="text-3xl md:text-4xl font-bold mt-24">Features</h1>
+          <h1 className="text-3xl md:text-4xl font-bold py-8">Features</h1>
 
-          <div className="box my-6 md:my-16 ">
-            <div className="simplified-view grid justify-center md:justify-between items-center md:grid-cols-2 md:ml-24">
+          <div className="box my-6 md:my-8 text-center">
+            <div className="simplified-view flex-wrap flex justify-center gap-8 items-center ">
               <img
                 src={invoiceView}
                 className="h-72 lg:h-[26rem]"
@@ -126,21 +150,21 @@ export default function Home() {
 
         <section
           id="connect"
-          className="mt-16 bg-secondary/50 md:mt-36 py-16 text-center"
+          className="bg-secondary/90 pt-24 text-center text-white"
         >
-          <p className="text-4xl md:text-3xl text-white font-bold">
-            {" "}
-            Let&apos;s Talk
+          <p className="text-4xl md:text-3xl font-bold"> Let&apos;s Talk</p>
+          <p className="mt-4 w-5/6 md:w-1/2 mx-auto font-medium">
+            If have any suggestions, get in touch - I&apos;d love to hear from
+            you!
           </p>
-          <p className="text-white text-base mt-4 mb-7 w-5/6 md:w-1/2 mx-auto font-medium">If have any suggestions, get in touch - I&apos;d love to hear from you!</p>
-          <div className="flex mt-8 items-center text-base text-white gap-x-8 justify-center">
+          <div className="flex py-4 pb-12 items-center  text-white gap-x-8 justify-center">
             <Link
               to="https://github.com/sandygudie"
               target="_blank"
               className="hover:text-gray"
             >
               {" "}
-             < FaGithub/>
+              <FaGithub />
             </Link>
             <Link
               target="_blank"
@@ -148,7 +172,7 @@ export default function Home() {
               className="hover:text-gray"
             >
               {" "}
-             < FaLinkedinIn/>
+              <FaLinkedinIn />
             </Link>
             <Link
               target="_blank"
@@ -156,7 +180,7 @@ export default function Home() {
               className="hover:text-gray"
             >
               {" "}
-         <FaExternalLinkAlt />
+              <FaExternalLinkAlt />
             </Link>
             <Link
               target="_blank"
@@ -164,15 +188,15 @@ export default function Home() {
               className="hover:text-gray"
             >
               {" "}
-            <IoMdMail/>
+              <IoMdMail />
             </Link>
+          </div>
+          <div className="w-full pt-12 pb-4 text-xs text-center ">
+            Copyright <span>&copy;</span>
+            {new Date().getFullYear()}. Sandy Goodnews
           </div>
         </section>
       </main>
-      <footer className="py-3 w-full text-sm bg-white text-center text-black">
-        Copyright <span>&copy;</span>
-        {new Date().getFullYear()}. Sandy Goodnews
-      </footer>
     </div>
   );
 }
