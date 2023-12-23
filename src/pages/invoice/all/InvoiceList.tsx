@@ -20,13 +20,13 @@ export default function InvoiceList({ invoices }: Props) {
   };
 
   return (
-    <div className="pb-8 relative ">
-      <div className="h-96">
+    <div className="pb-8 relative h-full ">
+      <div className="">
         {currentItems.map((item: Invoice) => (
           <InvoiceItem item={item} key={item.id} />
         ))}
       </div>
-      <div className="mt-52 mb-12 ">
+      <div className="mt-16 mb-8">
         <ReactPaginate
           breakLabel="..."
           nextLabel="Next"
@@ -40,7 +40,7 @@ export default function InvoiceList({ invoices }: Props) {
           forcePage={currentPage}
           pageLinkClassName="hover:bg-secondary/50 py-3 px-4"
           activeLinkClassName="bg-secondary py-3 px-4 rounded-sm"
-          containerClassName="flex items-center gap-x-2 w-full text-sm justify-end"
+          containerClassName="flex flex-wrap items-center gap-x-2 w-full text-sm justify-end"
           previousLinkClassName="bg-secondary py-3 px-4 rounded-sm"
           nextLinkClassName="bg-secondary py-3 px-4 rounded-sm"
         />
