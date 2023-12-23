@@ -114,65 +114,63 @@ export default function Home() {
           className="bg-secondary/50 px-4 md:px-12 pt-10 pb-10 md:pb-20 text-center"
         >
           <div className="max-w-7xl mx-auto">
-          <h1 className="text-3xl md:text-4xl font-bold py-8 text-left ">Features</h1>
+            <h1 className="text-3xl md:text-4xl font-bold py-8 text-left ">
+              Features
+            </h1>
 
-          <div className="box my-6 md:my-8 text-center">
-            <div className="simplified-view flex-wrap flex justify-center gap-8 items-center ">
-              <img
-                src={invoiceView}
-                className="h-72 lg:h-[26rem]"
-                alt="mutiple-projects"
-              />
-              <div className="text-left md:px-8 py-4">
-                <p className="text-2xl lg:text-3xl font-semibold mb-4">
-                  What you get
-                </p>
-                <div>
-                  {[
-                    "Simplified interactive invoice view.",
-                    "Create and manage all invoice transactions.",
-                    "Optimal layout on device's screen size.",
-                    "Keep track of any changes.",
-                    "Toggle theme between dark and light mode.",
-                    "Form validations.",
-                    "Filter options.",
-                  ].map((ele, index) => {
-                    return (
-                      <p
-                        key={index}
-                        className="lg:text-xl flex items-center gap-x-2 py-2"
-                      >
-                        {" "}
-                        <IoCheckmark size={20} className="text-primary/50" />
-                        {ele}
-                      </p>
-                    );
-                  })}
+            <div className="box my-6 md:my-8 text-center">
+              <div className="simplified-view flex-wrap flex justify-center gap-8 items-center ">
+                <img
+                  src={invoiceView}
+                  className="h-72 lg:h-[26rem]"
+                  alt="mutiple-projects"
+                />
+                <div className="text-left md:px-8 py-4">
+                  <p className="text-2xl lg:text-3xl font-semibold mb-4">
+                    What you get
+                  </p>
+                  <div>
+                    {[
+                      "Simplified interactive invoice view.",
+                      "Create and manage all invoice transactions.",
+                      "Optimal layout on device's screen size.",
+                      "Keep track of any changes.",
+                      "Toggle theme between dark and light mode.",
+                      "Form validations.",
+                      "Filter options.",
+                    ].map((ele, index) => {
+                      return (
+                        <p
+                          key={index}
+                          className="lg:text-xl flex items-center gap-x-2 py-2"
+                        >
+                          {" "}
+                          <IoCheckmark size={20} className="text-primary/50" />
+                          {ele}
+                        </p>
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
+
+              {/* <h2 className="text-3xl font-bold text-left">Views</h2> */}
+              <div className="flex flex-wrap items-center mt-4 md:mt-20 gap-8 md:gap-x-16 justify-center">
+                <img
+                  src={viewInvoice}
+                  className="h-44 md:h-80 w-auto"
+                  alt="mutiple-projects"
+                />
+                <img
+                  src={editIvoice}
+                  className="h-44 md:h-80 w-auto"
+                  alt="mutiple-projects"
+                />
+              </div>
             </div>
-          
-          {/* <h2 className="text-3xl font-bold text-left">Views</h2> */}
-          <div className="flex flex-wrap items-center mt-4 md:mt-20 gap-y-8 md:gap-x-16 justify-center">
-          <img
-            src={viewInvoice}
-            className="h-36 md:h-80 w-auto"
-            alt="mutiple-projects"
-          />
-          <img
-            src={editIvoice}
-            className="h-36 md:h-80 w-auto"
-            alt="mutiple-projects"
-          />
           </div>
-          </div>
-          </div>
-   
         </section>
-        <section className="py-18 bg-secondary/50 px-4 md:px-12">
-        
-        
-        </section>
+        <section className="py-18 bg-secondary/50 px-4 md:px-12"></section>
         <section
           id="connect"
           className="bg-secondary/90 pt-24 text-center text-white"
