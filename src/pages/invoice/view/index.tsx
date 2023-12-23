@@ -88,7 +88,7 @@ function ViewInvoice() {
                   <button
                     onClick={() => {
                       deleteInvoice(item.id);
-                      navigate("/");
+                      navigate("/invoices");
                     }}
                     className="rounded-3xl text-sm md:text-base font-semibold bg-pink  p-2 mr-6 md:py-3 md:px-5"
                   >

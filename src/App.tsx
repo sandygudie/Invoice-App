@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 import LoadingSpinner from "./components/LoadingSpinner";
 import AppLayout from "./components/layout";
@@ -8,19 +8,6 @@ import ViewInvoice from "./pages/invoice/view";
 import Home from "./pages/Home";
 
 function App() {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    if (
-      localStorage.theme === "dark" ||
-      (!("theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches)
-    ) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, []);
-
   return (
     <React.Suspense
       fallback={

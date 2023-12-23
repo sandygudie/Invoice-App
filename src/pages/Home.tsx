@@ -4,6 +4,8 @@ import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import logo from "../assets/logo.svg";
 import invoiceView from "../assets/invoice-view.webp";
+import viewInvoice from "../assets/new-invoice.webp";
+import editIvoice from "../assets/edit-invoice.webp";
 import invoiceIllustration from "../assets/invoice-illustration.webp";
 import { IoCheckmark } from "react-icons/io5";
 import { FaGithub } from "react-icons/fa";
@@ -51,8 +53,11 @@ export default function Home() {
     { title: "Contact", link: "connect" },
   ];
   return (
-    <div ref={hero} className="h-full w-full relative">
-      <header className="header flex items-center justify-between px-4 lg:px-16 py-8">
+    <div
+      ref={hero}
+      className="h-screen right-0 w-full bg-[#141624] text-white top-0 fixed overflow-y-scroll"
+    >
+      <header className="header flex items-center max-w-7xl mx-auto justify-between px-4 lg:px-16 py-8">
         <Link to="/">
           <img src={logo} alt="logo" />
         </Link>
@@ -71,8 +76,8 @@ export default function Home() {
         </div>
       </header>
       <main>
-        <div className="flex flex-wrap items-center mx-4 sm:mx-8 md:mx-24 justify-between pt-8 pb-20 md:pb-36">
-          <div className="px-3 lg:px-0 lg:my-8 text-left w-full lg:w-3/6">
+        <div className="flex flex-wrap items-center mx-4 sm:mx-8 md:mx-24 md:justify-between 2xl:justify-center pt-8 pb-20 md:pb-36">
+          <div className="px-3 lg:px-0 lg:my-8 text-left w-full lg:w-3/6 max-w-xl">
             <h1 className="title font-bold text-4xl md:text-5xl">
               Quick And Easy Invoice Mangement.
             </h1>
@@ -87,10 +92,10 @@ export default function Home() {
                   process.
                 </p>
               </p>
-              <div className="hover:scale-110 my-8 transition ease-in-out w-fit  delay-100 duration-300">
+              <div className="hover:scale-110 my-8 transition ease-in-out w-fit delay-100 duration-300">
                 <Link
                   to="/invoices"
-                  className=" bg-white rounded-lg text-black  text-lg px-10 py-4 font-semiBold"
+                  className=" bg-white rounded-lg text-black text-lg px-10 py-4 font-semiBold"
                 >
                   Get Started
                 </Link>
@@ -106,9 +111,10 @@ export default function Home() {
         </div>
         <section
           id="features"
-          className="bg-secondary/50 px-4 md:px-0 pt-10 pb-10 md:pb-20 text-center"
+          className="bg-secondary/50 px-4 md:px-12 pt-10 pb-10 md:pb-20 text-center"
         >
-          <h1 className="text-3xl md:text-4xl font-bold py-8">Features</h1>
+          <div className="max-w-7xl mx-auto">
+          <h1 className="text-3xl md:text-4xl font-bold py-8 text-left ">Features</h1>
 
           <div className="box my-6 md:my-8 text-center">
             <div className="simplified-view flex-wrap flex justify-center gap-8 items-center ">
@@ -117,7 +123,7 @@ export default function Home() {
                 className="h-72 lg:h-[26rem]"
                 alt="mutiple-projects"
               />
-              <div className="text-left md:px-8 py-8 md:py-4">
+              <div className="text-left md:px-8 py-4">
                 <p className="text-2xl lg:text-3xl font-semibold mb-4">
                   What you get
                 </p>
@@ -145,9 +151,28 @@ export default function Home() {
                 </div>
               </div>
             </div>
+          
+          {/* <h2 className="text-3xl font-bold text-left">Views</h2> */}
+          <div className="flex flex-wrap items-center mt-4 md:mt-20 gap-y-8 md:gap-x-16 justify-center">
+          <img
+            src={viewInvoice}
+            className="h-36 md:h-80 w-auto"
+            alt="mutiple-projects"
+          />
+          <img
+            src={editIvoice}
+            className="h-36 md:h-80 w-auto"
+            alt="mutiple-projects"
+          />
           </div>
+          </div>
+          </div>
+   
         </section>
-
+        <section className="py-18 bg-secondary/50 px-4 md:px-12">
+        
+        
+        </section>
         <section
           id="connect"
           className="bg-secondary/90 pt-24 text-center text-white"

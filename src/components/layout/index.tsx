@@ -1,9 +1,22 @@
+import { useEffect } from "react";
 import logo from "../../assets/logo.svg";
 import Profile from "../Profile";
 import ThemeToggle from "../ThemeToggle";
 import { Outlet } from "react-router-dom";
 
 function AppLayout() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    if (
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, []);
   return (
     <div id="app_container" className="w-full h-screen">
       <Navigation />
