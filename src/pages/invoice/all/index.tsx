@@ -73,8 +73,8 @@ function InvoiceBoard() {
            </div>
             <p className="text-base my-4 text-gray-200">
               {" "}
-              <span className="hidden font-bold text-xl">No {status} Item</span>{" "}
-              Creating your first invoice!
+              <span className="hidden font-semiBold text-xl">No {status} Item</span>{" "}
+              Create your first invoice!
             </p>
             <button
               onClick={() => {
