@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
 import { Invoice, AppContextState } from "../types";
-import { loadState } from "../utils";
+import { loadState, saveState } from "../utils";
 
 export const AppContext = createContext<AppContextState | null>(null);
 
@@ -12,18 +12,16 @@ export const AppProvider = ({
   const [invoices, setInvoices] = useState<Invoice[]>([]);
 
   useEffect(() => {
-   const data = loadState()
-   console.log(data)
-   setInvoices(data)
+    const data = loadState();
+    setInvoices(data);
   }, [setInvoices]);
-
 
   const createPaidInvoice = (invoiceItem: Invoice) => {
     const newInvoice: Invoice = {
       ...invoiceItem,
     };
     setInvoices((prevState: Invoice[]) => [newInvoice, ...prevState]);
-    localStorage.setItem("invoices", JSON.stringify([newInvoice, ...invoices]));
+    saveState([newInvoice, ...invoices]);
   };
 
   const createDraftInvoice = (invoiceItem: Invoice) => {
@@ -31,12 +29,12 @@ export const AppProvider = ({
       ...invoiceItem,
     };
     setInvoices((prevState: Invoice[]) => [newInvoice, ...prevState]);
-    localStorage.setItem("invoices", JSON.stringify([newInvoice, ...invoices]));
+    saveState([newInvoice, ...invoices]);
   };
 
   const editInvoice = (invoiceItem: Invoice[]) => {
     setInvoices(invoiceItem);
-    localStorage.setItem("invoices", JSON.stringify(invoiceItem));
+    saveState(invoiceItem);
   };
 
   const deleteInvoice = (id: string) => {
@@ -44,7 +42,7 @@ export const AppProvider = ({
       return id !== invoice.id;
     });
     setInvoices(newInvoice);
-    localStorage.setItem("invoices", JSON.stringify(newInvoice));
+    saveState(newInvoice);
   };
 
   const viewInvoice = (id: string) => {
@@ -58,7 +56,7 @@ export const AppProvider = ({
       }
       return invoice;
     });
-    localStorage.setItem("invoices", JSON.stringify(newInvoice));
+    saveState(newInvoice);
     setInvoices(newInvoice);
   };
 
