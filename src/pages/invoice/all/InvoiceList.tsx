@@ -37,12 +37,11 @@ export default function InvoiceList({ invoices }: Props) {
           previousLabel="Prev"
           renderOnZeroPageCount={null}
           initialPage={0}
-          forcePage={currentPage}
           pageLinkClassName="hover:bg-secondary/50 py-3 px-4"
           activeLinkClassName="bg-secondary py-3 px-4 rounded-sm"
           containerClassName="flex flex-wrap items-center gap-x-2 w-full text-sm justify-end"
-          previousLinkClassName="bg-secondary py-3 px-4 rounded-sm"
-          nextLinkClassName="bg-secondary py-3 px-4 rounded-sm"
+          previousLinkClassName={`${currentPage <1? "hidden":"block"} bg-secondary py-3 px-4 rounded-sm`}
+          nextLinkClassName={`${endOffset >= invoices.length? "hidden":"block"} bg-secondary py-3 px-4 rounded-sm`}
         />
       </div>
     </div>
