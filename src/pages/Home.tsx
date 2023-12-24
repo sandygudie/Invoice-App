@@ -81,13 +81,13 @@ export default function Home() {
             <h1 className="title font-bold text-4xl md:text-5xl">
               Quick And Easy Invoice Mangement.
             </h1>
-            <div className="description ">
+            <div className="description">
               <p className="text-lg md:text-[25px] my-8 font-normal leading-[2.5rem]">
-                <p className="flex items-center gap-x-2">
+                <p className="flex items-center justify-start gap-x-4 md:gap-x-2">
                   <MdCircle className="text-xs" /> Keep track of your business
                   inflows.{" "}
                 </p>
-                <p className="flex items-center gap-x-2">
+                <p className="flex items-center justify-start gap-x-4 md:gap-x-2">
                   <MdCircle className="text-xs" /> Manage your invoicing
                   process.
                 </p>
