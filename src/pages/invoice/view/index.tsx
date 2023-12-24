@@ -56,8 +56,8 @@ function ViewInvoice() {
 
             {/* Desktop*/}
             <>
-              <div className="mt-4 flex justify-between px-6 py-2 rounded-md bg-white dark:bg-secondary">
-                <div className="flex items-center justify-between w-full md:w-20">
+              <div className="mt-4 flex relative justify-between shadow-lg px-6 py-2 rounded-md bg-white dark:bg-secondary">
+                <div className="flex items-center justify-between w-full sm:w-20">
                   {" "}
                   <span className="mr-4"> Status</span>
                   <div
@@ -76,12 +76,15 @@ function ViewInvoice() {
                   </div>
                 </div>
 
-                <div className="md:inline flex md:justify-center fixed bottom-0 right-0 bg-white w-full dark:bg-secondary py-4 md:relative md:w-auto text-white text-sm">
+                <div
+                  className="flex gap-x-3 justify-between rounded-md px-4 md:justify-center absolute -bottom-20 right-0 bg-white w-full dark:bg-secondary py-4 
+                sm:static sm:w-auto text-white text-sm"
+                >
                   <button
                     onClick={() => {
                       setIsEdit(true);
                     }}
-                    className="rounded-3xl text-sm md:text-base bg-gray-300 font-semibold  p-2 mr-2 md:py-3 md:px-5"
+                    className="rounded-xl sm:rounded-3xl text-xs sm:text-sm bg-gray-300 font-semibold md:text-base py-2 md:py-3 px-3"
                   >
                     Edit
                   </button>
@@ -90,22 +93,22 @@ function ViewInvoice() {
                       deleteInvoice(item.id);
                       navigate("/invoices");
                     }}
-                    className="rounded-3xl text-sm md:text-base font-semibold bg-pink  p-2 mr-6 md:py-3 md:px-5"
+                    className="rounded-xl sm:rounded-3xl text-xs sm:text-sm font-semibold bg-pink py-2 md:py-3 px-3"
                   >
                     Delete
                   </button>
                   {item.status !== "paid" && (
                     <button
                       onClick={() => addPaidInvoice(item.id)}
-                      className="rounded-3xl text-sm md:text-base bg-primary font-semibold  p-2 md:py-3 md:px-4"
+                      className="rounded-xl sm:rounded-3xl text-xs sm:text-sm bg-primary font-semibold py-2 md:py-3 px-3"
                     >
-                      Mark As Paid
+                    <span className="hidden md:inline">  Mark As </span>Paid
                     </button>
                   )}
                 </div>
               </div>
 
-              <div className="mt-6 text-xs px-6 py-8 rounded-md bg-white dark:bg-secondary">
+              <div className="mt-24 md:mt-6 text-xs px-6 shadow-lg py-8 rounded-md bg-white dark:bg-secondary">
                 <div className="flex justify-between flex-col sm:flex-row  gap-7 items-start">
                   <div className="text-left">
                     {" "}

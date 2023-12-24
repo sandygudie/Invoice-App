@@ -80,7 +80,7 @@ const InvoiceList = ({ item }: Props) => {
                 : "bg-gray-300"
             } py-3 px-4 text-center flex justify-center items-center lg:text-xs font-bold rounded-md w-[110px]`}
           >
-            <span className="mr-1 lg:text-md text-xs">
+            <span className="mr-1 text-xs">
               <VscCircleFilled />
             </span>{" "}
             {capitalize(item.status)}

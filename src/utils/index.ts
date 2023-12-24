@@ -1,5 +1,8 @@
 import dayjs from "dayjs";
+import { Invoice } from "../types";
+// import { data } from "../data";
 
+const data: never[] = [];
 export const capitalize = (text: string) => {
   return text.charAt(0).toUpperCase() + text.slice(1);
 };
@@ -25,4 +28,16 @@ export const randomId = () => {
     randomNum += number[randomChr];
   }
   return randomStr + randomNum;
+};
+
+export const loadState = () => {
+  if (localStorage.getItem("invoices") === null) {
+    localStorage.setItem("invoices", JSON.stringify(data));
+  } else {
+    return JSON.parse(localStorage.getItem("invoices") || "");
+  }
+};
+
+export const saveState = (invoiceItem: Invoice[]) => {
+  localStorage.setItem("invoices", JSON.stringify(invoiceItem));
 };

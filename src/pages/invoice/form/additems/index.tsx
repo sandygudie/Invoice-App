@@ -6,7 +6,7 @@ const AddItem = ({ name }: string | any) => {
 
   return (
     <div className="my-12">
-      <h1 className="text-md font-bold text-primary"> Item List</h1>
+      <h1 className="font-bold text-primary"> Item List</h1>
       <FieldArray
         name={name}
         render={(arrayHelpers) => (

@@ -1,9 +1,9 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
-// import { data } from "../data";
 import { Invoice, AppContextState } from "../types";
+import { loadState } from "../utils";
 
 export const AppContext = createContext<AppContextState | null>(null);
-let data: never[] = [];
+
 export const AppProvider = ({
   children,
 }: {
@@ -12,12 +12,9 @@ export const AppProvider = ({
   const [invoices, setInvoices] = useState<Invoice[]>([]);
 
   useEffect(() => {
-    if (localStorage.getItem("invoices") === null) {
-      localStorage.setItem("invoices", JSON.stringify(data));
-    }else{
-    let data =  JSON.parse(localStorage.getItem("invoices") || "")
-      setInvoices(data)
-    }
+   const data = loadState()
+   console.log(data)
+   setInvoices(data)
   }, [setInvoices]);
 
 

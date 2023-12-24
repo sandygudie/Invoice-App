@@ -121,7 +121,7 @@ function Header({ setOpen, invoices, filterInvoice }: Props) {
               <span className="p-2  bg-white rounded-full text-center text-primary">
               <IoMdAdd />
               </span>
-              <span className="md:text-md text-xs pt-1 px-2 lg:px-3">
+              <span className="text-xs pt-1 px-2 lg:px-3">
                 {" "}
                 New <span className="md:inline hidden"> Invoice</span>
               </span>

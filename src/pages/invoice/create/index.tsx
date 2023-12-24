@@ -103,12 +103,12 @@ function CreateInvoice({ setOpen }: Props) {
                   <button
                     type="button"
                     onClick={() => addDraftInvoice(values)}
-                    className="p-3 text-xs md:text-sm rounded-3xl md:py-3 md:px-4 bg-gray-200 my-4"
+                    className="p-3 text-xs md:text-sm text-white rounded-3xl md:py-3 md:px-4 bg-gray-200 my-4"
                   >
                     Save as Draft
                   </button>
                   <button
-                    className="p-3 text-xs md:text-sm rounded-3xl md:py-3 md:px-4 bg-primary my-4"
+                    className="p-3 text-xs md:text-sm text-white rounded-3xl md:py-3 md:px-4 bg-primary my-4"
                     type="submit"
                   >
                     Save & Send
