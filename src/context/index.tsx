@@ -3,7 +3,7 @@ import { data } from "../data";
 import { Invoice, AppContextState } from "../types";
 
 export const AppContext = createContext<AppContextState | null>(null);
-// let data:[] = [];
+// let data: never[] = [];
 export const AppProvider = ({
   children,
 }: {

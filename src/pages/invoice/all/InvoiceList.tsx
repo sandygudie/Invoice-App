@@ -26,24 +26,30 @@ export default function InvoiceList({ invoices }: Props) {
           <InvoiceItem item={item} key={item.id} />
         ))}
       </div>
-      <div className="mt-16 mb-8">
-        <ReactPaginate
-          breakLabel="..."
-          nextLabel="Next"
-          onPageChange={handlePageClick}
-          pageRangeDisplayed={5}
-          marginPagesDisplayed={2}
-          pageCount={pageCount}
-          previousLabel="Prev"
-          renderOnZeroPageCount={null}
-          initialPage={0}
-          pageLinkClassName="hover:bg-secondary/50 py-3 px-4"
-          activeLinkClassName="bg-secondary py-3 px-4 rounded-sm"
-          containerClassName="flex flex-wrap items-center gap-x-2 w-full text-sm justify-end"
-          previousLinkClassName={`${currentPage <1? "hidden":"block"} bg-secondary py-3 px-4 rounded-sm`}
-          nextLinkClassName={`${endOffset >= invoices.length? "hidden":"block"} bg-secondary py-3 px-4 rounded-sm`}
-        />
-      </div>
+      {invoices.length > itemsPerPage ? (
+        <div className="mt-16 mb-8">
+          <ReactPaginate
+            breakLabel="..."
+            nextLabel="Next"
+            onPageChange={handlePageClick}
+            pageRangeDisplayed={5}
+            marginPagesDisplayed={2}
+            pageCount={pageCount}
+            previousLabel="Prev"
+            renderOnZeroPageCount={null}
+            initialPage={0}
+            pageLinkClassName="hover:bg-secondary/50 py-2 px-4"
+            activeLinkClassName="bg-secondary py-2 px-4 text-white rounded-sm"
+            containerClassName="flex flex-wrap items-center font-bold  gap-x-2 w-full text-sm justify-end"
+            previousLinkClassName={`${
+              currentPage < 1 ? "hidden" : "block"
+            } text-white bg-secondary py-2 px-4 rounded-sm`}
+            nextLinkClassName={`${
+              endOffset >= invoices.length ? "hidden" : "block"
+            } text-white bg-secondary py-2 px-4 rounded-sm`}
+          />
+        </div>
+      ) : null}
     </div>
   );
 }

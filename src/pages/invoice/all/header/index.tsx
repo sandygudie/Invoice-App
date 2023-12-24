@@ -78,7 +78,7 @@ function Header({ setOpen, invoices, filterInvoice }: Props) {
               {isOpenFilter && (
                 <div
                   ref={popupRef}
-                  className="absolute bg-skin-fill shadow-lg top-10 px-4 py-2 items-start w-[200px] rounded-lg flex flex-col -left-15 "
+                  className="absolute bg-skin-fill shadow-lg top-5 z-30 px-4 py-2 items-start w-[200px] rounded-lg flex flex-col -left-15 "
                 >
                   <CheckBox
                     changed={(e: any) => radioChangeHandler(e, "paid")}
