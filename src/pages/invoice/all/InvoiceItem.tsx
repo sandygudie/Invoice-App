@@ -16,7 +16,7 @@ const InvoiceList = ({ item }: Props) => {
       <div
         className="md:hidden cursor-pointer rounded-md bg-white dark:bg-secondary text-base p-4 my-4 border border-transparent hover:border-primary"
         onClick={() => {
-          navigate(`invoice/${item.id}`);
+          navigate(`/invoice/${item.id}`);
         }}
       >
         <div className="flex justify-between items-center font-semibold mb-4">
@@ -32,7 +32,7 @@ const InvoiceList = ({ item }: Props) => {
             <p className=" font-semibold text-xs text-gray-200 mb-2">
               Due {formatDate(item.paymentDue)}
             </p>
-            <p className="font-semibold text-sm">£{item.total}</p>
+            <p className="font-semibold text-sm"> {item.currency}{" "} {item.total}</p>
           </div>
           <div
             className={`${
@@ -68,7 +68,7 @@ const InvoiceList = ({ item }: Props) => {
         </p>
         <p className="w-64 text-xs text-gray-200"> {item.clientName}</p>
 
-        <p className="font-bold w-64 text-right text-sm">£{item.total}</p>
+        <p className="font-bold w-64 text-right text-sm"> {item.currency}{" "}{item.total}</p>
         <div className="flex items-center ml-6">
           {" "}
           <div

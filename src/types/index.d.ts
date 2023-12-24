@@ -4,6 +4,8 @@ export interface Invoice {
   paymentDue: string | date;
   description: string;
   paymentTerms: number;
+  paymentMethod:string,
+  currency:string,
   clientName: string;
   clientEmail: string;
   status: string;
@@ -29,6 +31,8 @@ export interface InitialValues {
   paymentTerms: number;
   clientName: string;
   clientEmail: string;
+  paymentMethod:string,
+  currency:string,
   senderAddress: {
     street: string;
     city: string;
@@ -50,7 +54,6 @@ export interface AppContextState {
   addPaidInvoice: (id: string) => void;
   createPaidInvoice: (invoices: Invoice) => void;
   createDraftInvoice: (invoices: Invoice) => void;
- 
   editInvoice: (invoices: Invoice[]) => void;
   viewInvoice: (id: string) => void;
 }

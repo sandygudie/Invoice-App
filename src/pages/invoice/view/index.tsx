@@ -102,14 +102,14 @@ function ViewInvoice() {
                       onClick={() => addPaidInvoice(item.id)}
                       className="rounded-xl sm:rounded-3xl text-xs sm:text-sm bg-primary font-semibold py-2 md:py-3 px-3"
                     >
-                    <span className="hidden md:inline">  Mark As </span>Paid
+                      <span className="hidden md:inline"> Mark As </span>Paid
                     </button>
                   )}
                 </div>
               </div>
 
               <div className="mt-24 md:mt-6 text-xs px-6 shadow-lg py-8 rounded-md bg-white dark:bg-secondary">
-                <div className="flex justify-between flex-col sm:flex-row  gap-7 items-start">
+                <div className="flex justify-between flex-col sm:flex-row gap-7 items-start">
                   <div className="text-left">
                     {" "}
                     <p className="font-semibold text-sm md:text-lg">
@@ -118,20 +118,16 @@ function ViewInvoice() {
                     </p>
                     <p>Description:{item.description}</p>
                   </div>
-                  <div className="text-left sm:text-right">
+                  <div className="text-left md:w-96 sm:text-right">
                     <p>Address</p>
-                    <div className="font-bold mt-3 text-[14px] ">
-                      <p className="font-bold text-[16px]">
-                        {item.senderAddress.street} {item.senderAddress.city}
-                      </p>
-                      <p className="my-1 font-bold text-[16px]">
+                    <div className="font-bold mt-3 md:text-[15px]">
+                      <p className="font-bold ">{item.senderAddress.street}</p>
+                      <p className="font-bold ">{item.senderAddress.city}</p>
+                      <p className="my-1 font-bold ">
                         {" "}
                         {item.senderAddress.postCode}
                       </p>
-                      <p className="font-bold text-[16px]">
-                        {" "}
-                        {item.senderAddress.country}
-                      </p>
+                      <p className="font-bold"> {item.senderAddress.country}</p>
                     </div>
                   </div>
                 </div>
@@ -140,12 +136,12 @@ function ViewInvoice() {
                   <div className="">
                     <div className="pb-3 md:w-48">
                       <p className="pb-1">Invoice Date</p>
-                      <p className="font-bold text-[15px] my-2">
+                      <p className="font-bold md:text-[15px] my-2">
                         {formatDate(item.createdAt)}
                       </p>
                       <div className="mt-4">
                         <p className="pb-1">Payment Due</p>
-                        <p className="font-bold text-[15px] my-2">
+                        <p className="font-bold md:text-[15px] my-2">
                           {formatDate(item.paymentDue)}
                         </p>
                       </div>
@@ -153,7 +149,7 @@ function ViewInvoice() {
                   </div>
                   <div className="text-left sm:text-right">
                     <p className="pb-1">Sent to</p>
-                    <p className="font-bold text-[15px] my-2">
+                    <p className="font-bold md:text-[15px] my-2">
                       {item.clientEmail}
                     </p>
                   </div>
@@ -167,17 +163,16 @@ function ViewInvoice() {
                   </div>
                   <div className="my-4 md:my-0 text-left sm:text-right">
                     <p className="mb-3">Address</p>
-                    <div className="font-bold text-[14px] md:w-72">
+                    <div className="font-bold md:text-[15px] md:w-72">
                       <p>
                         {item.clientAddress.street} {item.clientAddress.city}
                       </p>
-
                       <p className="my-1">{item.clientAddress.postCode} </p>
                       <p> {item.clientAddress.country}</p>
                     </div>
                   </div>
                 </div>
-                <div className="px-4 rounded-tr-md rounded-tl-md bg-gray-300 dark:bg-[#2f324c]">
+                <div className="px-4 rounded-tr-md text-[14px] rounded-tl-md bg-gray-300 dark:bg-[#2f324c]">
                   <table className={`hidden md:table ${classes.table}`}>
                     <thead>
                       <tr>
@@ -191,7 +186,10 @@ function ViewInvoice() {
                     <tbody>
                       {item.items.map((itemlist: any, i: number) => (
                         <tr key={i}>
-                          <td className="font-semibold"> {itemlist.name}</td>
+                          <td className="font-semibold text-lg">
+                            {" "}
+                            {itemlist.name}
+                          </td>
                           <td> {itemlist.quantity}</td>
                           <td> {itemlist.price}</td>
                           <td className="font-semibold"> {itemlist.total}</td>
@@ -213,16 +211,17 @@ function ViewInvoice() {
                         </p>
                       </div>
                       <div className="font-bold">
-                        £{itemlist.quantity * itemlist.price}
+                        {item.currency}{" "}{itemlist.quantity * itemlist.price}
                       </div>
                     </div>
                   ))}
                 </div>
 
-                <div className="flex justify-between items-center rounded-br-md rounded-bl-md p-4 md:p-8 md:pr-14 text-white bg-secondary dark:bg-skin-fill">
-                  <p>Total Amount</p>
+                <div className="flex justify-between md:text-lg items-center rounded-br-md rounded-bl-md p-4 md:p-8 md:pr-14 text-white bg-secondary dark:bg-skin-fill">
+                  <p>Total Amount</p> 
+                  <p className="text-success font-bold">{item.status === "paid"?item.paymentMethod:null}</p>
                   <p className="md:text-2xl text-lg font-semibold">
-                    £{item.total}
+                  {item.currency}{" "} {item.total}
                   </p>
                 </div>
               </div>

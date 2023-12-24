@@ -1,11 +1,11 @@
 import { Form, Formik } from "formik";
 import { useContext } from "react";
 import { AppContextState, InitialValues, Invoice } from "../../../types";
-import { validationSchema } from "../../../utils/form/form";
+import { validationSchema } from "../../../utils/form/validation";
 import { Dispatch, SetStateAction } from "react";
 import { ScrollToFieldError } from "../../../utils/form/fieldError";
-import AddInvoice from "../form/AddInvoice";
-import AddItem from "../form/additems";
+import AddInvoice from "../../../components/Form/AddInvoice";
+import AddItem from "../../../components/Form/Additems";
 import classes from "../../../styles/index.module.css";
 import { AppContext } from "../../../context";
 import { motion } from "framer-motion";
@@ -58,6 +58,8 @@ function EditInvoice({ setIsEdit, id, invoice }: Props) {
             clientAddress: invoice.clientAddress,
             createdAt: new Date(invoice.createdAt),
             paymentTerms: invoice.paymentTerms,
+            paymentMethod: invoice.paymentMethod,
+            currency: invoice.currency,
             description: invoice.description,
             items: invoice.items,
           }}

@@ -1,11 +1,11 @@
 import { Form, Formik } from "formik";
 import { useContext } from "react";
 import { AppContextState, InitialValues, Invoice } from "../../../types";
-import { initialValues, validationSchema } from "../../../utils/form/form";
+import { initialValues, validationSchema } from "../../../utils/form/validation";
 import { Dispatch, SetStateAction } from "react";
 import { ScrollToFieldError } from "../../../utils/form/fieldError";
-import AddInvoice from "../form/AddInvoice";
-import AddItem from "../form/additems";
+import AddInvoice from "../../../components/Form/AddInvoice";
+import AddItem from "../../../components/Form/Additems";
 import classes from "../../../styles/index.module.css";
 import dayjs from "dayjs";
 import { AppContext } from "../../../context";
@@ -22,6 +22,7 @@ function CreateInvoice({ setOpen }: Props) {
   ) as AppContextState;
 
   const onSubmit = (values: InitialValues) => {
+    console.log(values)
     const total_invoice = values.items.reduce(
       (accumulator: number, object: any) => {
         return accumulator + object.total;

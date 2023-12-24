@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import { Invoice } from "../types";
 // import { data } from "../data";
 
-const data: never[] = [];
+const data:[] = [];
 
 export const loadState = () => {
   if (localStorage.getItem("invoice") === null) {
