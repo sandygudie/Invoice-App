@@ -7,6 +7,7 @@ import Header from "./header";
 import { motion } from "framer-motion";
 import { IoMdAdd } from "react-icons/io";
 import emptyState from "../../../assets/empty-state.webp";
+import Table from "../../../components/Table";
 
 function InvoiceBoard() {
   const { invoices } = useContext(AppContext) as AppContextState;
@@ -57,7 +58,7 @@ function InvoiceBoard() {
         initial={{ opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.7 }}
-        className="mx-auto px-4 lg:pl-4 lg:w-[45rem] w-full"
+        className="mx-auto px-8 lg:pl-4 lg:w-[50rem] w-full"
       >
         <Header
           setOpen={setIsOpen}
@@ -65,7 +66,8 @@ function InvoiceBoard() {
           filterInvoice={filterInvoice}
         />
         {invoices.length ? (
-          <InvoiceList invoices={filtered.length ? filtered : invoices} />
+          // <InvoiceList invoices={filtered.length ? filtered : invoices} />
+         <Table  invoices={filtered.length ? filtered : invoices} />
         ) : (
           <div className="h-[60vh] md:h-[80vh] flex flex-col items-center justify-center">
            <div className="w-64 md:w-96">

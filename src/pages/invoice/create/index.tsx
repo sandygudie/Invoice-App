@@ -22,7 +22,7 @@ function CreateInvoice({ setOpen }: Props) {
   ) as AppContextState;
 
   const onSubmit = (values: InitialValues) => {
-    console.log(values)
+
     const total_invoice = values.items.reduce(
       (accumulator: number, object: any) => {
         return accumulator + object.total;
