@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AppContextState, Invoice } from "../../../types";
 import { AppContext } from "../../../context";
-import InvoiceList from "./InvoiceList";
+// import InvoiceList from "./InvoiceList";
 import CreateInvoice from "../create";
 import Header from "./header";
 import { motion } from "framer-motion";
@@ -47,7 +47,7 @@ function InvoiceBoard() {
         (invoice: Invoice) => invoice.status === "pending"
       );
       setFiltered(newInvoice);
-    } 
+    }
     // else if(status === "all"){
     //   setStatus(status);
     //   setFiltered(invoices);
@@ -58,9 +58,7 @@ function InvoiceBoard() {
       setFiltered(invoices);
     }
   };
-console.log(filtered)
 
-console.log(status)
   return (
     <>
       <motion.div
@@ -76,15 +74,21 @@ console.log(status)
         />
         {invoices.length ? (
           // <InvoiceList invoices={filtered.length ? filtered : invoices} />
-         <Table  invoices={filtered} />
+          <Table status={status} invoices={filtered} />
         ) : (
           <div className="h-[60vh] md:h-[80vh] flex flex-col items-center justify-center">
-           <div className="w-64 md:w-96">
-           <img src={emptyState} className="w-64 md:w-96" alt="empty-state" />
-           </div>
+            <div className="w-64 md:w-96">
+              <img
+                src={emptyState}
+                className="w-64 md:w-96"
+                alt="empty-state"
+              />
+            </div>
             <p className="text-base my-4 text-gray-200">
               {" "}
-              <span className="hidden font-semiBold text-xl">No {status} Item</span>{" "}
+              <span className="hidden font-semiBold text-xl">
+                No {status} Item
+              </span>{" "}
               Create your first invoice!
             </p>
             <button

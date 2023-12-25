@@ -64,9 +64,14 @@ const columns = [
   }),
 ];
 
-export default function Index({ invoices }: any) {
+interface TableProps {
+  invoices: Invoice[];
+  status: string;
+}
+export default function Index({ invoices, status }: TableProps) {
   const data = invoices;
   const navigate = useNavigate();
+
   const table = useReactTable({
     data,
     columns,
@@ -99,31 +104,40 @@ export default function Index({ invoices }: any) {
             </tr>
           ))}
         </thead>
-        <tbody className="">
-          {table.getRowModel().rows.map((row) => (
-            <tr
-              onClick={() => {
-                navigate(`/invoice/${row.original.id}`);
-              }}
-              style={{ outline: "1px solid" }}
-              className="text-sm cursor-pointer bg-white
+        {data.length ? (
+          <tbody className="">
+            {table.getRowModel().rows.map((row) => (
+              <tr
+                onClick={() => {
+                  navigate(`/invoice/${row.original.id}`);
+                }}
+                style={{ outline: "1px solid" }}
+                className="text-sm cursor-pointer bg-white
                dark:bg-secondary text-center outline-none rounded-md hover:outline-primary/50"
-              key={row.id}
-            >
-              {row.getVisibleCells().map((cell, i) => (
-                <td
-                  key={cell.id}
-                  className={`${i < 1 ? "rounded-l-md" : ""} ${
-                    i === 4 ? "rounded-r-md" : ""
-                  } py-6`}
-                >
-                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                </td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
+                key={row.id}
+              >
+                {row.getVisibleCells().map((cell, i) => (
+                  <td
+                    key={cell.id}
+                    className={`${i < 1 ? "rounded-l-md" : ""} ${
+                      i === 4 ? "rounded-r-md" : ""
+                    } py-6`}
+                  >
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        ) : null}
       </table>
+      {!data.length && (
+        <div className="w-full text-center mt-5">
+          <span className="font-semiBold text-xl">
+            No {status} invoice
+          </span>{" "}
+        </div>
+      )}
     </div>
   );
 }
