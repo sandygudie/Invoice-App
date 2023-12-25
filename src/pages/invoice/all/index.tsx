@@ -24,7 +24,6 @@ function InvoiceBoard() {
       temp.style.position = "initial";
     }
     filterInvoice(status);
-    // setFiltered(invoices)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [invoices]);
 
@@ -65,7 +64,7 @@ function InvoiceBoard() {
         initial={{ opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.7 }}
-        className="mx-auto px-8 lg:pl-4 lg:w-[50rem] w-full"
+        className="mx-auto px-8 lg:pl-4 lg:w-[60rem] w-full"
       >
         <Header
           setOpen={setIsOpen}

@@ -19,7 +19,7 @@ export const validationSchema = Yup.object().shape({
   createdAt: Yup.date().required("All fields is required."),
   paymentTerms: Yup.number().required("All fields is required."),
 //   paymentMethod: Yup.string().required("Payment method is required."),
- currency: Yup.string().required("All field is required."),
+//  currency: Yup.string().required("All field is required."),
   description: Yup.string().required("All fields is required."),
   items: Yup.array()
     .of(
@@ -46,13 +46,13 @@ export const initialValues:InitialValues = {
   senderAddress: {
     street: "",
     city: "",
-    country: "",
+    country: "Andorra",
     postCode: "",
   },
   clientAddress: {
     street: "",
     city: "",
-    country: "",
+    country: "Andorra",
     postCode: "",
   },
   clientName: "",

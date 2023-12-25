@@ -101,7 +101,7 @@ export const Select = (props: string | any) => {
       >
         {options.map((option: any) => {
           return (
-            <option className="p-4" key={option.value} value={option.value}>
+            <option className="p-4" key={option.name} value={option.value}>
               {option.name}
             </option>
           );

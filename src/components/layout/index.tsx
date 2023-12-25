@@ -20,7 +20,7 @@ function AppLayout() {
   return (
     <div id="app_container" className="w-full h-screen">
       <Navigation />
-      <main className="w-full h-full mx-auto lg:py-16 py-24 text-base bg-skin-fill">
+      <main className="w-full overflow-hidden h-full mx-auto lg:py-16 py-24 text-base bg-skin-fill">
         <Outlet />
       </main>
     </div>

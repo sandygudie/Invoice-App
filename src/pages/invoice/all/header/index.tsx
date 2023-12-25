@@ -6,6 +6,7 @@ import {
 } from "react-icons/md";
 import CheckBox from "./Checkbox";
 import { IoMdAdd } from "react-icons/io";
+import { FiFilter } from "react-icons/fi";
 
 interface Props {
   setOpen: Dispatch<SetStateAction<boolean>>;
@@ -49,7 +50,7 @@ function Header({ setOpen, invoices, filterInvoice }: Props) {
             >
               Invoices
             </div>
-            <span className="text-xs text-sm text-gray-200 font-semibold">
+            <span className="text-sm text-gray-200 font-semibold">
               <span className="hidden md:inline"> There are total </span>
               {invoices.length} invoices
             </span>
@@ -62,8 +63,8 @@ function Header({ setOpen, invoices, filterInvoice }: Props) {
                   setOpenFilter(!isOpenFilter);
                 }}
               >
-                <span className="text-xs font-bold lg:mr-2">
-                  Filter <span className="hidden md:inline">by status</span>
+                <span className="text-lg font-bold lg:mr-2">
+                <FiFilter  className="inline"/> <span className="hidden md:inline">status</span>
                 </span>
                 <span className="text-primary text-xl font-bold ">
                   {" "}

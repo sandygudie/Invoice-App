@@ -23,7 +23,11 @@ const paymentMethod = [
   { name: "Pending", value: "Pending" },
 ];
 const countryOption = countries.map((country) => {
-  return { name: `${country.countryNameEn}`, value: country.countryNameEn };
+  return {
+    id: country.countryCode,
+    name: `${country.countryNameEn}`,
+    value: country.countryNameEn,
+  };
 });
 
 const AddInvoice = () => {
@@ -46,7 +50,7 @@ const AddInvoice = () => {
               label="Post Code"
             />
           </div>
-   
+
           <Select
             options={countryOption}
             name="senderAddress.country"
