@@ -7,6 +7,7 @@ import {
 import { Invoice } from "../types";
 import { capitalize } from "../utils";
 import { VscCircleFilled } from "react-icons/vsc";
+import { useNavigate } from "react-router-dom";
 
 const columnHelper = createColumnHelper<Invoice>();
 
@@ -43,29 +44,29 @@ const columns = [
   columnHelper.accessor("status", {
     header: "Status",
     cell: (info) => (
-     <div className="w-1/2 mx-auto">
-       <button
-        className={`${
-          info.getValue() === "pending"
-            ? "bg-warning/20 text-warning"
-            : info.getValue() === "paid"
-            ? "bg-success/20 text-success"
-            : "bg-gray-300"
-        } py-2.5 text-center flex justify-center text-sm items-center font-bold rounded-md w-[110px]`}
-      >
-        <span className="mr-1">
-          <VscCircleFilled />
-        </span>{" "}
-        {capitalize(info.getValue())}
-      </button>
-     </div>
+      <div className="w-5/6 mx-auto">
+        <button
+          className={`${
+            info.getValue() === "pending"
+              ? "bg-warning/20 text-warning"
+              : info.getValue() === "paid"
+              ? "bg-success/20 text-success"
+              : "bg-gray-300"
+          } py-2.5 text-center flex justify-center text-sm items-center font-bold rounded-md w-[110px]`}
+        >
+          <span className="mr-1">
+            <VscCircleFilled />
+          </span>{" "}
+          {capitalize(info.getValue())}
+        </button>
+      </div>
     ),
   }),
 ];
 
 export default function Index({ invoices }: any) {
   const data = invoices;
-
+  const navigate = useNavigate();
   const table = useReactTable({
     data,
     columns,
@@ -75,7 +76,7 @@ export default function Index({ invoices }: any) {
   return (
     <div className="py-2 md:px-8 w-full mx-auto h-full overflow-auto relative">
       <table
-        className="w-[43rem] mx-auto"
+        className="w-[43rem] px-4 mx-auto"
         style={{
           width: "100%",
           borderCollapse: "separate",
@@ -98,10 +99,12 @@ export default function Index({ invoices }: any) {
             </tr>
           ))}
         </thead>
-        <tbody>
+        <tbody className="">
           {table.getRowModel().rows.map((row) => (
             <tr
-              onClick={() => {}}
+              onClick={() => {
+                navigate(`/invoice/${row.original.id}`);
+              }}
               style={{ outline: "1px solid" }}
               className="text-sm cursor-pointer bg-white
                dark:bg-secondary text-center outline-none rounded-md hover:outline-primary/50"

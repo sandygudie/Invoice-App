@@ -12,8 +12,8 @@ import Table from "../../../components/Table";
 function InvoiceBoard() {
   const { invoices } = useContext(AppContext) as AppContextState;
   const [isOpen, setIsOpen] = useState(false);
-  const [status, setStatus] = useState("");
-  const [filtered, setFiltered] = useState<Invoice[]>([]);
+  const [status, setStatus] = useState("all");
+  const [filtered, setFiltered] = useState<Invoice[]>(invoices);
 
   useEffect(() => {
     let temp: HTMLElement | null | any =
@@ -23,9 +23,10 @@ function InvoiceBoard() {
     } else {
       temp.style.position = "initial";
     }
-    filterInvoice("");
+    filterInvoice(status);
+    // setFiltered(invoices)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [invoices]);
 
   const filterInvoice = (status: string) => {
     if (status === "paid") {
@@ -46,12 +47,20 @@ function InvoiceBoard() {
         (invoice: Invoice) => invoice.status === "pending"
       );
       setFiltered(newInvoice);
-    } else {
-      setStatus("Invoice");
-      setFiltered([]);
+    } 
+    // else if(status === "all"){
+    //   setStatus(status);
+    //   setFiltered(invoices);
+    // }
+    // console.log(invoices)
+    else {
+      setStatus("all");
+      setFiltered(invoices);
     }
   };
+console.log(filtered)
 
+console.log(status)
   return (
     <>
       <motion.div
@@ -67,7 +76,7 @@ function InvoiceBoard() {
         />
         {invoices.length ? (
           // <InvoiceList invoices={filtered.length ? filtered : invoices} />
-         <Table  invoices={filtered.length ? filtered : invoices} />
+         <Table  invoices={filtered} />
         ) : (
           <div className="h-[60vh] md:h-[80vh] flex flex-col items-center justify-center">
            <div className="w-64 md:w-96">
