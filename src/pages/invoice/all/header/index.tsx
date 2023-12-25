@@ -84,21 +84,21 @@ function Header({ setOpen, invoices, filterInvoice }: Props) {
                     changed={(e: any) => radioChangeHandler(e, "paid")}
                     id="1"
                     isSelected={status === "paid"}
-                    label="paid"
+                    label="Paid"
                     value="paid"
                   />
                   <CheckBox
                     changed={(e: any) => radioChangeHandler(e, "draft")}
                     id="2"
                     isSelected={status === "draft"}
-                    label="draft"
+                    label="Draft"
                     value="draft"
                   />
                   <CheckBox
                     changed={(e: any) => radioChangeHandler(e, "pending")}
                     id="3"
                     isSelected={status === "pending"}
-                    label="pending"
+                    label="Pending"
                     value="pending"
                   />
                   <CheckBox
