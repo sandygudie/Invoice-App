@@ -11,12 +11,13 @@ function AppLayout() {
   const navigate = useNavigate();
   const { invoices } = useContext(AppContext) as AppContextState;
  
+  if (invoices === undefined) {
+    navigate(`/invoices`);
+  }
   useEffect(() => {
 
     window.scrollTo(0, 0);
-    if (invoices === undefined) {
-      navigate(`/invoices`);
-    }
+  
     if (
       localStorage.theme === "dark" ||
       (!("theme" in localStorage) &&
