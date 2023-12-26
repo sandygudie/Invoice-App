@@ -13,8 +13,10 @@ import { FaLinkedinIn } from "react-icons/fa";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
 import { MdCircle } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
+  const navigate = useNavigate();
   const hero = useRef(null);
   useGSAP(
     () => {
@@ -82,7 +84,7 @@ export default function Home() {
               Quick And Easy Invoice Mangement.
             </h1>
             <div className="description">
-              <p className="text-lg md:text-[25px] my-8 font-normal leading-[2.5rem]">
+              <div className="text-lg md:text-[25px] my-8 font-normal leading-[2.5rem]">
                 <p className="flex items-center justify-start gap-x-4 md:gap-x-2">
                   <MdCircle className="text-xs" /> Keep track of your business
                   inflows.{" "}
@@ -91,14 +93,17 @@ export default function Home() {
                   <MdCircle className="text-xs" /> Manage your invoicing
                   process.
                 </p>
-              </p>
+              </div>
               <div className="hover:scale-110 my-8 transition ease-in-out w-fit delay-100 duration-300">
-                <Link
-                  to="/invoices"
+                <button
+              onClick={() => {
+                navigate(`/invoices`);
+         
+              }}
                   className=" bg-white rounded-lg text-black text-lg px-10 py-4 font-semiBold"
                 >
                   Get Started
-                </Link>
+                </button>
               </div>
             </div>
           </div>

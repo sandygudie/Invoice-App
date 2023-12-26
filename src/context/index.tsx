@@ -16,6 +16,8 @@ export const AppProvider = ({
     setInvoices(data);
   }, [setInvoices]);
 
+console.log(invoices)
+
   const createPaidInvoice = (invoiceItem: Invoice) => {
     const newInvoice: Invoice = {
       ...invoiceItem,

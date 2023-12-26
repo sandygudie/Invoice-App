@@ -2,14 +2,14 @@ import dayjs from "dayjs";
 import { Invoice } from "../types";
 // import { data } from "../data";
 
-const data:[] = [];
+const data: Invoice[] = [];
 
 export const loadState = () => {
-  if (localStorage.getItem("invoice") === null) {
-    localStorage.setItem("invoice", JSON.stringify(data));
-  } else {
-    return JSON.parse(localStorage.getItem("invoice") || "");
+  let storeInvoice = localStorage.getItem("invoice");
+  if (storeInvoice === null || storeInvoice === undefined) {
+    return localStorage.setItem("invoice", JSON.stringify(data));
   }
+  return JSON.parse(storeInvoice);
 };
 
 export const saveState = (invoiceItem: Invoice[]) => {

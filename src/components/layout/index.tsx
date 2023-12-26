@@ -6,6 +6,7 @@ import { Outlet } from "react-router-dom";
 
 function AppLayout() {
   useEffect(() => {
+   
     window.scrollTo(0, 0);
     if (
       localStorage.theme === "dark" ||
@@ -17,6 +18,7 @@ function AppLayout() {
       document.documentElement.classList.remove("dark");
     }
   }, []);
+
   return (
     <div
       id="app_container"
@@ -44,7 +46,7 @@ function Navigation() {
   return (
     <>
       {/* desktop */}
-      <aside className="hidden xl:flex justify-between  fixed h-full bg-secondary flex-col rounded-tr-2xl rounded-br-2xl z-30">
+      <aside className="hidden xl:flex justify-between fixed h-full bg-secondary flex-col rounded-tr-2xl rounded-br-2xl z-30">
         <LogoComponent />
         <div className="text-center">
           <ThemeToggle />
