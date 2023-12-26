@@ -8,16 +8,14 @@ import { motion } from "framer-motion";
 import { IoMdAdd } from "react-icons/io";
 import emptyState from "../../../assets/empty-state.webp";
 import Table from "../../../components/Table";
-import { loadState} from "../../../utils";
 
 function InvoiceBoard() {
   const { invoices } = useContext(AppContext) as AppContextState;
   const [isOpen, setIsOpen] = useState(false);
   const [status, setStatus] = useState("all");
-  const [filtered, setFiltered] = useState<Invoice[]>([]);
+  const [filtered, setFiltered] = useState<Invoice[]>(invoices);
 
   useEffect(() => {
-    // setFiltered(invoices)
     let temp: HTMLElement | null | any =
       document.getElementById("app_container");
     if (isOpen) {
@@ -25,16 +23,14 @@ function InvoiceBoard() {
     } else {
       temp.style.position = "initial";
     }
-    if (invoices === undefined) {
-     let data = loadState();
-     setFiltered(data)
-    }
     filterInvoice(status);
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [invoices]);
 
-  console.log(invoices);
+  if (invoices === undefined) {
+    window.location.reload();
+  }
+  
   const filterInvoice = (status: string) => {
     if (status === "paid") {
       setStatus(status);
@@ -79,7 +75,10 @@ function InvoiceBoard() {
           invoices={invoices}
           filterInvoice={filterInvoice}
         />
-        {!invoices?.length ? (
+        {invoices?.length ? (
+          // <InvoiceList invoices={filtered.length ? filtered : invoices} />
+          <Table status={status} invoices={filtered} />
+        ) : (
           <div className="h-[60vh] md:h-[80vh] flex flex-col items-center justify-center">
             <div className="w-64 md:w-96">
               <img
@@ -111,9 +110,6 @@ function InvoiceBoard() {
               </span>
             </button>
           </div>
-        ) : (
-          // <InvoiceList invoices={filtered.length ? filtered : invoices} />
-          <Table status={status} invoices={filtered} />
         )}
       </motion.div>
       {isOpen && <CreateInvoice setOpen={setIsOpen} />}

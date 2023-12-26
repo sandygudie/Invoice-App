@@ -220,6 +220,7 @@ export default function Index({ invoices, status }: TableProps) {
         <span className="flex items-center gap-1">
           <span className=" hidden md:inline px-2">|</span>Go to page:
           <input
+          name="paginate"
             type="number"
             min="0"
             defaultValue={table.getState().pagination.pageIndex + 1}

@@ -6,6 +6,7 @@ import { Outlet } from "react-router-dom";
 
 function AppLayout() {
   useEffect(() => {
+   
     window.scrollTo(0, 0);
     if (
       localStorage.theme === "dark" ||
@@ -17,6 +18,7 @@ function AppLayout() {
       document.documentElement.classList.remove("dark");
     }
   }, []);
+
   return (
     <div
       id="app_container"

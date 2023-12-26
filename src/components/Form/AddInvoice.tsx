@@ -39,6 +39,7 @@ const AddInvoice = () => {
           type={"text"}
           name="senderAddress.street"
           label="Street Address"
+          
         />
 
         <div className="block sm:flex items-center gap-x-4">

@@ -98,6 +98,7 @@ export default function Home() {
                 <button
               onClick={() => {
                 navigate(`/invoices`);
+         
               }}
                   className=" bg-white rounded-lg text-black text-lg px-10 py-4 font-semiBold"
                 >

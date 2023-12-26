@@ -27,11 +27,11 @@ export const InputField: FC<IInputFieldProps> = ({
   ...props
 }) => {
   const [field, { error }] = useField(props);
-
+const id= field.name
   return (
     <>
       <div className={`my-4 ${styles || "w-full"} flex flex-col`}>
-        <label htmlFor={field.name} className={`${hideLabel && "hidden"}`}>
+        <label htmlFor={id} className={`${hideLabel && "hidden"}`}>
           {label}
         </label>
         <input
