@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 import { IoMdAdd } from "react-icons/io";
 import emptyState from "../../../assets/empty-state.webp";
 import Table from "../../../components/Table";
-import { loadState, saveState } from "../../../utils";
+import { loadState} from "../../../utils";
 
 function InvoiceBoard() {
   const { invoices } = useContext(AppContext) as AppContextState;
