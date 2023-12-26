@@ -1,21 +1,19 @@
 import { useContext, useEffect, useState } from "react";
 import { AppContextState, Invoice } from "../../../types";
 import { AppContext } from "../../../context";
-// import InvoiceList from "./InvoiceList";
 import CreateInvoice from "../create";
 import Header from "./header";
 import { motion } from "framer-motion";
 import { IoMdAdd } from "react-icons/io";
 import emptyState from "../../../assets/empty-state.webp";
 import Table from "../../../components/Table";
-// import { useNavigate } from "react-router-dom";
 
 function InvoiceBoard() {
   const { invoices } = useContext(AppContext) as AppContextState;
   const [isOpen, setIsOpen] = useState(false);
   const [status, setStatus] = useState("all");
   const [filtered, setFiltered] = useState<Invoice[]>(invoices);
-  // const navigate = useNavigate();
+
 
      
   useEffect(() => {
@@ -30,7 +28,7 @@ function InvoiceBoard() {
     filterInvoice(status);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [invoices]);
-console.log(invoices)
+
   const filterInvoice = (status: string) => {
     if (status === "paid") {
       setStatus(status);
@@ -55,7 +53,7 @@ console.log(invoices)
     //   setStatus(status);
     //   setFiltered(invoices);
     // }
-    // console.log(invoices)
+
     else {
       setStatus("all");
       setFiltered(invoices);
