@@ -5,23 +5,15 @@ import { Invoice } from "../types";
 const data: Invoice[] = [];
 
 export const loadState = () => {
-  try {
-    let storeInvoice = localStorage.getItem("invoice");
-    if (storeInvoice === null) {
-      return localStorage.setItem("invoice", JSON.stringify(data));
-    }
-    return JSON.parse(storeInvoice);
-  } catch (err) {
-    return err;
+  let storeInvoice = localStorage.getItem("invoice");
+  if (storeInvoice === null || storeInvoice === undefined) {
+    return localStorage.setItem("invoice", JSON.stringify(data));
   }
+  return JSON.parse(storeInvoice);
 };
 
 export const saveState = (invoiceItem: Invoice[]) => {
-  try {
-    localStorage.setItem("invoice", JSON.stringify(invoiceItem));
-  } catch (err) {
-    return err;
-  }
+  localStorage.setItem("invoice", JSON.stringify(invoiceItem));
 };
 
 export const capitalize = (text: string) => {

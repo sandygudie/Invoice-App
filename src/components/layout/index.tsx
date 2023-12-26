@@ -1,12 +1,10 @@
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import logo from "../../assets/logo.svg";
 import Profile from "../Profile";
 import ThemeToggle from "../ThemeToggle";
 import { Outlet } from "react-router-dom";
-import { AppContext } from "../../context";
-import { AppContextState } from "../../types";
+
 function AppLayout() {
-  const { invoices } = useContext(AppContext) as AppContextState;
   useEffect(() => {
     window.scrollTo(0, 0);
     if (
@@ -18,8 +16,7 @@ function AppLayout() {
     } else {
       document.documentElement.classList.remove("dark");
     }
-  }, [invoices]);
-  console.log(invoices)
+  }, []);
   return (
     <div
       id="app_container"
