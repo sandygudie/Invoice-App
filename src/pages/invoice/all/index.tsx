@@ -71,10 +71,7 @@ function InvoiceBoard() {
           invoices={invoices}
           filterInvoice={filterInvoice}
         />
-        {invoices.length ? (
-          // <InvoiceList invoices={filtered.length ? filtered : invoices} />
-          <Table status={status} invoices={filtered} />
-        ) : (
+        {!invoices?.length ? (
           <div className="h-[60vh] md:h-[80vh] flex flex-col items-center justify-center">
             <div className="w-64 md:w-96">
               <img
@@ -106,6 +103,9 @@ function InvoiceBoard() {
               </span>
             </button>
           </div>
+        ) : (
+          // <InvoiceList invoices={filtered.length ? filtered : invoices} />
+          <Table status={status} invoices={filtered} />
         )}
       </motion.div>
       {isOpen && <CreateInvoice setOpen={setIsOpen} />}
