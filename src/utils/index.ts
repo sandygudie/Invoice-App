@@ -2,19 +2,26 @@ import dayjs from "dayjs";
 import { Invoice } from "../types";
 // import { data } from "../data";
 
-const data:[] = [];
+const data: Invoice[] = [];
 
 export const loadState = () => {
-  let storeInvoice =  localStorage.getItem("invoice")
-  if (storeInvoice === null) {
-    localStorage.setItem("invoice", JSON.stringify(data));
-  } else {
-    return JSON.parse(localStorage.getItem("invoice") || "");
+  try {
+    let storeInvoice = localStorage.getItem("invoice");
+    if (storeInvoice === null) {
+      return localStorage.setItem("invoice", JSON.stringify(data));
+    }
+    return JSON.parse(storeInvoice);
+  } catch (err) {
+    return err;
   }
 };
 
 export const saveState = (invoiceItem: Invoice[]) => {
-  localStorage.setItem("invoice", JSON.stringify(invoiceItem));
+  try {
+    localStorage.setItem("invoice", JSON.stringify(invoiceItem));
+  } catch (err) {
+    return err;
+  }
 };
 
 export const capitalize = (text: string) => {
