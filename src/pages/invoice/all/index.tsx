@@ -13,9 +13,10 @@ function InvoiceBoard() {
   const { invoices } = useContext(AppContext) as AppContextState;
   const [isOpen, setIsOpen] = useState(false);
   const [status, setStatus] = useState("all");
-  const [filtered, setFiltered] = useState<Invoice[]>(invoices);
+  const [filtered, setFiltered] = useState<Invoice[]>([]);
 
   useEffect(() => {
+    // setFiltered(invoices)
     let temp: HTMLElement | null | any =
       document.getElementById("app_container");
     if (isOpen) {
@@ -24,6 +25,7 @@ function InvoiceBoard() {
       temp.style.position = "initial";
     }
     filterInvoice(status);
+    
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
