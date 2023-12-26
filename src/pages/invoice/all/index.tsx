@@ -14,12 +14,9 @@ function InvoiceBoard() {
   const [isOpen, setIsOpen] = useState(false);
   const [status, setStatus] = useState("all");
   const [filtered, setFiltered] = useState<Invoice[]>(invoices);
-
   
   useEffect(() => {
-    if (invoices === undefined) {
-      window.location.reload();
-    }
+ 
     let temp: HTMLElement | null | any =
       document.getElementById("app_container");
     if (isOpen) {

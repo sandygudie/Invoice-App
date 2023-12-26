@@ -1,12 +1,19 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import logo from "../../assets/logo.svg";
 import Profile from "../Profile";
 import ThemeToggle from "../ThemeToggle";
 import { Outlet } from "react-router-dom";
+import { AppContextState } from "../../types";
+import { AppContext } from "../../context";
+import { useNavigate } from "react-router-dom";
 
 function AppLayout() {
+  const navigate = useNavigate();
+  const { invoices } = useContext(AppContext) as AppContextState;
+  if (invoices === undefined) {
+    navigate(`/invoices`);
+  }
   useEffect(() => {
-   
     window.scrollTo(0, 0);
     if (
       localStorage.theme === "dark" ||
