@@ -11,6 +11,10 @@ export const AppProvider = ({
 }): JSX.Element => {
   const [invoices, setInvoices] = useState<Invoice[]>([]);
 
+  if (invoices === undefined) {
+    window.location.reload();
+  }
+  
   useEffect(() => {
     const data = loadState();
     setInvoices(data);

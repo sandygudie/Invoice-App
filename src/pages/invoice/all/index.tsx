@@ -8,20 +8,18 @@ import { motion } from "framer-motion";
 import { IoMdAdd } from "react-icons/io";
 import emptyState from "../../../assets/empty-state.webp";
 import Table from "../../../components/Table";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 function InvoiceBoard() {
   const { invoices } = useContext(AppContext) as AppContextState;
   const [isOpen, setIsOpen] = useState(false);
   const [status, setStatus] = useState("all");
   const [filtered, setFiltered] = useState<Invoice[]>(invoices);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
+     
   useEffect(() => {
-    if (invoices === undefined) {
-      // window.location.reload();
-      navigate("/invoices");
-    }
+ 
     let temp: HTMLElement | null | any =
       document.getElementById("app_container");
     if (isOpen) {
