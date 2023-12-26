@@ -40,7 +40,7 @@ function Header({ setOpen, invoices, filterInvoice }: Props) {
 
   return (
     <>
-      {invoices.length ? (
+      {invoices?.length >0? (
         <div className="block md:flex justify-between items-center mb-8 lg:mb-12">
           {" "}
           <div>
