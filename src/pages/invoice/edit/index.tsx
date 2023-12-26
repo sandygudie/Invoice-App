@@ -9,6 +9,7 @@ import AddItem from "../../../components/Form/Additems";
 import classes from "../../../styles/index.module.css";
 import { AppContext } from "../../../context";
 import { motion } from "framer-motion";
+import dayjs from "dayjs";
 interface Props {
   setIsEdit: Dispatch<SetStateAction<boolean>>;
   invoice: Invoice;
@@ -19,16 +20,20 @@ function EditInvoice({ setIsEdit, id, invoice }: Props) {
   const { editInvoice, invoices } = useContext(AppContext) as AppContextState;
 
   const onSubmit = (values: InitialValues) => {
-   const updatedTotal= values.items.reduce((accumulator, object) => {
+    const updatedTotal = values.items.reduce((accumulator, object) => {
       return accumulator + object.total;
-    }, 0)
+    }, 0);
     const item = invoices.map((invoice: Invoice) => {
       if (id === invoice.id) {
         return {
           ...invoice,
           status: "pending",
           ...values,
-          total:  updatedTotal
+          createdAt: dayjs(values.createdAt).format("YYYY-MM-DD"),
+          paymentDue: dayjs(values.createdAt)
+          .add(Number(values.paymentTerms), "day")
+          .format("YYYY-MM-DD"),
+          total: updatedTotal,
         };
       }
       return invoice;

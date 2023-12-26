@@ -64,7 +64,7 @@ function InvoiceBoard() {
         initial={{ opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.7 }}
-        className="mx-auto px-8 lg:pl-4 lg:w-[60rem] w-full"
+        className="mx-auto px-4 md:px-8 lg:w-[65rem] max-w-[75rem] w-full"
       >
         <Header
           setOpen={setIsOpen}

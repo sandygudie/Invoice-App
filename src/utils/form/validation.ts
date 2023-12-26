@@ -41,7 +41,7 @@ export const initialValues:InitialValues = {
   createdAt: new Date(),
   paymentTerms: 1,
   description: "",
-  paymentMethod :"credit-card",
+  paymentMethod :"Credit-card",
   currency:"$",
   senderAddress: {
     street: "",

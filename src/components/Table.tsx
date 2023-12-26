@@ -1,20 +1,11 @@
-// import {
-//   createColumnHelper,
-//   flexRender,
-//   getCoreRowModel,
-//   useReactTable,
-// } from "@tanstack/react-table";
+
 import {
   createColumnHelper,
   flexRender,
   getCoreRowModel,
   useReactTable,
-  Column,
-  PaginationState,
   getFilteredRowModel,
   getPaginationRowModel,
-  ColumnDef,
-  OnChangeFn,
 } from "@tanstack/react-table";
 import { Invoice } from "../types";
 import { capitalize } from "../utils";
@@ -25,18 +16,10 @@ const columnHelper = createColumnHelper<Invoice>();
 
 const columns = [
   columnHelper.accessor("id", {
-    header: () => "ID",
+    header: () =><span className="text-left flex"> ID</span>,
     cell: (info) => <span className="font-bold">{info.getValue()}</span>,
   }),
-  columnHelper.accessor((row) => row.paymentDue, {
-    id: "paymentDue",
-    cell: (info) => (
-      <span className="text-sm text-gray-200 font-semiBold">
-        {info.renderValue()}
-      </span>
-    ),
-    header: () => "Due Date",
-  }),
+
   columnHelper.accessor("clientName", {
     header: () => "Client",
     cell: (info) => (
@@ -45,18 +28,64 @@ const columns = [
       </span>
     ),
   }),
+
+  columnHelper.accessor("items", {
+    header: "(Qty)",
+    cell: ({ row }) => (
+      <span className="font-semiBold">
+        {row.original.items.length}
+      </span>
+    ),
+  }),
+
   columnHelper.accessor("total", {
-    header: "Total",
+    header: "Amount",
     cell: ({ row }) => (
       <span className="font-semiBold">
         {row.original.currency} {row.original.total}
       </span>
     ),
   }),
+  // columnHelper.accessor((row) => row.createdAt, {
+  //   id: "createdAt",
+  //   cell: (info) => (
+  //     <span className="text-sm text-gray-200 font-semiBold">
+  //       {info.renderValue()}
+  //     </span>
+  //   ),
+  //   header: () => "Created Date",
+  // }),
+  columnHelper.accessor("createdAt", {
+    header: "Created-Date",
+    cell: ({ row }) => (
+      <span className="font-semiBold">
+        {row.original.createdAt}
+      </span>
+    ),
+  }),
+  columnHelper.accessor((row) => row.paymentTerms, {
+    id: "paymentTerms",
+    cell: (info) => (
+      <span className="text-sm text-gray-200 font-semiBold">
+        {info.renderValue()}{""} {info.renderValue()! > 1 ? "days":"day"}
+      </span>
+    ),
+    header: () => "Due Date",
+  }),
+
+  columnHelper.accessor((row) => row.paymentMethod, {
+    id: "paymentMethod",
+    cell: (info) => (
+      <span className="text-sm text-gray-200 font-semiBold">
+        {info.renderValue()}
+      </span>
+    ),
+    header: () => "Payment Method",
+  }),
   columnHelper.accessor("status", {
     header: "Status",
     cell: (info) => (
-      <div className="w-5/6 mx-auto">
+      <div className="w-full mx-auto">
         <button
           className={`${
             info.getValue() === "pending"
@@ -95,9 +124,9 @@ export default function Index({ invoices, status }: TableProps) {
   });
 
   return (
-    <div className="py-2 md:px-8 w-full mx-auto h-full overflow-auto relative">
+    <div className="py-2 w-full mx-auto h-full overflow-auto relative">
       <table
-        className="w-[55rem] px-4 mx-auto"
+        className="max-w-[75rem] px-4 mx-auto"
         style={{
           width: "100%",
           borderCollapse: "separate",
