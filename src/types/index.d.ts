@@ -4,8 +4,8 @@ export interface Invoice {
   paymentDue: string | date;
   description: string;
   paymentTerms: number;
-  paymentMethod:string,
-  currency:string,
+  paymentMethod:string;
+  currency:string;
   clientName: string;
   clientEmail: string;
   status: string;
@@ -31,7 +31,7 @@ export interface InitialValues {
   paymentTerms: number;
   clientName: string;
   clientEmail: string;
-  paymentMethod:string,
+  paymentMethod:string;
   currency:string,
   senderAddress: {
     street: string;

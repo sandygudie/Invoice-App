@@ -23,7 +23,11 @@ const paymentMethod = [
   { name: "Pending", value: "Pending" },
 ];
 const countryOption = countries.map((country) => {
-  return { name: `${country.countryNameEn}`, value: country.countryNameEn };
+  return {
+    id: country.countryCode,
+    name: `${country.countryNameEn}`,
+    value: country.countryNameEn,
+  };
 });
 
 const AddInvoice = () => {
@@ -37,7 +41,7 @@ const AddInvoice = () => {
           label="Street Address"
         />
 
-        <div className="block md:flex items-center gap-x-4">
+        <div className="block sm:flex items-center gap-x-4">
           <div className="flex justify-between gap-x-4 w-full">
             <InputField name="senderAddress.city" type={"text"} label="City" />
             <InputField
@@ -46,7 +50,7 @@ const AddInvoice = () => {
               label="Post Code"
             />
           </div>
-   
+
           <Select
             options={countryOption}
             name="senderAddress.country"
@@ -65,7 +69,7 @@ const AddInvoice = () => {
           label="Client's Address"
         />
 
-        <div className="block md:flex items-center gap-x-4 ">
+        <div className="block sm:flex items-center gap-x-4 ">
           <div className="flex justify-between gap-x-4 ">
             <InputField name="clientAddress.city" type={"text"} label="City" />
             <InputField
@@ -82,11 +86,11 @@ const AddInvoice = () => {
           />
         </div>
       </div>
-      <div className="flex my-6 items-center justify-between gap-x-4">
+      <div className="block sm:flex my-6 items-center justify-between gap-x-4">
         <div className="w-full">
           <DatePicker label="Invoice Date" name="createdAt" />
         </div>
-        <div className="w-full">
+        <div className="mt-4 sm:mt-0 w-full">
           <Select
             options={paymentTermsOptions}
             name="paymentTerms"
@@ -94,7 +98,7 @@ const AddInvoice = () => {
           />
         </div>
       </div>
-      <div className="flex my-6 items-center justify-between gap-x-4">
+      <div className="block sm:flex my-6 items-center justify-between gap-x-4">
         <div className="w-full">
           <Select
             options={paymentMethod}
@@ -102,7 +106,7 @@ const AddInvoice = () => {
             label="Payment Method"
           />
         </div>
-        <div className="w-full">
+        <div className="mt-4 sm:mt-0 w-full">
           <Select options={currency} name="currency" label="Currency" />
         </div>
       </div>

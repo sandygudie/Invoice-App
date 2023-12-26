@@ -1,18 +1,19 @@
 import { useContext, useEffect, useState } from "react";
 import { AppContextState, Invoice } from "../../../types";
 import { AppContext } from "../../../context";
-import InvoiceList from "./InvoiceList";
+// import InvoiceList from "./InvoiceList";
 import CreateInvoice from "../create";
 import Header from "./header";
 import { motion } from "framer-motion";
 import { IoMdAdd } from "react-icons/io";
 import emptyState from "../../../assets/empty-state.webp";
+import Table from "../../../components/Table";
 
 function InvoiceBoard() {
   const { invoices } = useContext(AppContext) as AppContextState;
   const [isOpen, setIsOpen] = useState(false);
-  const [status, setStatus] = useState("");
-  const [filtered, setFiltered] = useState<Invoice[]>([]);
+  const [status, setStatus] = useState("all");
+  const [filtered, setFiltered] = useState<Invoice[]>(invoices);
 
   useEffect(() => {
     let temp: HTMLElement | null | any =
@@ -22,9 +23,9 @@ function InvoiceBoard() {
     } else {
       temp.style.position = "initial";
     }
-    filterInvoice("");
+    filterInvoice(status);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [invoices]);
 
   const filterInvoice = (status: string) => {
     if (status === "paid") {
@@ -45,9 +46,15 @@ function InvoiceBoard() {
         (invoice: Invoice) => invoice.status === "pending"
       );
       setFiltered(newInvoice);
-    } else {
-      setStatus("Invoice");
-      setFiltered([]);
+    }
+    // else if(status === "all"){
+    //   setStatus(status);
+    //   setFiltered(invoices);
+    // }
+    // console.log(invoices)
+    else {
+      setStatus("all");
+      setFiltered(invoices);
     }
   };
 
@@ -57,7 +64,7 @@ function InvoiceBoard() {
         initial={{ opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.7 }}
-        className="mx-auto px-4 lg:pl-4 lg:w-[45rem] w-full"
+        className="mx-auto px-4 md:px-8 lg:w-[65rem] max-w-[75rem] w-full"
       >
         <Header
           setOpen={setIsOpen}
@@ -65,15 +72,22 @@ function InvoiceBoard() {
           filterInvoice={filterInvoice}
         />
         {invoices.length ? (
-          <InvoiceList invoices={filtered.length ? filtered : invoices} />
+          // <InvoiceList invoices={filtered.length ? filtered : invoices} />
+          <Table status={status} invoices={filtered} />
         ) : (
           <div className="h-[60vh] md:h-[80vh] flex flex-col items-center justify-center">
-           <div className="w-64 md:w-96">
-           <img src={emptyState} className="w-64 md:w-96" alt="empty-state" />
-           </div>
+            <div className="w-64 md:w-96">
+              <img
+                src={emptyState}
+                className="w-64 md:w-96"
+                alt="empty-state"
+              />
+            </div>
             <p className="text-base my-4 text-gray-200">
               {" "}
-              <span className="hidden font-semiBold text-xl">No {status} Item</span>{" "}
+              <span className="hidden font-semiBold text-xl">
+                No {status} Item
+              </span>{" "}
               Create your first invoice!
             </p>
             <button

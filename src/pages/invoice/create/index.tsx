@@ -22,7 +22,8 @@ function CreateInvoice({ setOpen }: Props) {
   ) as AppContextState;
 
   const onSubmit = (values: InitialValues) => {
-    console.log(values)
+    // console.log(values)
+
     const total_invoice = values.items.reduce(
       (accumulator: number, object: any) => {
         return accumulator + object.total;
@@ -101,6 +102,12 @@ function CreateInvoice({ setOpen }: Props) {
                   Discard
                 </button>
                 <div className="flex justify-between">
+                <button
+                    className="p-3 text-xs md:text-sm text-white rounded-3xl md:py-3 md:px-4 bg-primary my-4"
+                    type="submit"
+                  >
+                    Save & Send
+                  </button>
                   <button
                     type="button"
                     onClick={() => addDraftInvoice(values)}
@@ -108,12 +115,7 @@ function CreateInvoice({ setOpen }: Props) {
                   >
                     Save as Draft
                   </button>
-                  <button
-                    className="p-3 text-xs md:text-sm text-white rounded-3xl md:py-3 md:px-4 bg-primary my-4"
-                    type="submit"
-                  >
-                    Save & Send
-                  </button>
+                
                 </div>
               </div>
             </Form>
