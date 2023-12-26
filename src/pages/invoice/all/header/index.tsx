@@ -40,7 +40,7 @@ function Header({ setOpen, invoices, filterInvoice }: Props) {
 
   return (
     <>
-      {invoices?.length >0? (
+      {!invoices.length ? null : (
         <div className="block md:flex justify-between items-center mb-8 lg:mb-12">
           {" "}
           <div>
@@ -130,7 +130,7 @@ function Header({ setOpen, invoices, filterInvoice }: Props) {
             </button>
           </div>
         </div>
-      ) : null}
+      )}
     </>
   );
 }

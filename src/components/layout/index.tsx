@@ -44,7 +44,7 @@ function Navigation() {
   return (
     <>
       {/* desktop */}
-      <aside className="hidden xl:flex justify-between  fixed h-full bg-secondary flex-col rounded-tr-2xl rounded-br-2xl z-30">
+      <aside className="hidden xl:flex justify-between fixed h-full bg-secondary flex-col rounded-tr-2xl rounded-br-2xl z-30">
         <LogoComponent />
         <div className="text-center">
           <ThemeToggle />
