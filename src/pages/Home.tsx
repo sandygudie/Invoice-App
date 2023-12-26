@@ -13,8 +13,10 @@ import { FaLinkedinIn } from "react-icons/fa";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
 import { MdCircle } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
+  const navigate = useNavigate();
   const hero = useRef(null);
   useGSAP(
     () => {
@@ -93,12 +95,14 @@ export default function Home() {
                 </p>
               </div>
               <div className="hover:scale-110 my-8 transition ease-in-out w-fit delay-100 duration-300">
-                <Link
-                  to="/invoices"
+                <button
+              onClick={() => {
+                navigate(`/invoices`);
+              }}
                   className=" bg-white rounded-lg text-black text-lg px-10 py-4 font-semiBold"
                 >
                   Get Started
-                </Link>
+                </button>
               </div>
             </div>
           </div>

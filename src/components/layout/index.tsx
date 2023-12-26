@@ -16,7 +16,9 @@ function AppLayout() {
     } else {
       document.documentElement.classList.remove("dark");
     }
+    
   }, []);
+
   return (
     <div
       id="app_container"
