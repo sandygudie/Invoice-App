@@ -27,7 +27,7 @@ function InvoiceBoard() {
     filterInvoice(status);
     
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [invoices]);
 
   console.log(invoices)
   const filterInvoice = (status: string) => {
