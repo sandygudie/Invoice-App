@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 import { IoMdAdd } from "react-icons/io";
 import emptyState from "../../../assets/empty-state.webp";
 import Table from "../../../components/Table";
+import { loadState, saveState } from "../../../utils";
 
 function InvoiceBoard() {
   const { invoices } = useContext(AppContext) as AppContextState;
@@ -24,12 +25,16 @@ function InvoiceBoard() {
     } else {
       temp.style.position = "initial";
     }
+    if (invoices === undefined) {
+     let data = loadState();
+     setFiltered(data)
+    }
     filterInvoice(status);
-    
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log(invoices)
+  console.log(invoices);
   const filterInvoice = (status: string) => {
     if (status === "paid") {
       setStatus(status);
