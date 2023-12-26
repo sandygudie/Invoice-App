@@ -27,6 +27,7 @@ function InvoiceBoard() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [invoices]);
 
+  console.log(invoices)
   const filterInvoice = (status: string) => {
     if (status === "paid") {
       setStatus(status);

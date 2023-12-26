@@ -5,7 +5,8 @@ import { Invoice } from "../types";
 const data:[] = [];
 
 export const loadState = () => {
-  if (localStorage.getItem("invoice") === null) {
+  let storeInvoice =  localStorage.getItem("invoice")
+  if (storeInvoice === null) {
     localStorage.setItem("invoice", JSON.stringify(data));
   } else {
     return JSON.parse(localStorage.getItem("invoice") || "");
