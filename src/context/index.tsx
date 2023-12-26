@@ -11,12 +11,15 @@ export const AppProvider = ({
 }): JSX.Element => {
   const [invoices, setInvoices] = useState<Invoice[]>([]);
 
+  if (invoices === undefined) {
+    window.location.reload();
+  }
+  
   useEffect(() => {
     const data = loadState();
     setInvoices(data);
   }, [setInvoices]);
 
-console.log(invoices)
 
   const createPaidInvoice = (invoiceItem: Invoice) => {
     const newInvoice: Invoice = {

@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { AppContextState, Invoice } from "../../../types";
 import { AppContext } from "../../../context";
-// import InvoiceList from "./InvoiceList";
 import CreateInvoice from "../create";
 import Header from "./header";
 import { motion } from "framer-motion";
@@ -15,7 +14,10 @@ function InvoiceBoard() {
   const [status, setStatus] = useState("all");
   const [filtered, setFiltered] = useState<Invoice[]>(invoices);
 
+
+     
   useEffect(() => {
+ 
     let temp: HTMLElement | null | any =
       document.getElementById("app_container");
     if (isOpen) {
@@ -27,10 +29,6 @@ function InvoiceBoard() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [invoices]);
 
-  if (invoices === undefined) {
-    window.location.reload();
-  }
-  
   const filterInvoice = (status: string) => {
     if (status === "paid") {
       setStatus(status);
@@ -55,7 +53,7 @@ function InvoiceBoard() {
     //   setStatus(status);
     //   setFiltered(invoices);
     // }
-    // console.log(invoices)
+
     else {
       setStatus("all");
       setFiltered(invoices);
