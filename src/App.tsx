@@ -16,13 +16,15 @@ function App() {
         </div>
       }
     >
+      
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="*" element={<NotFoundPage />} />
         <Route element={<AppLayout />}>
           <Route path="/invoices" element={<Allinvoices />} />
           <Route path="/invoice/:id" element={<ViewInvoice />} />
         </Route>
-        <Route path="/*" element={<NotFoundPage />} />
+ 
       </Routes>
     </React.Suspense>
   );
