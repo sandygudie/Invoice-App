@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
@@ -13,7 +12,7 @@ import { FaLinkedinIn } from "react-icons/fa";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
 import { MdCircle } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -96,10 +95,9 @@ export default function Home() {
               </div>
               <div className="hover:scale-110 my-8 transition ease-in-out w-fit delay-100 duration-300">
                 <button
-              onClick={() => {
-                navigate(`/invoices`);
-         
-              }}
+                  onClick={() => {
+                    navigate(`/invoices`);
+                  }}
                   className=" bg-white rounded-lg text-black text-lg px-10 py-4 font-semiBold"
                 >
                   Get Started
@@ -187,38 +185,42 @@ export default function Home() {
             you!
           </p>
           <div className="flex py-4 pb-12 items-center  text-white gap-x-8 justify-center">
-            <Link
-              to="https://github.com/sandygudie"
+            <a
+              href="https://github.com/sandygudie"
               target="_blank"
               className="hover:text-gray"
+              rel="noreferrer"
             >
               {" "}
               <FaGithub />
-            </Link>
-            <Link
+            </a>
+            <a
+              rel="noreferrer"
               target="_blank"
-              to="https://www.linkedin.com/in/goodnews-sandy"
+              href="https://www.linkedin.com/in/goodnews-sandy"
               className="hover:text-gray"
             >
               {" "}
               <FaLinkedinIn />
-            </Link>
-            <Link
+            </a>
+            <a
+              rel="noreferrer"
               target="_blank"
-              to="https://goodnewssandy.netlify.app/#project"
+              href="https://goodnewssandy.netlify.app/#project"
               className="hover:text-gray"
             >
               {" "}
               <FaExternalLinkAlt />
-            </Link>
-            <Link
+            </a>
+            <a
+              rel="noreferrer"
               target="_blank"
-              to="mailto:goodnewssandy@gmail.com"
+              href="mailto:goodnewssandy@gmail.com"
               className="hover:text-gray"
             >
               {" "}
               <IoMdMail />
-            </Link>
+            </a>
           </div>
           <div className="w-full pt-12 pb-4 text-xs text-center ">
             Copyright <span>&copy;</span>
