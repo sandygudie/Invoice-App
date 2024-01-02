@@ -22,7 +22,7 @@ function App() {
           <Route path="/invoices" element={<Allinvoices />} />
           <Route path="/invoice/:id" element={<ViewInvoice />} />
         </Route>
-        <Route path="*" element={<NotFoundPage />} />
+        <Route path="/*" element={<NotFoundPage />} />
       </Routes>
     </React.Suspense>
   );
