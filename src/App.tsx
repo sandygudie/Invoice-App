@@ -16,7 +16,6 @@ function App() {
         </div>
       }
     >
-      
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="*" element={<NotFoundPage />} />
@@ -24,7 +23,6 @@ function App() {
           <Route path="/invoices" element={<Allinvoices />} />
           <Route path="/invoice/:id" element={<ViewInvoice />} />
         </Route>
- 
       </Routes>
     </React.Suspense>
   );

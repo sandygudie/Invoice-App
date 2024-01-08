@@ -54,7 +54,7 @@ function ViewInvoice() {
               Go back
             </p>
 
-            {/* Desktop*/}
+
             <>
               <div className="mt-4 flex relative justify-between shadow-lg px-6 py-2 rounded-md bg-white dark:bg-secondary">
                 <div className="flex items-center justify-between w-full sm:w-20">

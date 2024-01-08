@@ -45,7 +45,6 @@ function EditInvoice({ setIsEdit, id, invoice }: Props) {
   return (
     <>
       <div className={classes.drawer} onClick={() => setIsEdit(false)} />
-
       <motion.div
         initial={{ x: "-300px", opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
@@ -106,4 +105,3 @@ function EditInvoice({ setIsEdit, id, invoice }: Props) {
 
 export default EditInvoice;
 
-// todo look at the way Mowa did her own

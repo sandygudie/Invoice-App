@@ -29,7 +29,6 @@ export default function Home() {
         duration: 1.5,
         opacity: 0,
         delay: 0.5,
-
         y: 10,
       });
       gsap.from(".img-illustration", {
@@ -50,7 +49,6 @@ export default function Home() {
   );
   const navItems = [
     { title: "Features", link: "features" },
-    // { title: "Technologies", link: "technologies" },
     { title: "Contact", link: "connect" },
   ];
   return (
