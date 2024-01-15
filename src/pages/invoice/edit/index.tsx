@@ -10,6 +10,7 @@ import classes from "../../../styles/index.module.css";
 import { AppContext } from "../../../context";
 import { motion } from "framer-motion";
 import dayjs from "dayjs";
+
 interface Props {
   setIsEdit: Dispatch<SetStateAction<boolean>>;
   invoice: Invoice;
@@ -18,7 +19,6 @@ interface Props {
 
 function EditInvoice({ setIsEdit, id, invoice }: Props) {
   const { editInvoice, invoices } = useContext(AppContext) as AppContextState;
-
   const onSubmit = (values: InitialValues) => {
     const updatedTotal = values.items.reduce((accumulator, object) => {
       return accumulator + object.total;
@@ -31,8 +31,8 @@ function EditInvoice({ setIsEdit, id, invoice }: Props) {
           ...values,
           createdAt: dayjs(values.createdAt).format("YYYY-MM-DD"),
           paymentDue: dayjs(values.createdAt)
-          .add(Number(values.paymentTerms), "day")
-          .format("YYYY-MM-DD"),
+            .add(Number(values.paymentTerms), "day")
+            .format("YYYY-MM-DD"),
           total: updatedTotal,
         };
       }
@@ -49,7 +49,7 @@ function EditInvoice({ setIsEdit, id, invoice }: Props) {
         initial={{ x: "-300px", opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className={`${classes.drawerContent} bg-white text-base dark:bg-skin-fill`}
+        className={`${classes.drawerContent} block bg-white text-base dark:bg-skin-fill`}
       >
         <div className="pt-[6rem] pb-6 md:pb-6 lg:pt-10">
           <h5 className={classes.heading}>Edit {id}</h5>
@@ -75,7 +75,9 @@ function EditInvoice({ setIsEdit, id, invoice }: Props) {
           {({ handleSubmit }) => (
             <Form onSubmit={handleSubmit}>
               <ScrollToFieldError />
-              <div className={`${classes.drawerBody} h-[68vh] md:h-[75vh]`}>
+              <div
+                className={`${classes.drawerBody} h-[55vh] pl-2 md:h-[75vh]`}
+              >
                 <AddInvoice />
                 <AddItem name="items" />
               </div>
@@ -104,4 +106,3 @@ function EditInvoice({ setIsEdit, id, invoice }: Props) {
 }
 
 export default EditInvoice;
-

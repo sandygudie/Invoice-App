@@ -155,8 +155,6 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-
-              {/* <h2 className="text-3xl font-bold text-left">Views</h2> */}
               <div className="flex flex-wrap items-center mt-4 md:mt-20 gap-8 md:gap-x-16 justify-center">
                 <img
                   src={viewInvoice}

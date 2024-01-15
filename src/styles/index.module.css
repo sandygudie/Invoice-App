@@ -22,7 +22,7 @@
   z-index: 10;
   top: 0;
   overflow: hidden;
-  @apply rounded-tr-xl rounded-br-xl md:pl-16 md:pr-8 md:w-[40rem] lg:ml-12 px-4;
+  @apply rounded-tr-xl rounded-br-xl md:pl-16 md:pr-8 md:w-[40rem] xl:ml-12 px-4;
 }
 
 .heading {

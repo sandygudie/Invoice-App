@@ -97,7 +97,7 @@ export const Select = (props: string | any) => {
         id={name}
         name={name}
         {...rest}
-        className="w-full flex p-2.5 rounded-md border font-semibold outline-0 border-gray-300 dark:bg-secondary"
+        className="w-full flex p-2.5 h-10 rounded-md border font-semibold outline-0 border-gray-300 dark:bg-secondary"
       >
         {options.map((option: any) => {
           return (

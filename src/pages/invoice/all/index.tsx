@@ -14,10 +14,7 @@ function InvoiceBoard() {
   const [status, setStatus] = useState("all");
   const [filtered, setFiltered] = useState<Invoice[]>(invoices);
 
-
-     
   useEffect(() => {
- 
     let temp: HTMLElement | null | any =
       document.getElementById("app_container");
     if (isOpen) {
@@ -48,13 +45,7 @@ function InvoiceBoard() {
         (invoice: Invoice) => invoice.status === "pending"
       );
       setFiltered(newInvoice);
-    }
-    // else if(status === "all"){
-    //   setStatus(status);
-    //   setFiltered(invoices);
-    // }
-
-    else {
+    } else {
       setStatus("all");
       setFiltered(invoices);
     }
@@ -74,7 +65,6 @@ function InvoiceBoard() {
           filterInvoice={filterInvoice}
         />
         {invoices?.length ? (
-          // <InvoiceList invoices={filtered.length ? filtered : invoices} />
           <Table status={status} invoices={filtered} />
         ) : (
           <div className="h-[60vh] md:h-[80vh] flex flex-col items-center justify-center">

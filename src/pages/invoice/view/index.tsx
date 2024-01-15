@@ -206,7 +206,7 @@ function ViewInvoice() {
                     >
                       <div>
                         <p className="font-bold mb-2">{itemlist.name}</p>
-                        <p className="text-gray-100">
+                        <p className="">
                           {itemlist.quantity} X {`£${itemlist.price}`}
                         </p>
                       </div>
@@ -217,13 +217,16 @@ function ViewInvoice() {
                   ))}
                 </div>
 
-                <div className="flex justify-between md:text-lg items-center rounded-br-md rounded-bl-md p-4 md:p-8 md:pr-14 text-white bg-secondary dark:bg-skin-fill">
+                <div className="rounded-br-md rounded-bl-md p-4 md:p-8 md:pr-14 text-white bg-secondary dark:bg-skin-fill">
+                <div className="flex justify-between md:text-lg items-center">
                   <p>Total Amount</p> 
-                  <p className="text-success font-bold">{item.status === "paid"?item.paymentMethod:null}</p>
+                 
                   <p className="md:text-2xl text-lg font-semibold">
                   {item.currency}{" "} {item.total}
                   </p>
                 </div>
+                <p className="text-success text-right mt-3 text-xs md:text-sm font-bold">{item.status === "paid"?item.paymentMethod:null}</p>
+              </div>
               </div>
             </>
           </motion.div>
